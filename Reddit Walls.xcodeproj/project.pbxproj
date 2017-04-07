@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CAB864F71E8F17A40024A86E /* SelectedWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB864F61E8F17A40024A86E /* SelectedWallpaperViewController.swift */; };
+		CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */; };
+		CAC2C4301E7BE8F1004F6EA1 /* WallpapersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42F1E7BE8F1004F6EA1 /* WallpapersViewController.swift */; };
+		CAC2C4331E7BE8F1004F6EA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC2C4311E7BE8F1004F6EA1 /* Main.storyboard */; };
+		CAC2C4351E7BE8F1004F6EA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC2C4341E7BE8F1004F6EA1 /* Assets.xcassets */; };
+		CAC2C4381E7BE8F1004F6EA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAC2C4361E7BE8F1004F6EA1 /* LaunchScreen.storyboard */; };
+		CAC337561E8E5A8600296C62 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC337551E8E5A8600296C62 /* Extensions.swift */; };
+		CADD0F6C1E7F436800BEB62C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0F6B1E7F436800BEB62C /* DataManager.swift */; };
+		CADD0F6E1E7F528700BEB62C /* WallpaperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0F6D1E7F528700BEB62C /* WallpaperInfo.swift */; };
+		CAFEDB6E1E7E7A19009A4600 /* WallpaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFEDB6D1E7E7A19009A4600 /* WallpaperCollectionViewCell.swift */; };
+		CAFEDB701E7E90B6009A4600 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CAB864F61E8F17A40024A86E /* SelectedWallpaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedWallpaperViewController.swift; sourceTree = "<group>"; };
+		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CAC2C42F1E7BE8F1004F6EA1 /* WallpapersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpapersViewController.swift; sourceTree = "<group>"; };
+		CAC2C4321E7BE8F1004F6EA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CAC2C4341E7BE8F1004F6EA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAC2C4371E7BE8F1004F6EA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CAC2C4391E7BE8F1004F6EA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAC337551E8E5A8600296C62 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CADD0F6B1E7F436800BEB62C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CADD0F6D1E7F528700BEB62C /* WallpaperInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperInfo.swift; sourceTree = "<group>"; };
+		CAFEDB6D1E7E7A19009A4600 /* WallpaperCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCollectionViewCell.swift; sourceTree = "<group>"; };
+		CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAC2C4271E7BE8F1004F6EA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAC2C4211E7BE8F1004F6EA1 = {
+			isa = PBXGroup;
+			children = (
+				CAC2C42C1E7BE8F1004F6EA1 /* Reddit Walls */,
+				CAC2C42B1E7BE8F1004F6EA1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAC2C42B1E7BE8F1004F6EA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAC2C42C1E7BE8F1004F6EA1 /* Reddit Walls */ = {
+			isa = PBXGroup;
+			children = (
+				CAC2C4421E7BE937004F6EA1 /* Models */,
+				CAC2C4411E7BE927004F6EA1 /* Controllers */,
+				CAC2C4401E7BE91B004F6EA1 /* Views */,
+				CAC337551E8E5A8600296C62 /* Extensions.swift */,
+				CAC2C43F1E7BE911004F6EA1 /* Support Files */,
+			);
+			path = "Reddit Walls";
+			sourceTree = "<group>";
+		};
+		CAC2C43F1E7BE911004F6EA1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */,
+				CAC2C4341E7BE8F1004F6EA1 /* Assets.xcassets */,
+				CAC2C4391E7BE8F1004F6EA1 /* Info.plist */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		CAC2C4401E7BE91B004F6EA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAFEDB6D1E7E7A19009A4600 /* WallpaperCollectionViewCell.swift */,
+				CAC2C4311E7BE8F1004F6EA1 /* Main.storyboard */,
+				CAC2C4361E7BE8F1004F6EA1 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CAC2C4411E7BE927004F6EA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CAC2C42F1E7BE8F1004F6EA1 /* WallpapersViewController.swift */,
+				CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */,
+				CAB864F61E8F17A40024A86E /* SelectedWallpaperViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CAC2C4421E7BE937004F6EA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CADD0F6D1E7F528700BEB62C /* WallpaperInfo.swift */,
+				CADD0F6B1E7F436800BEB62C /* DataManager.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAC2C43C1E7BE8F1004F6EA1 /* Build configuration list for PBXNativeTarget "Reddit Walls" */;
+			buildPhases = (
+				CAC2C4261E7BE8F1004F6EA1 /* Sources */,
+				CAC2C4271E7BE8F1004F6EA1 /* Frameworks */,
+				CAC2C4281E7BE8F1004F6EA1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reddit Walls";
+			productName = "Reddit Walls";
+			productReference = CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAC2C4221E7BE8F1004F6EA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Amanuel Ketebo";
+				TargetAttributes = {
+					CAC2C4291E7BE8F1004F6EA1 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6Z5EK2Z6N5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CAC2C4251E7BE8F1004F6EA1 /* Build configuration list for PBXProject "Reddit Walls" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAC2C4211E7BE8F1004F6EA1;
+			productRefGroup = CAC2C42B1E7BE8F1004F6EA1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAC2C4281E7BE8F1004F6EA1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAC2C4381E7BE8F1004F6EA1 /* LaunchScreen.storyboard in Resources */,
+				CAC2C4351E7BE8F1004F6EA1 /* Assets.xcassets in Resources */,
+				CAC2C4331E7BE8F1004F6EA1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAC2C4261E7BE8F1004F6EA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB864F71E8F17A40024A86E /* SelectedWallpaperViewController.swift in Sources */,
+				CAC2C4301E7BE8F1004F6EA1 /* WallpapersViewController.swift in Sources */,
+				CADD0F6C1E7F436800BEB62C /* DataManager.swift in Sources */,
+				CADD0F6E1E7F528700BEB62C /* WallpaperInfo.swift in Sources */,
+				CAFEDB6E1E7E7A19009A4600 /* WallpaperCollectionViewCell.swift in Sources */,
+				CAFEDB701E7E90B6009A4600 /* FavoritesViewController.swift in Sources */,
+				CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */,
+				CAC337561E8E5A8600296C62 /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CAC2C4311E7BE8F1004F6EA1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAC2C4321E7BE8F1004F6EA1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CAC2C4361E7BE8F1004F6EA1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAC2C4371E7BE8F1004F6EA1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CAC2C43A1E7BE8F1004F6EA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CAC2C43B1E7BE8F1004F6EA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAC2C43D1E7BE8F1004F6EA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = "Reddit Walls/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.keteboa.Reddit-Walls";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CAC2C43E1E7BE8F1004F6EA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				INFOPLIST_FILE = "Reddit Walls/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.unlv.keteboa.Reddit-Walls";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAC2C4251E7BE8F1004F6EA1 /* Build configuration list for PBXProject "Reddit Walls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAC2C43A1E7BE8F1004F6EA1 /* Debug */,
+				CAC2C43B1E7BE8F1004F6EA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAC2C43C1E7BE8F1004F6EA1 /* Build configuration list for PBXNativeTarget "Reddit Walls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAC2C43D1E7BE8F1004F6EA1 /* Debug */,
+				CAC2C43E1E7BE8F1004F6EA1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAC2C4221E7BE8F1004F6EA1 /* Project object */;
+}
