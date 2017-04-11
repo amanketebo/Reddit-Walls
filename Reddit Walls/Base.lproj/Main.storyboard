@@ -207,7 +207,7 @@
                                                     <rect key="frame" x="10" y="8" width="353" height="162"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Road [3080 x 5450]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yip-tF-eiR">
-                                                    <rect key="frame" x="10" y="177" width="197" height="21"/>
+                                                    <rect key="frame" x="10" y="177" width="335" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -235,6 +235,7 @@
                                             <constraint firstItem="vqj-IS-8Vg" firstAttribute="top" secondItem="Ln9-Ul-3Io" secondAttribute="topMargin" id="Ayr-BS-6nx"/>
                                             <constraint firstItem="Res-Rz-hVP" firstAttribute="leading" secondItem="gxO-kY-wv1" secondAttribute="trailing" constant="4" id="P76-Bx-2RP"/>
                                             <constraint firstItem="vqj-IS-8Vg" firstAttribute="leading" secondItem="Ln9-Ul-3Io" secondAttribute="leadingMargin" constant="2" id="PCj-iD-DgA"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Yip-tF-eiR" secondAttribute="trailing" constant="20" id="S3J-xc-xdE"/>
                                             <constraint firstItem="Yip-tF-eiR" firstAttribute="top" secondItem="vqj-IS-8Vg" secondAttribute="bottom" constant="7" id="Ugc-ik-TFH"/>
                                             <constraint firstItem="Res-Rz-hVP" firstAttribute="top" secondItem="Yip-tF-eiR" secondAttribute="bottom" constant="1" id="ckR-iF-bXJ"/>
                                             <constraint firstItem="gxO-kY-wv1" firstAttribute="top" secondItem="Yip-tF-eiR" secondAttribute="bottom" constant="1" id="mWn-uN-4d4"/>
@@ -305,6 +306,6 @@
         <image name="unfilledstar" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6HB-K4-9DM"/>
+        <segue reference="JCs-vf-uUu"/>
     </inferredMetricsTieBreakers>
 </document>
