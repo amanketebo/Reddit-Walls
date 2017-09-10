@@ -26,10 +26,8 @@ class WallpapersVC: UIViewController
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesView: UIView!
     
-    let wallpaperRequester = WallpaperRequester()
     var wallpapers = [Wallpaper]()
-    var wallpaperImageCache = [NSURL:UIImage]()
-    var favoriteURLs = [NSURL]()
+    let wallpaperRequester = WallpaperRequester()
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -79,7 +77,7 @@ class WallpapersVC: UIViewController
         fetchWallpapers()
     }
     
-    @IBAction func tappedFavoritesView(_ sender: UITapGestureRecognizer)
+    @IBAction func segueToFavoritesView(_ sender: UITapGestureRecognizer)
     {
         performSegue(withIdentifier: Segue.favorites, sender: nil)
     }
@@ -102,15 +100,15 @@ class WallpapersVC: UIViewController
     
 }
 
-extension WallpapersVC: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
+extension WallpapersVC: UICollectionViewDataSource
+{
+    func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
         return wallpapers.count
     }
     
@@ -124,13 +122,12 @@ extension WallpapersVC: UICollectionViewDataSource {
         cell.author.text = wallpapers[indexPath.row].author
         cell.wallpaper.image = UIImage(named: "gray")!
         cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
-        cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                      action: #selector(changeFavoriteStatus(_:))))
+        cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
         
         // Set up favorite icon
         // TODO: - Create a shared favorites object
         
-        // Get wallpaper for cell
+        // Fetch wallpaper for cell
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
         {
             wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (data, error) in
@@ -149,18 +146,16 @@ extension WallpapersVC: UICollectionViewDataSource {
         
         return cell
     }
-    
 }
 
-extension WallpapersVC: UICollectionViewDelegate {
-    
+extension WallpapersVC: UICollectionViewDelegate
+{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let cell = collectionView.cellForItem(at: indexPath)
         
         performSegue(withIdentifier: Segue.wallpaper, sender: cell)
     }
-    
 }
 
 extension WallpapersVC: UICollectionViewDelegateFlowLayout

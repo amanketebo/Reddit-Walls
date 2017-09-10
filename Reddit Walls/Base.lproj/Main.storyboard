@@ -173,7 +173,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="X41-cq-iSJ">
                     <connections>
-                        <action selector="tappedFavoritesView:" destination="BYZ-38-t0r" id="duh-N0-BpW"/>
+                        <action selector="segueToFavoritesView:" destination="BYZ-38-t0r" id="so8-ZV-FXc"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
