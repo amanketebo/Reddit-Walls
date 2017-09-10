@@ -12,11 +12,8 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var dataManager: DataManager!
-    var favoriteWallpapers = [WallpaperInfo]()
-    var wallpaperCache: [NSURL:UIImage]!
-    var cellHeight: CGFloat!
-    var edgeInsets: UIEdgeInsets!
+    var wallpaperRequester = WallpaperRequester.shared
+    var favoriteWallpapers = [Wallpaper]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +45,8 @@ class FavoritesViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedWallpaperVC = segue.destination as? SelectedWallpaperViewController {
-            if let wallpaperCollectionViewCell = sender as? WallpaperCollectionViewCell {
-                selectedWallpaperVC.wallpaper = wallpaperCollectionViewCell.wallpaper.image
+            if let wallpaperCollectionViewCell = sender as? WallpaperCell {
+                selectedWallpaperVC.wallpaperImage = wallpaperCollectionViewCell.wallpaper.image
             }
         }
     }
@@ -67,35 +64,24 @@ extension FavoritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCell
         
         cell.tag = indexPath.row
         cell.title.text = favoriteWallpapers[indexPath.row].title
         cell.author.text = favoriteWallpapers[indexPath.row].author
         cell.wallpaper.image = UIImage(named: "gray")!
         
-        
-        if let wallpaperURL = URL(string: favoriteWallpapers[indexPath.row].middleResolutionUrl) {
-            let nsWallpaperURL = wallpaperURL as NSURL
-            if let cachedImage = wallpaperCache[nsWallpaperURL] {
-                cell.wallpaper.image = cachedImage
-            }
-            else {
-                dataManager.getWallpaperForCell(from: wallpaperURL) { (data) in
-                    if cell.tag == indexPath.row {
-                        if let wallpaper = UIImage(data: data) {
-                            cell.wallpaper.image = wallpaper
-                            self.wallpaperCache[nsWallpaperURL] = wallpaper
-                        }
+        if let wallpaperURL = URL(string: favoriteWallpapers[indexPath.row].fullResolutionURL)
+        {
+            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (data, error) in
+                if cell.tag == indexPath.row {
+                    if let wallpaper = UIImage(data: data!) {
+                        cell.wallpaper.image = wallpaper
                     }
                 }
             }
         }
-        
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRect(x: 0, y: cell.bounds.size.height - 1, width: cell.bounds.size.width, height: 1)
-        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
-        cell.layer.addSublayer(bottomBorder)
+
         
         return cell
     }
@@ -114,14 +100,14 @@ extension FavoritesViewController: UICollectionViewDelegate {
 extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let availableWidth = view.bounds.size.width - (edgeInsets.left * 2)
+        let availableWidth = view.bounds.size.width - (Dimension.edgeInsets.left * 2)
         
-        return CGSize(width: availableWidth, height: cellHeight)
+        return CGSize(width: availableWidth, height: Dimension.cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return edgeInsets
+        return Dimension.edgeInsets
     }
     
 }

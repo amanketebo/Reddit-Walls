@@ -12,7 +12,7 @@ class SelectedWallpaperViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var wallpaper: UIImage!
+    var wallpaperImage: UIImage!
     var imageView: UIImageView!
     let imageViewHeight: CGFloat = 250
     
@@ -25,7 +25,7 @@ class SelectedWallpaperViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         scrollView.delegate = self
-        imageView = UIImageView(image: wallpaper)
+        imageView = UIImageView(image: wallpaperImage)
         imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: imageViewHeight)
         scrollView.contentSize = imageView.bounds.size
         scrollView.addSubview(imageView)
