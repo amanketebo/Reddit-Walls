@@ -157,16 +157,24 @@ extension WallpapersVC: UICollectionViewDataSource
         // Fetch wallpaper for cell
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
         {
-            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (data, error) in
-                if let error = error
-                {
-                    print(error.localizedDescription)
-                }
-                else
-                {
-                    guard cell.tag == indexPath.row, let wallpaper = UIImage(data: data!) else { return }
-                    
-                    cell.wallpaper.image = wallpaper
+            if let wallpaper = stuffManager.wallpaperImageCache[wallpaperURL]
+            {
+                cell.wallpaper.image = wallpaper
+            }
+            else
+            {
+                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { [weak self] (data, error) in
+                    if let error = error
+                    {
+                        print(error.localizedDescription)
+                    }
+                    else
+                    {
+                        guard cell.tag == indexPath.row, let wallpaper = UIImage(data: data!) else { return }
+                        
+                        cell.wallpaper.image = wallpaper
+                        self?.stuffManager.wallpaperImageCache[wallpaperURL] = wallpaper
+                    }
                 }
             }
         }
