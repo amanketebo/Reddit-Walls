@@ -13,4 +13,13 @@ class Favorites
     static let shared = Favorites()
     
     var favorites: [Wallpaper] = []
+    
+    func remove(_ wallpaper: Wallpaper)
+    {
+        guard let position = favorites.index(where: { (favoriteWallpaper) -> Bool in
+            return wallpaper == favoriteWallpaper
+        }) else { return }
+        
+        favorites.remove(at: position)
+    }
 }
