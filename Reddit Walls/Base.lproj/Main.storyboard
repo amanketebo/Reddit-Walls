@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
         <!--Reddit Walls-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WallpapersViewController" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WallpapersVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -52,7 +52,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wallpaperCell" id="ncS-DQ-2Cd" customClass="WallpaperCollectionViewCell" customModule="Reddit_Walls" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wallpaperCell" id="ncS-DQ-2Cd" customClass="WallpaperCell" customModule="Reddit_Walls" customModuleProvider="target">
                                         <rect key="frame" x="1" y="0.0" width="373" height="228"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -89,6 +89,13 @@
                                                         <constraint firstAttribute="height" constant="30" id="f6a-o7-84k"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-Ut-f4x">
+                                                    <rect key="frame" x="0.0" y="227" width="373" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="xDF-PQ-eOU"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,9 +111,12 @@
                                             <constraint firstItem="50a-gD-NR0" firstAttribute="top" secondItem="AqS-4r-Ps8" secondAttribute="bottom" constant="7" id="QoO-my-A0d"/>
                                             <constraint firstItem="B9U-Kl-pJC" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leadingMargin" constant="2" id="VgC-fV-pQm"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Iiz-49-kJF" secondAttribute="trailing" constant="11" id="WGe-dv-JcW"/>
+                                            <constraint firstAttribute="trailing" secondItem="eUJ-Ut-f4x" secondAttribute="trailing" id="YIs-tj-7Hs"/>
+                                            <constraint firstAttribute="bottom" secondItem="eUJ-Ut-f4x" secondAttribute="bottom" id="gKX-kI-F5T"/>
                                             <constraint firstItem="AqS-4r-Ps8" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leadingMargin" constant="2" id="ohc-FA-5fi"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="AqS-4r-Ps8" secondAttribute="bottom" constant="50" id="wAE-WU-lNN"/>
                                             <constraint firstItem="B9U-Kl-pJC" firstAttribute="top" secondItem="50a-gD-NR0" secondAttribute="bottom" constant="1" id="wZ2-XU-OLs"/>
+                                            <constraint firstItem="eUJ-Ut-f4x" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leading" id="yIb-t3-yLJ"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="author" destination="zW3-AI-fWT" id="ACj-bS-SXy"/>
@@ -306,6 +316,6 @@
         <image name="unfilledstar" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JCs-vf-uUu"/>
+        <segue reference="6HB-K4-9DM"/>
     </inferredMetricsTieBreakers>
 </document>

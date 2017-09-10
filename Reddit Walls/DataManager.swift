@@ -1,5 +1,5 @@
 //
-//  DataManager.swift
+//  WallpaperRequester.swift
 //  Reddit Walls
 //
 //  Created by Amanuel Ketebo on 3/19/17.
@@ -7,53 +7,78 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Foundation
 
-class DataManager {
+class WallpaperRequester
+{
+    static let shared = WallpaperRequester()
     
-    func getJSON(completion: @escaping (([WallpaperInfo]) -> Void)) {
-        var wallpaperInfos = [WallpaperInfo]()
+    private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
+    
+    typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
+    typealias WallpaperImageDataCallback = (Data?, Error?) -> Void
+    
+    // MARK: - Wallpaper fetching methods
+    
+    func fetchWallpapers(completion: @escaping WallpapersCallback) {
+        let request = URLRequest(url: redditAPI)
         
-        let api = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
-        let request = URLRequest(url: api)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let taskError = error {
-                print(taskError.localizedDescription)
+            if let taskError = error
+            {
+                completion(nil, taskError)
             }
-            else {
-                if let jsonObject = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any],
-                    let jsonData = jsonObject?["data"] as? [String: Any],
-                    let jsonChildren = jsonData["children"] as? [[String:Any]] {
-                    for json in jsonChildren {
-                        if let wallpaperInfo = WallpaperInfo(json) {
-                            wallpaperInfos.append(wallpaperInfo)
-                        }
-                    }
-                    
-                    DispatchQueue.main.async {
-                        completion(wallpaperInfos)
-                    }
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    func getWallpaperForCell(from wallpaperUrl: URL, completion: @escaping (Data) -> Void) {
-        let request = URLRequest(url: wallpaperUrl)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let taskError = error {
-                print(taskError.localizedDescription)
-            }
-            else {
+            else
+            {
+                let returnedWallpapers = self.parseWallpaperJSON(data: data!)
+                
                 DispatchQueue.main.async {
-                    completion(data!)
+                    completion(returnedWallpapers, nil)
                 }
             }
         }
         task.resume()
     }
     
+    func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {
+        let request = URLRequest(url: wallpaperURL)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let taskError = error
+            {
+                completion(nil, taskError)
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    completion(data!, nil)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    // MARK: - Helper methods
+    
+    private func parseWallpaperJSON(data: Data) -> [Wallpaper]
+    {
+        var wallpapers: [Wallpaper] = []
+        let json = JSON(data)
+        
+        if let returnedWallpapers = json[SwiftyJSONPaths.wallpapers].array
+        {
+            for wallpaperJSON in returnedWallpapers
+            {
+                if let wallpaper = Wallpaper(wallpaperJSON)
+                {
+                    wallpapers.append(wallpaper)
+                }
+            }
+        }
+        
+        return wallpapers
+    }
 }
 
 

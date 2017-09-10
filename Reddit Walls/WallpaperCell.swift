@@ -1,5 +1,5 @@
 //
-//  WallpaperCollectionViewCell.swift
+//  WallpaperCell.swift
 //  Reddit Walls
 //
 //  Created by Amanuel Ketebo on 3/19/17.
@@ -8,8 +8,9 @@
 
 import UIKit
 
-class WallpaperCollectionViewCell: UICollectionViewCell {
+class WallpaperCell: UICollectionViewCell {
     
+    static let wallpaperCell = "wallpaperCell"
     @IBOutlet weak var wallpaper: UIImageView!
     
     @IBOutlet weak var title: UILabel!

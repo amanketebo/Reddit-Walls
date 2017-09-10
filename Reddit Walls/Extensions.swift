@@ -14,3 +14,15 @@ extension UIColor {
         return UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     }
 }
+
+extension UIView
+{
+    func centerInParentView()
+    {
+        guard let parentView = self.superview else { return }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+        self.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
+    }
+}
