@@ -28,6 +28,7 @@ class WallpapersVC: UIViewController
     
     var wallpapers = [Wallpaper]()
     let wallpaperRequester = WallpaperRequester()
+    let favorites = Favorites.shared
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -84,7 +85,23 @@ class WallpapersVC: UIViewController
     
     func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
     {
-        // TODO: - Create a shared favorites object
+        guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
+        
+        let wallpaperCellTag = wallpaperCell.tag
+        let selectedWallpaper = wallpapers[wallpaperCellTag]
+        
+        if favorites.favorites.contains(where: { (wallpaper) -> Bool in
+            return selectedWallpaper == wallpaper
+        })
+        {
+            selectedWallpaper.favorite = false
+        }
+        else
+        {
+            selectedWallpaper.favorite = true
+        }
+        
+        collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -115,17 +132,25 @@ extension WallpapersVC: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.wallpaperCell, for: indexPath) as! WallpaperCell
+        let wallpaper = wallpapers[indexPath.row]
         
         // Set up cell
         cell.tag = indexPath.row
-        cell.title.text = wallpapers[indexPath.row].title
-        cell.author.text = wallpapers[indexPath.row].author
+        cell.title.text = wallpaper.title
+        cell.author.text = wallpaper.author
         cell.wallpaper.image = UIImage(named: "gray")!
         cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
         cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
         
         // Set up favorite icon
-        // TODO: - Create a shared favorites object
+        if wallpaper.favorite
+        {
+            cell.favoriteIcon.image = UIImage(named: "filledstar")!
+        }
+        else
+        {
+            cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+        }
         
         // Fetch wallpaper for cell
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
