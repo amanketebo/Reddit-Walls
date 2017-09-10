@@ -95,10 +95,12 @@ class WallpapersVC: UIViewController
         })
         {
             selectedWallpaper.favorite = false
+            favorites.remove(selectedWallpaper)
         }
         else
         {
             selectedWallpaper.favorite = true
+            favorites.favorites.append(selectedWallpaper)
         }
         
         collectionView.reloadData()
