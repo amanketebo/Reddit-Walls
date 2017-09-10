@@ -9,6 +9,21 @@
 import SwiftyJSON
 import Foundation
 
+func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool
+{
+    if lhs.title == lhs.title &&
+        lhs.author == lhs.author &&
+        lhs.middleResolutionURL == lhs.middleResolutionURL &&
+        lhs.fullResolutionURL == lhs.fullResolutionURL
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
+
 class Wallpaper
 {
     var title = ""
