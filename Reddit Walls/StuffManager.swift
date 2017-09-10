@@ -7,12 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 class StuffManager
 {
     static let shared = StuffManager()
     
     var favorites: [Wallpaper] = []
+    var wallpaperImageCache: [URL: UIImage] = [:]
+    
+    // MARK: - Favorites methods
     
     func remove(_ wallpaper: Wallpaper)
     {

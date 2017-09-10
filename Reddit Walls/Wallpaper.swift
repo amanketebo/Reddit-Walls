@@ -11,10 +11,10 @@ import Foundation
 
 func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool
 {
-    if lhs.title == lhs.title &&
-        lhs.author == lhs.author &&
-        lhs.middleResolutionURL == lhs.middleResolutionURL &&
-        lhs.fullResolutionURL == lhs.fullResolutionURL
+    if lhs.title == rhs.title &&
+        lhs.author == rhs.author &&
+        lhs.middleResolutionURL == rhs.middleResolutionURL &&
+        lhs.fullResolutionURL == rhs.fullResolutionURL
     {
         return true
     }
