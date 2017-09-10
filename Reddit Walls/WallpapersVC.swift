@@ -28,7 +28,7 @@ class WallpapersVC: UIViewController
     
     var wallpapers = [Wallpaper]()
     let wallpaperRequester = WallpaperRequester()
-    let favorites = Favorites.shared
+    let stuffManager = StuffManager.shared
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -90,17 +90,17 @@ class WallpapersVC: UIViewController
         let wallpaperCellTag = wallpaperCell.tag
         let selectedWallpaper = wallpapers[wallpaperCellTag]
         
-        if favorites.favorites.contains(where: { (wallpaper) -> Bool in
+        if stuffManager.favorites.contains(where: { (wallpaper) -> Bool in
             return selectedWallpaper == wallpaper
         })
         {
             selectedWallpaper.favorite = false
-            favorites.remove(selectedWallpaper)
+            stuffManager.remove(selectedWallpaper)
         }
         else
         {
             selectedWallpaper.favorite = true
-            favorites.favorites.append(selectedWallpaper)
+            stuffManager.favorites.append(selectedWallpaper)
         }
         
         collectionView.reloadData()

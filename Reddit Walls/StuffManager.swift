@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Favorites
+class StuffManager
 {
-    static let shared = Favorites()
+    static let shared = StuffManager()
     
     var favorites: [Wallpaper] = []
     
