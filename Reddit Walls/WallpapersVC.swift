@@ -68,6 +68,7 @@ class WallpapersVC: UIViewController
                 self?.wallpapers = wallpapers!
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.refreshControl?.endRefreshing()
                 self?.collectionView.reloadData()
             }
         })
@@ -133,7 +134,7 @@ extension WallpapersVC: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.wallpaperCell, for: indexPath) as! WallpaperCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
         let wallpaper = wallpapers[indexPath.row]
         
         // Set up cell

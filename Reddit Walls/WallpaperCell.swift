@@ -8,9 +8,10 @@
 
 import UIKit
 
-class WallpaperCell: UICollectionViewCell {
+class WallpaperCell: UICollectionViewCell
+{
+    static let identifier = "wallpaperCell"
     
-    static let wallpaperCell = "wallpaperCell"
     @IBOutlet weak var wallpaper: UIImageView!
     
     @IBOutlet weak var title: UILabel!
@@ -18,5 +19,4 @@ class WallpaperCell: UICollectionViewCell {
     @IBOutlet weak var author: UILabel!
     
     @IBOutlet weak var favoriteIcon: UIImageView!
-    
 }
