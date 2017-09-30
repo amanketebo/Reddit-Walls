@@ -163,14 +163,14 @@ extension WallpapersVC: UICollectionViewDataSource
             }
             else
             {
-                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { [weak self] (data, error) in
+                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { [weak self] (wallpaper, error) in
                     if let error = error
                     {
                         print(error.localizedDescription)
                     }
                     else
                     {
-                        guard cell.tag == indexPath.row, let wallpaper = UIImage(data: data!) else { return }
+                        guard cell.tag == indexPath.row, let wallpaper = wallpaper else { return }
                         
                         cell.wallpaper.image = wallpaper
                         self?.stuffManager.wallpaperImageCache[wallpaperURL] = wallpaper

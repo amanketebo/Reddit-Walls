@@ -73,9 +73,9 @@ extension FavoritesViewController: UICollectionViewDataSource {
         
         if let wallpaperURL = URL(string: favoriteWallpapers[indexPath.row].fullResolutionURL)
         {
-            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (data, error) in
+            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
                 if cell.tag == indexPath.row {
-                    if let wallpaper = UIImage(data: data!) {
+                    if let wallpaper = wallpaper {
                         cell.wallpaper.image = wallpaper
                     }
                 }
