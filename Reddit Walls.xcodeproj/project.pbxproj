@@ -20,7 +20,7 @@
 		CADD0F6C1E7F436800BEB62C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0F6B1E7F436800BEB62C /* DataManager.swift */; };
 		CADD0F6E1E7F528700BEB62C /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADD0F6D1E7F528700BEB62C /* Wallpaper.swift */; };
 		CAFEDB6E1E7E7A19009A4600 /* WallpaperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFEDB6D1E7E7A19009A4600 /* WallpaperCell.swift */; };
-		CAFEDB701E7E90B6009A4600 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */; };
+		CAFEDB701E7E90B6009A4600 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFEDB6F1E7E90B6009A4600 /* FavoritesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		CADD0F6B1E7F436800BEB62C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CADD0F6D1E7F528700BEB62C /* Wallpaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		CAFEDB6D1E7E7A19009A4600 /* WallpaperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperCell.swift; sourceTree = "<group>"; };
-		CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		CAFEDB6F1E7E90B6009A4600 /* FavoritesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC2C42F1E7BE8F1004F6EA1 /* WallpapersVC.swift */,
-				CAFEDB6F1E7E90B6009A4600 /* FavoritesViewController.swift */,
+				CAFEDB6F1E7E90B6009A4600 /* FavoritesVC.swift */,
 				CAB864F61E8F17A40024A86E /* SelectedWallpaperViewController.swift */,
 			);
 			name = Controllers;
@@ -275,7 +275,7 @@
 				CA0EB5AB1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift in Sources */,
 				CADD0F6E1E7F528700BEB62C /* Wallpaper.swift in Sources */,
 				CAFEDB6E1E7E7A19009A4600 /* WallpaperCell.swift in Sources */,
-				CAFEDB701E7E90B6009A4600 /* FavoritesViewController.swift in Sources */,
+				CAFEDB701E7E90B6009A4600 /* FavoritesVC.swift in Sources */,
 				CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */,
 				CAC337561E8E5A8600296C62 /* Extensions.swift in Sources */,
 			);
