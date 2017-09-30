@@ -14,10 +14,12 @@ class WallpaperRequester
 {
     static let shared = WallpaperRequester()
     
+    let stuffManager = StuffManager.shared
+    
     private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
     
     typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
-    typealias WallpaperImageDataCallback = (Data?, Error?) -> Void
+    typealias WallpaperImageDataCallback = (UIImage?, Error?) -> Void
     
     // MARK: - Wallpaper fetching methods
     
@@ -42,21 +44,36 @@ class WallpaperRequester
     }
     
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {
-        let request = URLRequest(url: wallpaperURL)
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let taskError = error
-            {
-                completion(nil, taskError)
-            }
-            else
-            {
-                DispatchQueue.main.async {
-                    completion(data!, nil)
+        if let wallpaper = stuffManager.wallpaperImageCache[wallpaperURL]
+        {
+            completion(wallpaper, nil)
+        }
+        else
+        {
+            let request = URLRequest(url: wallpaperURL)
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let taskError = error
+                {
+                    completion(nil, taskError)
+                }
+                else
+                {
+                    if let wallpaper = UIImage(data: data!)
+                    {
+                        DispatchQueue.main.async {
+                            completion(wallpaper, nil)
+                        }
+                    }
+                    else
+                    {
+                        completion(nil, error)
+                    }
                 }
             }
+            task.resume()
         }
-        task.resume()
     }
     
     // MARK: - Helper methods
