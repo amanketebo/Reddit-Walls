@@ -288,10 +288,10 @@
             </objects>
             <point key="canvasLocation" x="740" y="123.68815592203899"/>
         </scene>
-        <!--Selected Wallpaper View Controller-->
+        <!--Selected WallpaperVC-->
         <scene sceneID="g5t-Ns-F1Q">
             <objects>
-                <viewController id="c4I-5A-NDU" customClass="SelectedWallpaperViewController" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="c4I-5A-NDU" customClass="SelectedWallpaperVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TSV-FA-9jB"/>
                         <viewControllerLayoutGuide type="bottom" id="OAy-Sa-nNR"/>

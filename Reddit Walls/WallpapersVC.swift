@@ -19,6 +19,7 @@ struct Dimension
     static let cellHeight: CGFloat = 275
     static let footerHeight: CGFloat = 75
     static let edgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0)
+    static let imageViewHeight: CGFloat = 215
 }
 
 class WallpapersVC: UIViewController
@@ -109,11 +110,11 @@ class WallpapersVC: UIViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperViewController
+        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
         {
             if let wallpaperCell = sender as? WallpaperCell
             {
-               selectedWallpaperVC.wallpaperImage = wallpaperCell.wallpaper.image
+               selectedWallpaperVC.wallpaper = wallpaperCell.wallpaper.image
             }
         }
     }

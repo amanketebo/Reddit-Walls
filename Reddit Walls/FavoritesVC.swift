@@ -34,11 +34,11 @@ class FavoritesVC: UIViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperViewController
+        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
         {
             if let wallpaperCollectionViewCell = sender as? WallpaperCell
             {
-                selectedWallpaperVC.wallpaperImage = wallpaperCollectionViewCell.wallpaper.image
+                selectedWallpaperVC.wallpaper = wallpaperCollectionViewCell.wallpaper.image
             }
         }
     }
