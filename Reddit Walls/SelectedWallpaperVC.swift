@@ -21,8 +21,9 @@ class SelectedWallpaperVC: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewDidLayoutSubviews() {
+        // Self note: This method is called when the autolayout engine has
+        // finished calculating the subviews' frame
         setupViews()
     }
     
@@ -31,7 +32,6 @@ class SelectedWallpaperVC: UIViewController {
         // Navigation bar setup
         navigationItem.title = "Wallpaper"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveWallpaper))
-        
         // Image view and scroll view setup
         imageView = UIImageView(image: wallpaper)
         imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)
