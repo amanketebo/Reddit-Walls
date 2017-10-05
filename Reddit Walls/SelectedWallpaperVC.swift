@@ -71,6 +71,10 @@ class SelectedWallpaperVC: UIViewController {
             else if PHAuthorizationStatus.denied == status
             {
                 // Show information vc telling user to change setting
+                let message = "Please change Photo's access settings to be able to save wallpapers"
+                let buttonData = ButtonData(title: "Okay", color: .black)
+                let informationVC = InformationVC(message: message, image: UIImage(named: "warning"), leftButtonData: buttonData, rightButtonData: nil)
+                self?.present(informationVC, animated: true, completion: nil)
             }
         })
     }
@@ -84,11 +88,17 @@ class SelectedWallpaperVC: UIViewController {
     {
         if let error = error
         {
-            // Show information vc telling user that there was a problem saving the image
+            let message = "Please change Photo's access settings to be able to save wallpapers"
+            let buttonData = ButtonData(title: "Okay", color: .black)
+            let informationVC = InformationVC(message: message, image: UIImage(named: "warning"), leftButtonData: buttonData, rightButtonData: nil)
+            present(informationVC, animated: true, completion: nil)
         }
         else
         {
-            // Show informationvc telling user that the image has been saved
+            let message = "Wallpaper saved sucessfully!"
+            let buttonData = ButtonData(title: "Okay", color: .black)
+            let informationVC = InformationVC(message: message, image: UIImage(named: "check"), leftButtonData: buttonData, rightButtonData: nil)
+            self.present(informationVC, animated: true, completion: nil)
         }
     }
 }
