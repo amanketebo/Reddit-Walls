@@ -10,6 +10,8 @@
 		891F3A4EAD1FD2B9705909C0 /* Pods_Reddit_Walls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01ABD71294A79AEC9425D28 /* Pods_Reddit_Walls.framework */; };
 		CA04B3491F651DB400F1AA19 /* StuffManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04B3481F651DB400F1AA19 /* StuffManager.swift */; };
 		CA0EB5AB1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB5AA1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift */; };
+		CA9509A41F85BA710071A149 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9509A31F85BA710071A149 /* InformationVC.swift */; };
+		CA9509A71F85C1EF0071A149 /* InformationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA9509A61F85C1EF0071A149 /* InformationVC.xib */; };
 		CAB864F71E8F17A40024A86E /* SelectedWallpaperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */; };
 		CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */; };
 		CAC2C4301E7BE8F1004F6EA1 /* WallpapersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42F1E7BE8F1004F6EA1 /* WallpapersVC.swift */; };
@@ -29,6 +31,8 @@
 		CA04B3481F651DB400F1AA19 /* StuffManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffManager.swift; sourceTree = "<group>"; };
 		CA0EB5AA1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPaths.swift; sourceTree = "<group>"; };
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
+		CA9509A31F85BA710071A149 /* InformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
+		CA9509A61F85C1EF0071A149 /* InformationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationVC.xib; sourceTree = "<group>"; };
 		CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedWallpaperVC.swift; sourceTree = "<group>"; };
 		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				CAFEDB6D1E7E7A19009A4600 /* WallpaperCell.swift */,
 				CAC2C4311E7BE8F1004F6EA1 /* Main.storyboard */,
 				CAC2C4361E7BE8F1004F6EA1 /* LaunchScreen.storyboard */,
+				CA9509A61F85C1EF0071A149 /* InformationVC.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				CAC2C42F1E7BE8F1004F6EA1 /* WallpapersVC.swift */,
 				CAFEDB6F1E7E90B6009A4600 /* FavoritesVC.swift */,
 				CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */,
+				CA9509A31F85BA710071A149 /* InformationVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -174,7 +180,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Amanuel Ketebo";
 				TargetAttributes = {
 					CAC2C4291E7BE8F1004F6EA1 = {
@@ -208,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC2C4381E7BE8F1004F6EA1 /* LaunchScreen.storyboard in Resources */,
+				CA9509A71F85C1EF0071A149 /* InformationVC.xib in Resources */,
 				CAC2C4351E7BE8F1004F6EA1 /* Assets.xcassets in Resources */,
 				CAC2C4331E7BE8F1004F6EA1 /* Main.storyboard in Resources */,
 			);
@@ -271,6 +278,7 @@
 				CAB864F71E8F17A40024A86E /* SelectedWallpaperVC.swift in Sources */,
 				CAC2C4301E7BE8F1004F6EA1 /* WallpapersVC.swift in Sources */,
 				CADD0F6C1E7F436800BEB62C /* DataManager.swift in Sources */,
+				CA9509A41F85BA710071A149 /* InformationVC.swift in Sources */,
 				CA04B3491F651DB400F1AA19 /* StuffManager.swift in Sources */,
 				CA0EB5AB1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift in Sources */,
 				CADD0F6E1E7F528700BEB62C /* Wallpaper.swift in Sources */,
@@ -312,7 +320,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -320,7 +330,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -362,7 +376,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -370,7 +386,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
