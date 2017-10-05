@@ -12,6 +12,7 @@
 		CA0EB5AB1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0EB5AA1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift */; };
 		CA9509A41F85BA710071A149 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9509A31F85BA710071A149 /* InformationVC.swift */; };
 		CA9509A71F85C1EF0071A149 /* InformationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA9509A61F85C1EF0071A149 /* InformationVC.xib */; };
+		CA9E310A1F86F60500BE16EF /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9E31091F86F60500BE16EF /* BaseVC.swift */; };
 		CAB864F71E8F17A40024A86E /* SelectedWallpaperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */; };
 		CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */; };
 		CAC2C4301E7BE8F1004F6EA1 /* WallpapersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2C42F1E7BE8F1004F6EA1 /* WallpapersVC.swift */; };
@@ -33,6 +34,7 @@
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
 		CA9509A31F85BA710071A149 /* InformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
 		CA9509A61F85C1EF0071A149 /* InformationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationVC.xib; sourceTree = "<group>"; };
+		CA9E31091F86F60500BE16EF /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedWallpaperVC.swift; sourceTree = "<group>"; };
 		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC2C42D1E7BE8F1004F6EA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				CAFEDB6F1E7E90B6009A4600 /* FavoritesVC.swift */,
 				CAB864F61E8F17A40024A86E /* SelectedWallpaperVC.swift */,
 				CA9509A31F85BA710071A149 /* InformationVC.swift */,
+				CA9E31091F86F60500BE16EF /* BaseVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				CA04B3491F651DB400F1AA19 /* StuffManager.swift in Sources */,
 				CA0EB5AB1F64FC8500AEF2A4 /* SwiftyJSONPaths.swift in Sources */,
 				CADD0F6E1E7F528700BEB62C /* Wallpaper.swift in Sources */,
+				CA9E310A1F86F60500BE16EF /* BaseVC.swift in Sources */,
 				CAFEDB6E1E7E7A19009A4600 /* WallpaperCell.swift in Sources */,
 				CAFEDB701E7E90B6009A4600 /* FavoritesVC.swift in Sources */,
 				CAC2C42E1E7BE8F1004F6EA1 /* AppDelegate.swift in Sources */,

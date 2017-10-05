@@ -22,7 +22,7 @@ struct Dimension
     static let imageViewHeight: CGFloat = 215
 }
 
-class WallpapersVC: UIViewController
+class WallpapersVC: BaseVC
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesView: UIView!
@@ -47,7 +47,7 @@ class WallpapersVC: UIViewController
         
         // Collection view setup
         collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionView.delegate = super.self()
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
         
@@ -182,36 +182,6 @@ extension WallpapersVC: UICollectionViewDataSource
         }
         
         return cell
-    }
-}
-
-extension WallpapersVC: UICollectionViewDelegate
-{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-        performSegue(withIdentifier: Segue.wallpaper, sender: cell)
-    }
-}
-
-extension WallpapersVC: UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let availableWidth = view.bounds.size.width - (Dimension.edgeInsets.left * 2)
-        
-        return CGSize(width: availableWidth, height: Dimension.cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
-    {
-        return Dimension.edgeInsets
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
-    {
-        return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesVC: UIViewController
+class FavoritesVC: BaseVC
 {
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -29,7 +29,7 @@ class FavoritesVC: UIViewController
         
         // Collection view setup
         collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionView.delegate = super.self()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -79,30 +79,5 @@ extension FavoritesVC: UICollectionViewDataSource {
         }
         
         return cell
-    }
-}
-
-
-extension FavoritesVC: UICollectionViewDelegate
-{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        performSegue(withIdentifier: "Wallpaper", sender: collectionView.cellForItem(at: indexPath))
-    }
-    
-}
-
-extension FavoritesVC: UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        let availableWidth = view.bounds.size.width - (Dimension.edgeInsets.left * 2)
-        
-        return CGSize(width: availableWidth, height: Dimension.cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
-    {
-        return Dimension.edgeInsets
     }
 }
