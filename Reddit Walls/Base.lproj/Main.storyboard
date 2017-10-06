@@ -276,14 +276,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad" translatesAutoresizingMaskIntoConstraints="NO" id="OSH-zK-y0k">
-                                                    <rect key="frame" x="131.5" y="71" width="110" height="100"/>
+                                                    <rect key="frame" x="131.5" y="63.5" width="110" height="115"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="110" id="9Z8-8p-dKK"/>
-                                                        <constraint firstAttribute="height" constant="100" id="hLc-gU-9R7"/>
+                                                        <constraint firstAttribute="height" constant="115" id="hLc-gU-9R7"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6M-FQ-bAH">
-                                                    <rect key="frame" x="132.5" y="191" width="110.5" height="24"/>
+                                                    <rect key="frame" x="132.5" y="198.5" width="110.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>

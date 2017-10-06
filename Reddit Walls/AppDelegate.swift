@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let collectionView = UICollectionView.appearance()
         
         navBar.isTranslucent = false
+        navBar.barStyle = .black
+        navBar.tintColor = .white
+        navBar.barTintColor = .redditBlue
         refreshControl.backgroundColor = .hintOfGray
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
     }

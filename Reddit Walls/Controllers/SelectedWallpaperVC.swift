@@ -19,6 +19,9 @@ class SelectedWallpaperVC: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        // Navigation bar setup
+        navigationItem.title = "Wallpaper"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveWallpaper))
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,9 +32,6 @@ class SelectedWallpaperVC: UIViewController {
     
     func setupViews()
     {
-        // Navigation bar setup
-        navigationItem.title = "Wallpaper"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveWallpaper))
         // Image view and scroll view setup
         imageView = UIImageView(image: wallpaper)
         imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)

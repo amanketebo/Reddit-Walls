@@ -15,6 +15,11 @@ extension UIColor
     {
         return UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     }
+    
+    class var redditBlue: UIColor
+    {
+        return UIColor(red: 38/255, green: 130/255, blue: 211/255, alpha: 1)
+    }
 }
 
 extension UIView
