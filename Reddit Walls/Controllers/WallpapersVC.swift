@@ -145,7 +145,7 @@ extension WallpapersVC: UICollectionViewDataSource
         cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
         
         // Set up favorite icon
-        if wallpaper.favorite || stuffManager.favoritesContains(wallpaper)
+        if stuffManager.favoritesContains(wallpaper)
         {
             cell.favoriteIcon.image = UIImage(named: "filledstar")!
         }

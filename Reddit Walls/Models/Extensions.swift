@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-extension UIColor {
-    class var hintOfGray: UIColor {
+extension UIColor
+{
+    class var hintOfGray: UIColor
+    {
         return UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     }
 }

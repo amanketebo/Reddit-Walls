@@ -14,9 +14,8 @@ class WallpaperRequester
 {
     static let shared = WallpaperRequester()
     
-    let stuffManager = StuffManager.shared
-    
     private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
+    let stuffManager = StuffManager.shared
     
     typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
     typealias WallpaperImageDataCallback = (UIImage?, Error?) -> Void
