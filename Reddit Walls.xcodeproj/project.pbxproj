@@ -86,10 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				CA1025331F876BF900FFD9D6 /* BaseVC.swift */,
-				CA1025341F876BF900FFD9D6 /* FavoritesVC.swift */,
-				CA1025351F876BF900FFD9D6 /* InformationVC.swift */,
-				CA1025361F876BF900FFD9D6 /* SelectedWallpaperVC.swift */,
 				CA1025371F876BF900FFD9D6 /* WallpapersVC.swift */,
+				CA1025341F876BF900FFD9D6 /* FavoritesVC.swift */,
+				CA1025361F876BF900FFD9D6 /* SelectedWallpaperVC.swift */,
+				CA1025351F876BF900FFD9D6 /* InformationVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
