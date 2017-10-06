@@ -268,6 +268,38 @@
                                             <outlet property="wallpaper" destination="g4g-VL-1Dh" id="skV-gL-o92"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noFavorites" id="LQi-cm-9q0">
+                                        <rect key="frame" x="0.5" y="238" width="374" height="302"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="302"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad" translatesAutoresizingMaskIntoConstraints="NO" id="OSH-zK-y0k">
+                                                    <rect key="frame" x="131.5" y="71" width="110" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="9Z8-8p-dKK"/>
+                                                        <constraint firstAttribute="height" constant="100" id="hLc-gU-9R7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6M-FQ-bAH">
+                                                    <rect key="frame" x="132.5" y="191" width="110.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="OSH-zK-y0k" firstAttribute="centerX" secondItem="LQi-cm-9q0" secondAttribute="centerX" id="21y-bv-myz"/>
+                                            <constraint firstItem="Y6M-FQ-bAH" firstAttribute="top" secondItem="OSH-zK-y0k" secondAttribute="bottom" constant="20" id="F4i-7u-EP8"/>
+                                            <constraint firstItem="OSH-zK-y0k" firstAttribute="centerY" secondItem="LQi-cm-9q0" secondAttribute="centerY" constant="-30" id="SRk-Qv-T0w"/>
+                                            <constraint firstItem="Y6M-FQ-bAH" firstAttribute="centerX" secondItem="LQi-cm-9q0" secondAttribute="centerX" id="dLu-LV-6aE"/>
+                                        </constraints>
+                                        <size key="customSize" width="374" height="302"/>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
@@ -323,6 +355,7 @@
     </scenes>
     <resources>
         <image name="gray" width="832" height="468"/>
+        <image name="sad" width="480" height="480"/>
         <image name="unfilledstar" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>

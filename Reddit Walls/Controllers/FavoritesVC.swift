@@ -53,31 +53,47 @@ extension FavoritesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return stuffManager.favorites.count
+        if stuffManager.favorites.count == 0
+        {
+            return 1
+        }
+        else
+        {
+           return stuffManager.favorites.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCell
-        
-        cell.tag = indexPath.row
-        cell.title.text = stuffManager.favorites[indexPath.row].title
-        cell.author.text = stuffManager.favorites[indexPath.row].author
-        cell.wallpaper.image = UIImage(named: "gray")!
-        
-        if let wallpaperURL = URL(string: stuffManager.favorites[indexPath.row].fullResolutionURL)
+        if stuffManager.favorites.count != 0
         {
-            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
-                if cell.tag == indexPath.row
-                {
-                    if let wallpaper = wallpaper
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCell
+            
+            cell.tag = indexPath.row
+            cell.title.text = stuffManager.favorites[indexPath.row].title
+            cell.author.text = stuffManager.favorites[indexPath.row].author
+            cell.wallpaper.image = UIImage(named: "gray")!
+            
+            if let wallpaperURL = URL(string: stuffManager.favorites[indexPath.row].fullResolutionURL)
+            {
+                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
+                    if cell.tag == indexPath.row
                     {
-                        cell.wallpaper.image = wallpaper
+                        if let wallpaper = wallpaper
+                        {
+                            cell.wallpaper.image = wallpaper
+                        }
                     }
                 }
             }
+            
+            return cell
         }
-        
-        return cell
+        else
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noFavorites", for: indexPath)
+            
+            return cell
+        }
     }
 }
