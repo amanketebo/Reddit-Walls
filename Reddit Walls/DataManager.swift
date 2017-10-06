@@ -45,7 +45,7 @@ class WallpaperRequester
     
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {
         
-        if let wallpaper = stuffManager.wallpaperImageCache[wallpaperURL]
+        if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
         {
             completion(wallpaper, nil)
         }

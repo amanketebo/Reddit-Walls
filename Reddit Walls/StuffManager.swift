@@ -14,7 +14,13 @@ class StuffManager
     static let shared = StuffManager()
     
     var favorites: [Wallpaper] = []
-    var wallpaperImageCache: [URL: UIImage] = [:]
+    var wallpaperCache = NSCache<NSURL, UIImage>()
+    
+    init()
+    {
+        // Setup wallpaper cache
+        wallpaperCache.countLimit = 4
+    }
     
     // MARK: - Favorites methods
     
@@ -25,5 +31,17 @@ class StuffManager
         }) else { return }
         
         favorites.remove(at: position)
+    }
+    
+    // MARK: - Wallpaper Cache methods
+    
+    func wallpaperForURL(_ url: URL) -> UIImage?
+    {
+        return wallpaperCache.object(forKey: url as NSURL)
+    }
+    
+    func addToCache(_ url: URL, wallpaper: UIImage)
+    {
+        wallpaperCache.setObject(wallpaper, forKey: url as NSURL)
     }
 }
