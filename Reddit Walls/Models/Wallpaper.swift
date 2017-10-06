@@ -54,4 +54,18 @@ extension Wallpaper
         
         self.init(title, author, fullResolutionURL)
     }
+    
+    convenience init?(_ dict: [String: String], favorite: Bool)
+    {
+        if let title = dict["title"],
+            let author = dict["author"],
+            let fullResolutionURL = dict["url"]
+        {
+            self.init(title, author, fullResolutionURL, favorite)
+        }
+        else
+        {
+            return nil
+        }
+    }
 }

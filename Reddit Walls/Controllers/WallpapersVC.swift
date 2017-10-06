@@ -92,12 +92,10 @@ class WallpapersVC: BaseVC
         let wallpaperCellTag = wallpaperCell.tag
         let selectedWallpaper = wallpapers[wallpaperCellTag]
         
-        if stuffManager.favorites.contains(where: { (wallpaper) -> Bool in
-            return selectedWallpaper == wallpaper
-        })
+        if stuffManager.favoritesContains(selectedWallpaper)
         {
             selectedWallpaper.favorite = false
-            stuffManager.remove(selectedWallpaper)
+            stuffManager.removeFavorite(selectedWallpaper)
         }
         else
         {
@@ -147,7 +145,7 @@ extension WallpapersVC: UICollectionViewDataSource
         cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
         
         // Set up favorite icon
-        if wallpaper.favorite
+        if wallpaper.favorite || stuffManager.favoritesContains(wallpaper)
         {
             cell.favoriteIcon.image = UIImage(named: "filledstar")!
         }
