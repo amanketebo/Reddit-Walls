@@ -42,6 +42,13 @@ extension BaseVC: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
     {
-        return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
+        if collectionView.tag == 0
+        {
+            return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
+        }
+        else
+        {
+            return CGSize(width: view.bounds.size.width, height: 0)
+        }
     }
 }
