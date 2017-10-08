@@ -48,6 +48,26 @@ class SelectedWallpaperVC: UIViewController {
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 3
         scrollView.contentInset = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: 0)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(zoomIn(_:)))
+        tapGestureRecognizer.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc private func zoomIn(_ tapGesture: UITapGestureRecognizer)
+    {
+        let touchPoint = tapGesture.location(in: scrollView)
+        
+        if scrollView.zoomScale == 1
+        {
+            let rect = CGRect(x: touchPoint.x, y: touchPoint.y, width: 10, height: 10)
+            scrollView.zoom(to: rect, animated: true)
+        }
+        else
+        {
+            let rect = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: imageView.bounds.size.height)
+            scrollView.zoom(to: rect, animated: true)
+        }
     }
     
     func saveWallpaper() {
