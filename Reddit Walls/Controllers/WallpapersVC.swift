@@ -48,6 +48,7 @@ class WallpapersVC: BaseVC
         // Collection view setup
         collectionView.dataSource = self
         collectionView.delegate = super.self()
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
         
