@@ -217,7 +217,7 @@
                                                     <rect key="frame" x="2" y="0.0" width="369" height="178"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Road [3080 x 5450]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpa-7W-Fvg">
-                                                    <rect key="frame" x="2" y="185" width="356" height="21"/>
+                                                    <rect key="frame" x="2" y="185" width="320" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -242,6 +242,14 @@
                                                         <constraint firstAttribute="height" constant="1" id="SJ1-rg-X4C"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unfilledstar" translatesAutoresizingMaskIntoConstraints="NO" id="c6h-06-2Ms">
+                                                    <rect key="frame" x="332" y="192" width="30" height="30"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Wa5-3y-7fQ"/>
+                                                        <constraint firstAttribute="width" constant="30" id="gvs-I9-wcX"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -252,18 +260,21 @@
                                             <constraint firstItem="4Ei-CQ-RJ2" firstAttribute="top" secondItem="Cpa-7W-Fvg" secondAttribute="bottom" constant="1" id="FEu-hw-5CH"/>
                                             <constraint firstAttribute="bottom" secondItem="gdW-oQ-6kl" secondAttribute="bottom" id="IdL-iw-6HO"/>
                                             <constraint firstItem="Cpa-7W-Fvg" firstAttribute="top" secondItem="g4g-VL-1Dh" secondAttribute="bottom" constant="7" id="JY8-He-eMx"/>
+                                            <constraint firstAttribute="trailing" secondItem="c6h-06-2Ms" secondAttribute="trailing" constant="11" id="MnZ-4R-lhL"/>
                                             <constraint firstItem="4Ei-CQ-RJ2" firstAttribute="leading" secondItem="ilO-n1-VgY" secondAttribute="leadingMargin" constant="2" id="Tu6-df-kti"/>
+                                            <constraint firstItem="c6h-06-2Ms" firstAttribute="top" secondItem="g4g-VL-1Dh" secondAttribute="bottom" constant="14" id="TwN-iJ-9YY"/>
                                             <constraint firstItem="xdl-IG-b3T" firstAttribute="top" secondItem="Cpa-7W-Fvg" secondAttribute="bottom" constant="1" id="ZuM-ld-fxf"/>
                                             <constraint firstItem="xdl-IG-b3T" firstAttribute="leading" secondItem="4Ei-CQ-RJ2" secondAttribute="trailing" constant="4" id="dVJ-WE-f64"/>
                                             <constraint firstItem="g4g-VL-1Dh" firstAttribute="trailing" secondItem="ilO-n1-VgY" secondAttribute="trailingMargin" constant="-2" id="fRo-qY-UQO"/>
+                                            <constraint firstItem="c6h-06-2Ms" firstAttribute="leading" secondItem="Cpa-7W-Fvg" secondAttribute="trailing" constant="10" id="hDf-Jk-5rK"/>
                                             <constraint firstItem="g4g-VL-1Dh" firstAttribute="leading" secondItem="ilO-n1-VgY" secondAttribute="leadingMargin" constant="2" id="iSm-UK-ChD"/>
-                                            <constraint firstAttribute="trailing" secondItem="Cpa-7W-Fvg" secondAttribute="trailing" constant="15" id="lWH-JO-VQs"/>
                                             <constraint firstItem="g4g-VL-1Dh" firstAttribute="top" secondItem="ilO-n1-VgY" secondAttribute="topMargin" id="mJa-EI-D0v"/>
                                             <constraint firstItem="Cpa-7W-Fvg" firstAttribute="leading" secondItem="ilO-n1-VgY" secondAttribute="leadingMargin" constant="2" id="vRQ-U7-Jnm"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="g4g-VL-1Dh" secondAttribute="bottom" constant="50" id="yYr-LB-Ecb"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="author" destination="xdl-IG-b3T" id="ljX-j8-J9A"/>
+                                            <outlet property="favoriteIcon" destination="c6h-06-2Ms" id="aMq-O1-kea"/>
                                             <outlet property="title" destination="Cpa-7W-Fvg" id="a2k-v9-ANS"/>
                                             <outlet property="wallpaper" destination="g4g-VL-1Dh" id="skV-gL-o92"/>
                                         </connections>
