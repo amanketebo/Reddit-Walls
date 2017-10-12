@@ -13,8 +13,6 @@ class FavoritesVC: BaseVC
     @IBOutlet weak var collectionView: UICollectionView!
     
     var favoriteWallpapers = [Wallpaper]()
-    let stuffManager = StuffManager.shared
-    var wallpaperRequester = WallpaperRequester.shared
     
     override func viewDidLoad()
     {
@@ -90,37 +88,9 @@ extension FavoritesVC: UICollectionViewDataSource {
         if stuffManager.favorites.count != 0
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCell
-            let wallpaper = stuffManager.favorites[indexPath.row]
             
-            cell.tag = indexPath.row
-            cell.title.text = stuffManager.favorites[indexPath.row].title
-            cell.author.text = stuffManager.favorites[indexPath.row].author
-            cell.wallpaper.image = UIImage(named: "gray")!
-            cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: stuffManager.favorites)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
-            
-            // Set up favorite icon
-            if stuffManager.favoritesContains(wallpaper)
-            {
-                cell.favoriteIcon.image = UIImage(named: "filledstar")!
-            }
-            else
-            {
-                cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
-            }
-            
-            if let wallpaperURL = URL(string: stuffManager.favorites[indexPath.row].fullResolutionURL)
-            {
-                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
-                    if cell.tag == indexPath.row
-                    {
-                        if let wallpaper = wallpaper
-                        {
-                            cell.wallpaper.image = wallpaper
-                        }
-                    }
-                }
-            }
             
             return cell
         }

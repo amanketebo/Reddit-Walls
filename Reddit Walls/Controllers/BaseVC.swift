@@ -10,9 +10,53 @@ import UIKit
 
 class BaseVC: UIViewController
 {
+    let stuffManager = StuffManager.shared
+    let wallpaperRequester = WallpaperRequester.shared
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+    }
+    
+    func setupCollectionView(cell: WallpaperCell,  indexPath: IndexPath, wallpapers: [Wallpaper])
+    {
+        let wallpaper = wallpapers[indexPath.row]
+        
+        cell.tag = indexPath.row
+        cell.title.text = wallpapers[indexPath.row].title
+        cell.author.text = wallpapers[indexPath.row].author
+        cell.wallpaper.image = UIImage(named: "gray")!
+        cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+        
+        // Set up favorite icon
+        if stuffManager.favoritesContains(wallpaper)
+        {
+            cell.favoriteIcon.image = UIImage(named: "filledstar")!
+        }
+        else
+        {
+            cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+        }
+        
+        if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
+        {
+            if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
+            {
+                cell.wallpaper.image = wallpaper
+            }
+            else
+            {
+                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
+                    if cell.tag == indexPath.row
+                    {
+                        if let wallpaper = wallpaper
+                        {
+                            cell.wallpaper.image = wallpaper
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
