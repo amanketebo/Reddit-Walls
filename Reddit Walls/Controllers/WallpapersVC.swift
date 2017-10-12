@@ -28,8 +28,6 @@ class WallpapersVC: BaseVC
     @IBOutlet weak var favoritesView: UIView!
     
     var wallpapers = [Wallpaper]()
-    let wallpaperRequester = WallpaperRequester()
-    let stuffManager = StuffManager.shared
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -56,6 +54,27 @@ class WallpapersVC: BaseVC
         view.addSubview(activityIndicator)
         activityIndicator.centerInParentView()
         activityIndicator.startAnimating()
+    }
+    
+    func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
+    {
+        guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
+        
+        let wallpaperCellTag = wallpaperCell.tag
+        let selectedWallpaper = wallpapers[wallpaperCellTag]
+        
+        if stuffManager.favoritesContains(selectedWallpaper)
+        {
+            selectedWallpaper.favorite = false
+            stuffManager.removeFavorite(selectedWallpaper)
+        }
+        else
+        {
+            selectedWallpaper.favorite = true
+            stuffManager.favorites.append(selectedWallpaper)
+        }
+        
+        collectionView.reloadData()
     }
     
     func fetchWallpapers()
@@ -86,27 +105,6 @@ class WallpapersVC: BaseVC
         performSegue(withIdentifier: Segue.favorites, sender: nil)
     }
     
-    func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
-    {
-        guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
-        
-        let wallpaperCellTag = wallpaperCell.tag
-        let selectedWallpaper = wallpapers[wallpaperCellTag]
-        
-        if stuffManager.favoritesContains(selectedWallpaper)
-        {
-            selectedWallpaper.favorite = false
-            stuffManager.removeFavorite(selectedWallpaper)
-        }
-        else
-        {
-            selectedWallpaper.favorite = true
-            stuffManager.favorites.append(selectedWallpaper)
-        }
-        
-        collectionView.reloadData()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
@@ -135,50 +133,9 @@ extension WallpapersVC: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
-        let wallpaper = wallpapers[indexPath.row]
         
-        // Set up cell
-        cell.tag = indexPath.row
-        cell.title.text = wallpaper.title
-        cell.author.text = wallpaper.author
-        cell.wallpaper.image = UIImage(named: "gray")!
-        cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+        setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers)
         cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
-        
-        // Set up favorite icon
-        if stuffManager.favoritesContains(wallpaper)
-        {
-            cell.favoriteIcon.image = UIImage(named: "filledstar")!
-        }
-        else
-        {
-            cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
-        }
-        
-        // Fetch wallpaper for cell
-        if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
-        {
-            if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
-            {
-                cell.wallpaper.image = wallpaper
-            }
-            else
-            {
-                wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { [weak self] (wallpaper, error) in
-                    if let error = error
-                    {
-                        print(error.localizedDescription)
-                    }
-                    else
-                    {
-                        guard cell.tag == indexPath.row, let wallpaper = wallpaper else { return }
-                        
-                        cell.wallpaper.image = wallpaper
-                        self?.stuffManager.addToCache(wallpaperURL, wallpaper: wallpaper)
-                    }
-                }
-            }
-        }
         
         return cell
     }
