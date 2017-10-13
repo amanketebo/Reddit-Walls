@@ -87,7 +87,7 @@ extension FavoritesVC: UICollectionViewDataSource {
     {
         if stuffManager.favorites.count != 0
         {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "wallpaperCell", for: indexPath) as! WallpaperCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
             
             setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: stuffManager.favorites)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))

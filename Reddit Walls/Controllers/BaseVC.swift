@@ -25,17 +25,17 @@ class BaseVC: UIViewController
         cell.tag = indexPath.row
         cell.title.text = wallpapers[indexPath.row].title
         cell.author.text = wallpapers[indexPath.row].author
-        cell.wallpaper.image = UIImage(named: "gray")!
-        cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+        cell.wallpaper.image = #imageLiteral(resourceName: "gray")
+        cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
         
         // Set up favorite icon
         if stuffManager.favoritesContains(wallpaper)
         {
-            cell.favoriteIcon.image = UIImage(named: "filledstar")!
+            cell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
         }
         else
         {
-            cell.favoriteIcon.image = UIImage(named: "unfilledstar")!
+            cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
         }
         
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)

@@ -6,17 +6,13 @@
 //  Copyright © 2017 Amanuel Ketebo. All rights reserved.
 //
 
-struct Literals
-{
-    static let favorites = "Favorites"
-}
-
 import Foundation
 import UIKit
 
 class StuffManager
 {
     static let shared = StuffManager()
+    static let favorites = "favorites"
     
     var favorites: [Wallpaper] = []
     {
@@ -39,7 +35,7 @@ class StuffManager
     
     func fetchSavedFavorites() -> [Wallpaper]
     {
-        if let favorites = userDefaults.array(forKey: Literals.favorites) as? [[String: String]]
+        if let favorites = userDefaults.array(forKey: StuffManager.favorites) as? [[String: String]]
         {
             var savedFavorites = [Wallpaper]()
             
@@ -65,14 +61,14 @@ class StuffManager
         favorites.forEach { (wallpaper) in
             var wallpaperInfo = [String: String]()
             
-            wallpaperInfo["title"] = wallpaper.title
-            wallpaperInfo["author"] = wallpaper.author
-            wallpaperInfo["url"] = wallpaper.fullResolutionURL
+            wallpaperInfo[Wallpaper.title] = wallpaper.title
+            wallpaperInfo[Wallpaper.author] = wallpaper.author
+            wallpaperInfo[Wallpaper.url] = wallpaper.fullResolutionURL
             
             favoritesPropertyList.append(wallpaperInfo)
         }
         
-        userDefaults.set(favoritesPropertyList, forKey: Literals.favorites)
+        userDefaults.set(favoritesPropertyList, forKey: StuffManager.favorites)
     }
     
     func removeFavorite(_ wallpaper: Wallpaper)
