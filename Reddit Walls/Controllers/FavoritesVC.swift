@@ -13,6 +13,7 @@ class FavoritesVC: BaseVC
     @IBOutlet weak var collectionView: UICollectionView!
     
     var favoriteWallpapers = [Wallpaper]()
+    let notificationCenter = NotificationCenter.default
     
     override func viewDidLoad()
     {
@@ -50,6 +51,7 @@ class FavoritesVC: BaseVC
         }
         
         collectionView.reloadData()
+        notificationCenter.post(name: .favoritesUpdated, object: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

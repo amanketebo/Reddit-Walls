@@ -48,9 +48,7 @@ class WallpaperRequester
         
         if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
         {
-            DispatchQueue.main.async {
-                completion(wallpaper, nil)
-            }
+            completion(wallpaper, nil)
         }
         else
         {

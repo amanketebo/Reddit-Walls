@@ -22,12 +22,17 @@ struct Dimension
     static let imageViewHeight: CGFloat = 215
 }
 
+extension Notification.Name {
+    static let favoritesUpdated = Notification.Name(rawValue: "favoritesUpdated")
+}
+
 class WallpapersVC: BaseVC
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var favoritesView: UIView!
     
     var wallpapers = [Wallpaper]()
+    let notificationCenter = NotificationCenter.default
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -35,6 +40,7 @@ class WallpapersVC: BaseVC
     {
         super.viewDidLoad()
         setupViews()
+        notificationCenter.addObserver(self, selector: #selector(reloadFavorites), name: .favoritesUpdated, object: nil)
         fetchWallpapers()
     }
 
@@ -112,6 +118,11 @@ class WallpapersVC: BaseVC
                 self?.collectionView.reloadData()
             }
         })
+    }
+    
+    @objc private func reloadFavorites()
+    {
+        collectionView.reloadData()
     }
     
     @objc private func refreshWallpapers()
