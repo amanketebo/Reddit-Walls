@@ -103,11 +103,16 @@ class WallpapersVC: BaseVC
                 self?.activityIndicator.removeFromSuperview()
                 self?.collectionView.refreshControl?.endRefreshing()
                 
-                let message = "Whoops, looks like somethings wrong with the network. Please try again."
+                let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
                 let leftButton = ButtonData(title: "Okay", color: .black)
                 let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
                 
-                self?.present(informationVC, animated: true, completion: nil)
+                self?.present(informationVC, animated: true, completion: { [weak self] in
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.removeFromSuperview()
+                    self?.collectionView.refreshControl?.endRefreshing()
+                    self?.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                })
             }
             else
             {

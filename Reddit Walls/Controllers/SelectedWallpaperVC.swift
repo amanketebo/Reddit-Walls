@@ -106,7 +106,7 @@ class SelectedWallpaperVC: UIViewController {
     
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer)
     {
-        if let error = error
+        if let _ = error
         {
             let message = "Please change Photo's access settings to be able to save wallpapers"
             let buttonData = ButtonData(title: "Okay", color: .black)
