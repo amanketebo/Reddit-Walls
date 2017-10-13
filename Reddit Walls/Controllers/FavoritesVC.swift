@@ -79,7 +79,7 @@ extension FavoritesVC: UICollectionViewDataSource {
         }
         else
         {
-           return stuffManager.favorites.count
+            return stuffManager.favorites.count
         }
     }
     
@@ -97,7 +97,7 @@ extension FavoritesVC: UICollectionViewDataSource {
         else
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noFavorites", for: indexPath)
-            
+
             return cell
         }
     }
