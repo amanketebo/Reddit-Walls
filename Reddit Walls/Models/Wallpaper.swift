@@ -26,6 +26,10 @@ func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool
 
 class Wallpaper
 {
+    static let title = "title"
+    static let author = "author"
+    static let url = "url"
+    
     var title = ""
     var author = ""
     var middleResolutionURL = ""
