@@ -80,9 +80,17 @@ class WallpapersVC: BaseVC
     func fetchWallpapers()
     {
         wallpaperRequester.fetchWallpapers(completion: { [weak self] (wallpapers, error) in
-            if let error = error
+            if let _ = error
             {
-                print(error.localizedDescription)
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.refreshControl?.endRefreshing()
+                
+                let message = "Whoops, looks like somethings wrong with the network. Please try again."
+                let leftButton = ButtonData(title: "Okay", color: .black)
+                let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
+                
+                self?.present(informationVC, animated: true, completion: nil)
             }
             else
             {
