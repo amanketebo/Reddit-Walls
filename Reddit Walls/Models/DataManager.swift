@@ -28,7 +28,9 @@ class WallpaperRequester
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let taskError = error
             {
-                completion(nil, taskError)
+                DispatchQueue.main.async {
+                    completion(nil, taskError)
+                }
             }
             else
             {
@@ -46,7 +48,9 @@ class WallpaperRequester
         
         if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
         {
-            completion(wallpaper, nil)
+            DispatchQueue.main.async {
+                completion(wallpaper, nil)
+            }
         }
         else
         {
@@ -55,7 +59,9 @@ class WallpaperRequester
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let taskError = error
                 {
-                    completion(nil, taskError)
+                    DispatchQueue.main.async {
+                        completion(nil, taskError)
+                    }
                 }
                 else
                 {
@@ -67,7 +73,9 @@ class WallpaperRequester
                     }
                     else
                     {
-                        completion(nil, error)
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
                     }
                 }
             }
