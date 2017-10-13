@@ -61,20 +61,31 @@ class WallpapersVC: BaseVC
         guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
         
         let wallpaperCellTag = wallpaperCell.tag
+        let indexPath = IndexPath(row: wallpaperCellTag, section: 0)
         let selectedWallpaper = wallpapers[wallpaperCellTag]
         
         if stuffManager.favoritesContains(selectedWallpaper)
         {
             selectedWallpaper.favorite = false
             stuffManager.removeFavorite(selectedWallpaper)
+            collectionView.performBatchUpdates({
+                if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
+                {
+                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
+                }
+            }, completion: nil)
         }
         else
         {
             selectedWallpaper.favorite = true
             stuffManager.favorites.append(selectedWallpaper)
+            collectionView.performBatchUpdates({
+                if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
+                {
+                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
+                }
+            }, completion: nil)
         }
-        
-        collectionView.reloadData()
     }
     
     func fetchWallpapers()
