@@ -13,9 +13,11 @@ class SelectedWallpaperVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var selectedWallpaper: Wallpaper!
     var wallpaper: UIImage!
     var imageView: UIImageView!
     var wallpaperHasLoaded = false
+    let wallpaperRequester = WallpaperRequester.shared
     
     override func viewDidLoad()
     {
@@ -34,25 +36,39 @@ class SelectedWallpaperVC: UIViewController {
     func setupViews()
     {
         // Image view and scroll view setup
-        imageView = UIImageView(image: wallpaper)
-        imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)
-        
-        let padding = (scrollView.bounds.size.height - imageView.frame.size.height) / 2
-        
-        scrollView.contentSize = imageView.bounds.size
-        scrollView.addSubview(imageView)
-        
-        scrollView.delegate = self
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 3
-        scrollView.contentInset = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: 0)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(zoomIn(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tapGestureRecognizer)
+        if wallpaperHasLoaded
+        {
+            imageView = UIImageView(image: wallpaper)
+            imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)
+            
+            let padding = (scrollView.bounds.size.height - imageView.frame.size.height) / 2
+            
+            scrollView.contentSize = imageView.bounds.size
+            scrollView.addSubview(imageView)
+            
+            scrollView.delegate = self
+            scrollView.showsVerticalScrollIndicator = false
+            scrollView.showsHorizontalScrollIndicator = false
+            
+            scrollView.minimumZoomScale = 1
+            scrollView.maximumZoomScale = 3
+            scrollView.contentInset = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: 0)
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(zoomIn(_:)))
+            tapGestureRecognizer.numberOfTapsRequired = 2
+            view.addGestureRecognizer(tapGestureRecognizer)
+        }
+        else
+        {
+            // Show activity indicator
+            print("Showing activity indicator")
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+            view.addSubview(activityIndicator)
+            activityIndicator.centerInParentView()
+            activityIndicator.startAnimating()
+            // Request wallpaper, set wallpaperLoaded to true, call setupViews in completion
+            // Hey, you need the url to fetch the wallpaper
+        }
     }
     
     @objc private func zoomIn(_ tapGesture: UITapGestureRecognizer)

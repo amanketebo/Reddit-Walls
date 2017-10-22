@@ -51,7 +51,7 @@ class WallpapersVC: BaseVC
         
         // Collection view setup
         collectionView.dataSource = self
-        collectionView.delegate = super.self()
+        collectionView.delegate = self
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
@@ -142,6 +142,7 @@ class WallpapersVC: BaseVC
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        // Following code is only for when you are seguing to SelctedWallpaperVC
         if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
         {
             if let wallpaperCell = sender as? WallpaperCell
@@ -152,6 +153,16 @@ class WallpapersVC: BaseVC
         }
     }
     
+}
+
+extension WallpapersVC: UICollectionViewDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        performSegue(withIdentifier: Segue.wallpaper, sender: cell)
+    }
 }
 
 extension WallpapersVC: UICollectionViewDataSource
