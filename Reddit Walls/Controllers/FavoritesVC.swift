@@ -28,7 +28,7 @@ class FavoritesVC: BaseVC
         
         // Collection view setup
         collectionView.dataSource = self
-        collectionView.delegate = super.self()
+        collectionView.delegate = self
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
@@ -64,6 +64,16 @@ class FavoritesVC: BaseVC
                 selectedWallpaperVC.wallpaperHasLoaded = wallpaperCollectionViewCell.wallpaperHasLoaded
             }
         }
+    }
+}
+
+extension FavoritesVC: UICollectionViewDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let cell = collectionView.cellForItem(at: indexPath)
+
+        performSegue(withIdentifier: Segue.wallpaper, sender: cell)
     }
 }
 
