@@ -60,8 +60,6 @@ class SelectedWallpaperVC: UIViewController {
         }
         else
         {
-            // Show activity indicator
-            print("Showing activity indicator")
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
