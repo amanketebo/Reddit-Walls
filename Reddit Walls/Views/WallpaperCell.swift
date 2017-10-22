@@ -12,6 +12,8 @@ class WallpaperCell: UICollectionViewCell
 {
     static let identifier = "wallpaperCell"
     
+    var wallpaperHasLoaded = false
+    
     @IBOutlet weak var wallpaper: UIImageView!
     
     @IBOutlet weak var title: UILabel!

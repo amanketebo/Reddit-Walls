@@ -146,7 +146,8 @@ class WallpapersVC: BaseVC
         {
             if let wallpaperCell = sender as? WallpaperCell
             {
-               selectedWallpaperVC.wallpaper = wallpaperCell.wallpaper.image
+                selectedWallpaperVC.wallpaper = wallpaperCell.wallpaper.image
+                selectedWallpaperVC.wallpaperHasLoaded = wallpaperCell.wallpaperHasLoaded
             }
         }
     }
