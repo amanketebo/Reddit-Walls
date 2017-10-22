@@ -61,6 +61,7 @@ class FavoritesVC: BaseVC
             if let wallpaperCollectionViewCell = sender as? WallpaperCell
             {
                 selectedWallpaperVC.wallpaper = wallpaperCollectionViewCell.wallpaper.image
+                selectedWallpaperVC.wallpaperHasLoaded = wallpaperCollectionViewCell.wallpaperHasLoaded
             }
         }
     }

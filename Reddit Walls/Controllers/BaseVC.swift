@@ -43,15 +43,18 @@ class BaseVC: UIViewController
             if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
             {
                 cell.wallpaper.image = wallpaper
+                cell.wallpaperHasLoaded = true
             }
             else
             {
+                cell.wallpaperHasLoaded = false
                 wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, error) in
                     if cell.tag == indexPath.row
                     {
                         if let wallpaper = wallpaper
                         {
                             cell.wallpaper.image = wallpaper
+                            cell.wallpaperHasLoaded = true
                         }
                     }
                 }

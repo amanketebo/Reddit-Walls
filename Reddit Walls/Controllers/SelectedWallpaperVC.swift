@@ -15,6 +15,7 @@ class SelectedWallpaperVC: UIViewController {
     
     var wallpaper: UIImage!
     var imageView: UIImageView!
+    var wallpaperHasLoaded = false
     
     override func viewDidLoad()
     {
