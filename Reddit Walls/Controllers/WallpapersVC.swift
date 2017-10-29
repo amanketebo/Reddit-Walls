@@ -111,7 +111,7 @@ class WallpapersVC: BaseVC
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.removeFromSuperview()
                     self?.collectionView.refreshControl?.endRefreshing()
-                    self?.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    self?.collectionView.scrollRectToVisible(CGRect(), animated: true)
                 })
             }
             else
@@ -145,10 +145,11 @@ class WallpapersVC: BaseVC
         // Following code is only for when you are seguing to SelctedWallpaperVC
         if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
         {
-            if let wallpaperCell = sender as? WallpaperCell
+            if let tuple = sender as? (cell: WallpaperCell, associatedWallpaper: Wallpaper)
             {
-                selectedWallpaperVC.wallpaper = wallpaperCell.wallpaper.image
-                selectedWallpaperVC.wallpaperHasLoaded = wallpaperCell.wallpaperHasLoaded
+                selectedWallpaperVC.wallpaper = tuple.cell.wallpaper.image
+                selectedWallpaperVC.wallpaperHasLoaded = tuple.cell.wallpaperHasLoaded
+                selectedWallpaperVC.selectedWallpaper = tuple.associatedWallpaper
             }
         }
     }
@@ -160,8 +161,9 @@ extension WallpapersVC: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let cell = collectionView.cellForItem(at: indexPath)
+        let associatedWallpaper = wallpapers[indexPath.row]
         
-        performSegue(withIdentifier: Segue.wallpaper, sender: cell)
+        performSegue(withIdentifier: Segue.wallpaper, sender: (cell, associatedWallpaper))
     }
 }
 

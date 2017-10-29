@@ -57,15 +57,35 @@ class SelectedWallpaperVC: UIViewController {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(zoomIn(_:)))
             tapGestureRecognizer.numberOfTapsRequired = 2
             view.addGestureRecognizer(tapGestureRecognizer)
+            
+            navigationItem.rightBarButtonItem?.isEnabled = true
         }
         else
         {
             let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+            
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
             activityIndicator.startAnimating()
-            // Request wallpaper, set wallpaperLoaded to true, call setupViews in completion
-            // Hey, you need the url to fetch the wallpaper
+            
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            
+            let fullResURL = URL(string: selectedWallpaper.fullResolutionURL)!
+            wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (wallpaper, error) in
+                if let _ = error {
+                    let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
+                    let leftButton = ButtonData(title: "Okay", color: .black)
+                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
+                    
+                    self?.present(informationVC, animated: true, completion: nil)
+                }
+                else {
+                    self?.wallpaper = wallpaper!
+                    self?.wallpaperHasLoaded = true
+                    activityIndicator.stopAnimating()
+                    self?.setupViews()
+                }
+            })
         }
     }
     

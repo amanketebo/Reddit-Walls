@@ -12,7 +12,6 @@ class FavoritesVC: BaseVC
 {
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var favoriteWallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
     
     override func viewDidLoad()
@@ -58,10 +57,11 @@ class FavoritesVC: BaseVC
     {
         if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
         {
-            if let wallpaperCollectionViewCell = sender as? WallpaperCell
+            if let wallpaperTuple = sender as? (cell: WallpaperCell, wallpaper: Wallpaper?)
             {
-                selectedWallpaperVC.wallpaper = wallpaperCollectionViewCell.wallpaper.image
-                selectedWallpaperVC.wallpaperHasLoaded = wallpaperCollectionViewCell.wallpaperHasLoaded
+                selectedWallpaperVC.wallpaper = wallpaperTuple.cell.wallpaper.image
+                selectedWallpaperVC.wallpaperHasLoaded = wallpaperTuple.cell.wallpaperHasLoaded
+                selectedWallpaperVC.selectedWallpaper = wallpaperTuple.wallpaper
             }
         }
     }
@@ -72,8 +72,13 @@ extension FavoritesVC: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let cell = collectionView.cellForItem(at: indexPath)
-
-        performSegue(withIdentifier: Segue.wallpaper, sender: cell)
+        var associatedWallpaper: Wallpaper?
+        
+        if stuffManager.favorites.count != 0 {
+            associatedWallpaper = stuffManager.favorites[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: Segue.wallpaper, sender: (cell, associatedWallpaper))
     }
 }
 
