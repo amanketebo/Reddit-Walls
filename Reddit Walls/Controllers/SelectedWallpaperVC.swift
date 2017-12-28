@@ -25,6 +25,12 @@ class SelectedWallpaperVC: UIViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        modalTransitionStyle = .crossDissolve
+        modalPresentationStyle = .currentContext
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
