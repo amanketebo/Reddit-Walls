@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M5v-ei-Exa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Selected WallpaperVC-->
+        <scene sceneID="rVK-vM-w3Z">
+            <objects>
+                <viewController id="M5v-ei-Exa" customClass="SelectedWallpaperVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tam-2H-V7l"/>
+                        <viewControllerLayoutGuide type="bottom" id="QvK-7Q-q8V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F0P-yx-iLD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-b9-k9z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-x0-qyh">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x" translatesAutoresizingMaskIntoConstraints="NO" id="Pwc-dl-O5p">
+                                        <rect key="frame" x="20" y="30" width="25" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="bes-PJ-T9f"/>
+                                            <constraint firstAttribute="width" constant="25" id="dJ7-3C-VDi"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="Pwc-dl-O5p" firstAttribute="leading" secondItem="hzG-x0-qyh" secondAttribute="leading" constant="20" id="G8U-8M-60U"/>
+                                    <constraint firstAttribute="height" constant="80" id="Qam-LS-3nS"/>
+                                    <constraint firstAttribute="width" constant="80" id="gJD-SA-dxv"/>
+                                    <constraint firstItem="Pwc-dl-O5p" firstAttribute="centerY" secondItem="hzG-x0-qyh" secondAttribute="centerY" id="zh0-3o-T4e"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="FyU-te-poL" appends="YES" id="3LD-UE-d4A"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XQc-b9-k9z" firstAttribute="top" secondItem="F0P-yx-iLD" secondAttribute="top" id="GXT-UV-nqV"/>
+                            <constraint firstItem="QvK-7Q-q8V" firstAttribute="top" secondItem="XQc-b9-k9z" secondAttribute="bottom" id="GkT-a1-gsc"/>
+                            <constraint firstItem="hzG-x0-qyh" firstAttribute="leading" secondItem="d5u-ao-tU5" secondAttribute="leading" id="Hog-K1-sjV"/>
+                            <constraint firstItem="XQc-b9-k9z" firstAttribute="leading" secondItem="F0P-yx-iLD" secondAttribute="leading" id="Vkk-EU-cuX"/>
+                            <constraint firstAttribute="trailing" secondItem="XQc-b9-k9z" secondAttribute="trailing" id="njt-UK-OPg"/>
+                            <constraint firstItem="hzG-x0-qyh" firstAttribute="top" secondItem="XQc-b9-k9z" secondAttribute="top" id="yaK-ec-9KO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d5u-ao-tU5"/>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="XQc-b9-k9z" id="QOO-sn-ciC"/>
+                        <outlet property="xContainerView" destination="hzG-x0-qyh" id="rfO-SS-Ty2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxG-pt-fL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FyU-te-poL">
+                    <connections>
+                        <action selector="tappedX:" destination="M5v-ei-Exa" id="9Mq-6i-eYh"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="341.60000000000002" y="1079.9100449775112"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="x" width="512" height="512"/>
+    </resources>
+</document>

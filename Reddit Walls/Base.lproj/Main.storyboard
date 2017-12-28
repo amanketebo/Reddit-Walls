@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,29 +60,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AqS-4r-Ps8">
-                                                    <rect key="frame" x="2" y="0.0" width="369" height="178"/>
+                                                    <rect key="frame" x="10" y="8" width="353" height="162"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Road [3080 x 5450]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50a-gD-NR0">
-                                                    <rect key="frame" x="2" y="185" width="320" height="21"/>
+                                                    <rect key="frame" x="10" y="177" width="304" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="submitted by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-Kl-pJC">
-                                                    <rect key="frame" x="2" y="207" width="79" height="16"/>
+                                                    <rect key="frame" x="10" y="199" width="79" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="faceIt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zW3-AI-fWT">
-                                                    <rect key="frame" x="85" y="207" width="35" height="16"/>
+                                                    <rect key="frame" x="93" y="199" width="35" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.30588235289999999" blue="0.52549019610000003" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unfilledstar" translatesAutoresizingMaskIntoConstraints="NO" id="Iiz-49-kJF">
-                                                    <rect key="frame" x="332" y="192" width="30" height="30"/>
+                                                    <rect key="frame" x="324" y="184" width="30" height="30"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Re8-K0-Mhv"/>
@@ -166,7 +166,6 @@
                     <connections>
                         <outlet property="collectionView" destination="6OS-2L-MxX" id="Boy-B7-hgr"/>
                         <outlet property="favoritesView" destination="HbK-BD-bLH" id="MMV-LQ-YC2"/>
-                        <segue destination="c4I-5A-NDU" kind="show" identifier="Wallpaper" id="6HB-K4-9DM"/>
                         <segue destination="aZy-E9-5py" kind="show" identifier="Favorites" id="IlU-st-s0r"/>
                     </connections>
                 </viewController>
@@ -214,23 +213,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g4g-VL-1Dh">
-                                                    <rect key="frame" x="2" y="0.0" width="369" height="178"/>
+                                                    <rect key="frame" x="10" y="8" width="353" height="162"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Road [3080 x 5450]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpa-7W-Fvg">
-                                                    <rect key="frame" x="2" y="185" width="320" height="21"/>
+                                                    <rect key="frame" x="10" y="177" width="312" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="submitted by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ei-CQ-RJ2">
-                                                    <rect key="frame" x="2" y="207" width="79" height="16"/>
+                                                    <rect key="frame" x="10" y="199" width="79" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="faceIt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-IG-b3T">
-                                                    <rect key="frame" x="85" y="207" width="35" height="16"/>
+                                                    <rect key="frame" x="93" y="199" width="35" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.30588235289999999" blue="0.52549019610000003" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -243,7 +242,7 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unfilledstar" translatesAutoresizingMaskIntoConstraints="NO" id="c6h-06-2Ms">
-                                                    <rect key="frame" x="332" y="192" width="30" height="30"/>
+                                                    <rect key="frame" x="332" y="184" width="30" height="30"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Wa5-3y-7fQ"/>
@@ -324,44 +323,11 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="mvR-RO-va6" id="6hM-e0-ja6"/>
-                        <segue destination="c4I-5A-NDU" kind="show" identifier="Wallpaper" id="JCs-vf-uUu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bmb-Av-Wcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="740" y="123.68815592203899"/>
-        </scene>
-        <!--Selected WallpaperVC-->
-        <scene sceneID="g5t-Ns-F1Q">
-            <objects>
-                <viewController id="c4I-5A-NDU" customClass="SelectedWallpaperVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TSV-FA-9jB"/>
-                        <viewControllerLayoutGuide type="bottom" id="OAy-Sa-nNR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3ib-22-4Bu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpy-cM-xUH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Cpy-cM-xUH" firstAttribute="leading" secondItem="3ib-22-4Bu" secondAttribute="leading" id="RdD-1p-zMy"/>
-                            <constraint firstAttribute="trailing" secondItem="Cpy-cM-xUH" secondAttribute="trailing" id="Y5T-CL-WTg"/>
-                            <constraint firstItem="Cpy-cM-xUH" firstAttribute="top" secondItem="TSV-FA-9jB" secondAttribute="bottom" id="m4Z-uU-OYI"/>
-                            <constraint firstItem="OAy-Sa-nNR" firstAttribute="top" secondItem="Cpy-cM-xUH" secondAttribute="bottom" id="tUp-By-WYS"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="scrollView" destination="Cpy-cM-xUH" id="JmR-IV-bVm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="61u-ld-3CR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="343" y="1080"/>
         </scene>
     </scenes>
     <resources>
@@ -369,7 +335,4 @@
         <image name="sad" width="480" height="480"/>
         <image name="unfilledstar" width="128" height="128"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="JCs-vf-uUu"/>
-    </inferredMetricsTieBreakers>
 </document>
