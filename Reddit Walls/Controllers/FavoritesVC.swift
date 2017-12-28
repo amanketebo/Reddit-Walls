@@ -28,7 +28,6 @@ class FavoritesVC: BaseVC
         // Collection view setup
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     @objc func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
@@ -52,19 +51,6 @@ class FavoritesVC: BaseVC
         collectionView.reloadData()
         notificationCenter.post(name: .favoritesUpdated, object: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
-        {
-            if let wallpaperTuple = sender as? (cell: WallpaperCell, wallpaper: Wallpaper?)
-            {
-                selectedWallpaperVC.wallpaper = wallpaperTuple.cell.wallpaper.image
-                selectedWallpaperVC.wallpaperHasLoaded = wallpaperTuple.cell.wallpaperHasLoaded
-                selectedWallpaperVC.selectedWallpaper = wallpaperTuple.wallpaper
-            }
-        }
-    }
 }
 
 extension FavoritesVC: UICollectionViewDelegate
@@ -76,8 +62,8 @@ extension FavoritesVC: UICollectionViewDelegate
         
         let associatedWallpaper = stuffManager.favorites[indexPath.row]
         
-        if let selectedWallpaperVC = UIStoryboard.init(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as? SelectedWallpaperVC {
-            selectedWallpaperVC.wallpaper = cell.wallpaper.image
+        if let selectedWallpaperVC = UIStoryboard.selectedWallpaper.instantiateInitialViewController() as? SelectedWallpaperVC {
+            selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
             selectedWallpaperVC.selectedWallpaper = associatedWallpaper
             selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
             
@@ -98,18 +84,6 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets
     {
         return Dimension.edgeInsets
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
-    {
-        if collectionView.tag == 0
-        {
-            return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
-        }
-        else
-        {
-            return CGSize(width: view.bounds.size.width, height: 0)
-        }
     }
 }
 

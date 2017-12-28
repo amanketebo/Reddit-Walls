@@ -12,25 +12,22 @@ import Photos
 class SelectedWallpaperVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var xContainerView: UIView!
+    @IBOutlet weak var closeButtonContainerView: UIView!
     
     var selectedWallpaper: Wallpaper!
-    var wallpaper: UIImage!
+    var wallpaperImage: UIImage!
     var imageView: UIImageView!
     var wallpaperHasLoaded = false
     let wallpaperRequester = WallpaperRequester.shared
-    var hideX: Bool = false {
+    var hideCloseButton: Bool = false {
         didSet {
-            xContainerView.isHidden = hideX
+            closeButtonContainerView.isHidden = hideCloseButton
         }
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Navigation bar setup
-        navigationItem.title = "Wallpaper"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveWallpaper))
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,7 +41,7 @@ class SelectedWallpaperVC: UIViewController {
         // Image view and scroll view setup
         if wallpaperHasLoaded
         {
-            imageView = UIImageView(image: wallpaper)
+            imageView = UIImageView(image: wallpaperImage)
             imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)
             
             let padding = (scrollView.bounds.size.height - imageView.frame.size.height) / 2
@@ -61,10 +58,9 @@ class SelectedWallpaperVC: UIViewController {
             scrollView.contentInset = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: 0)
             
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(zoomIn(_:)))
+            
             tapGestureRecognizer.numberOfTapsRequired = 2
             view.addGestureRecognizer(tapGestureRecognizer)
-            
-            navigationItem.rightBarButtonItem?.isEnabled = true
         }
         else
         {
@@ -73,8 +69,6 @@ class SelectedWallpaperVC: UIViewController {
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
             activityIndicator.startAnimating()
-            
-            navigationItem.rightBarButtonItem?.isEnabled = false
             
             let fullResURL = URL(string: selectedWallpaper.fullResolutionURL)!
             wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (wallpaper, error) in
@@ -86,7 +80,7 @@ class SelectedWallpaperVC: UIViewController {
                     self?.present(informationVC, animated: true, completion: nil)
                 }
                 else {
-                    self?.wallpaper = wallpaper!
+                    self?.wallpaperImage = wallpaper!
                     self?.wallpaperHasLoaded = true
                     activityIndicator.stopAnimating()
                     self?.setupViews()
@@ -97,11 +91,11 @@ class SelectedWallpaperVC: UIViewController {
     
     @objc private func zoomIn(_ tapGesture: UITapGestureRecognizer)
     {
-        let touchPoint = tapGesture.location(in: scrollView)
+        let tapPoint = tapGesture.location(in: scrollView)
         
         if scrollView.zoomScale == 1
         {
-            let rect = CGRect(x: touchPoint.x, y: touchPoint.y, width: 10, height: 10)
+            let rect = CGRect(x: tapPoint.x, y: tapPoint.y, width: 10, height: 10)
             scrollView.zoom(to: rect, animated: true)
         }
         else
@@ -134,7 +128,7 @@ class SelectedWallpaperVC: UIViewController {
                 // Show information vc telling user to change setting
                 let message = "Please change Photo's access settings to be able to save wallpapers"
                 let buttonData = ButtonData(title: "Okay", color: .black)
-                let informationVC = InformationVC(message: message, image: UIImage(named: "warning"), leftButtonData: buttonData, rightButtonData: nil)
+                let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: buttonData, rightButtonData: nil)
                 self?.present(informationVC, animated: true, completion: nil)
             }
         })
@@ -142,7 +136,7 @@ class SelectedWallpaperVC: UIViewController {
     
     private func saveImage()
     {
-        UIImageWriteToSavedPhotosAlbum(wallpaper, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        UIImageWriteToSavedPhotosAlbum(wallpaperImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer)
@@ -158,7 +152,7 @@ class SelectedWallpaperVC: UIViewController {
         {
             let message = "Wallpaper saved sucessfully!"
             let buttonData = ButtonData(title: "Okay", color: .black)
-            let informationVC = InformationVC(message: message, image: UIImage(named: "check"), leftButtonData: buttonData, rightButtonData: nil)
+            let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "check"), leftButtonData: buttonData, rightButtonData: nil)
             self.present(informationVC, animated: true, completion: nil)
         }
     }
@@ -168,7 +162,7 @@ class SelectedWallpaperVC: UIViewController {
     }
     
 
-    @IBAction func tappedX(_ sender: UITapGestureRecognizer) {
+    @IBAction func tappedCloseButton(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
 }
@@ -191,11 +185,9 @@ extension SelectedWallpaperVC: UIScrollViewDelegate
         scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
         
         if scrollView.zoomScale <= 1 {
-            hideX = false
+            hideCloseButton = false
         } else {
-            hideX = true
+            hideCloseButton = true
         }
-        
-        print(scrollView.zoomScale)
     }
 }

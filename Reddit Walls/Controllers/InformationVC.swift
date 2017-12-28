@@ -63,6 +63,7 @@ class InformationVC: UIViewController
         if let leftButtonData = leftButtonData
         {
             let leftButton = UIButton(type: .system)
+            
             leftButton.setTitle(leftButtonData.title, for: .normal)
             leftButton.setTitleColor(leftButtonData.color, for: .normal)
             leftButton.titleLabel?.font = buttonFont
@@ -73,6 +74,7 @@ class InformationVC: UIViewController
         if let rightButtonData = rightButtonData
         {
             let rightButton = UIButton(type: .system)
+            
             rightButton.setTitle(rightButtonData.title, for: .normal)
             rightButton.setTitleColor(rightButtonData.color, for: .normal)
             rightButton.titleLabel?.font = buttonFont

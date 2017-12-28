@@ -12,10 +12,10 @@ import Foundation
 
 class WallpaperRequester
 {
-    static let shared = WallpaperRequester()
-    
     private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
     let stuffManager = StuffManager.shared
+    
+    static let shared = WallpaperRequester()
     
     typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
     typealias WallpaperImageDataCallback = (UIImage?, Error?) -> Void
@@ -48,7 +48,9 @@ class WallpaperRequester
         
         if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL)
         {
-            completion(wallpaper, nil)
+            DispatchQueue.main.async {
+                completion(wallpaper, nil)
+            }
         }
         else
         {
