@@ -8,24 +8,6 @@
 
 import UIKit
 
-struct Segue
-{
-    static let wallpaper = "Wallpaper"
-    static let favorites = "Favorites"
-}
-
-struct Dimension
-{
-    static let cellHeight: CGFloat = 275
-    static let footerHeight: CGFloat = 75
-    static let edgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0)
-    static let imageViewHeight: CGFloat = 215
-}
-
-extension Notification.Name {
-    static let favoritesUpdated = Notification.Name(rawValue: "favoritesUpdated")
-}
-
 class WallpapersVC: BaseVC
 {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,27 +22,12 @@ class WallpapersVC: BaseVC
     {
         super.viewDidLoad()
         setupViews()
-        notificationCenter.addObserver(self, selector: #selector(reloadFavorites), name: .favoritesUpdated, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(updateFavoriteIcons), name: .favoritesUpdated, object: nil)
         fetchWallpapers()
     }
 
     private func setupViews()
     {
-//
-//        let whatsNewVC = WhatsNewViewController(items: [WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
-//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello")])
-//        present(whatsNewVC, animated: true, completion: nil)
-        
         // Navigation bar setup
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
@@ -70,8 +37,6 @@ class WallpapersVC: BaseVC
         collectionView.delegate = self
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
         collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.backgroundColor = .redditBlue
-        collectionView.refreshControl?.tintColor = .white
         collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
         
         // Activity indicator setup
@@ -143,7 +108,7 @@ class WallpapersVC: BaseVC
         })
     }
     
-    @objc private func reloadFavorites()
+    @objc private func updateFavoriteIcons()
     {
         collectionView.reloadData()
     }
@@ -155,41 +120,24 @@ class WallpapersVC: BaseVC
     
     @IBAction func segueToFavoritesView(_ sender: UITapGestureRecognizer)
     {
-        performSegue(withIdentifier: Segue.favorites, sender: nil)
+        performSegue(withIdentifier: UIStoryboard.favoritesSegue, sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        // Following code is only for when you are seguing to SelctedWallpaperVC
-        if let selectedWallpaperVC = segue.destination as? SelectedWallpaperVC
-        {
-            if let tuple = sender as? (cell: WallpaperCell, associatedWallpaper: Wallpaper)
-            {
-                selectedWallpaperVC.wallpaper = tuple.cell.wallpaper.image
-                selectedWallpaperVC.wallpaperHasLoaded = tuple.cell.wallpaperHasLoaded
-                selectedWallpaperVC.selectedWallpaper = tuple.associatedWallpaper
-            }
-        }
-    }
-    
 }
 
 extension WallpapersVC: UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let cell = collectionView.cellForItem(at: indexPath) as! WallpaperCell
+        guard let selectedWallpaperVC = UIStoryboard.selectedWallpaper.instantiateInitialViewController() as? SelectedWallpaperVC else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? WallpaperCell else { return }
+        
         let associatedWallpaper = wallpapers[indexPath.row]
         
-        if let selectedWallpaperVC = UIStoryboard.init(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as? SelectedWallpaperVC {
-            selectedWallpaperVC.wallpaper = cell.wallpaper.image
-            selectedWallpaperVC.selectedWallpaper = associatedWallpaper
-            selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
-            
-            present(selectedWallpaperVC, animated: true, completion: nil)
-        } else {
-            print("Naaaa!")
-        }
+        selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
+        selectedWallpaperVC.selectedWallpaper = associatedWallpaper
+        selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+        
+        present(selectedWallpaperVC, animated: true, completion: nil)
     }
 }
 
@@ -209,14 +157,7 @@ extension WallpapersVC: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize
     {
-        if collectionView.tag == 0
-        {
-            return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
-        }
-        else
-        {
-            return CGSize(width: view.bounds.size.width, height: 0)
-        }
+        return CGSize(width: view.bounds.size.width, height: Dimension.footerHeight)
     }
 }
 
@@ -242,4 +183,3 @@ extension WallpapersVC: UICollectionViewDataSource
         return cell
     }
 }
-

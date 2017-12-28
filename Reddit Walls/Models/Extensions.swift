@@ -33,3 +33,15 @@ extension UIView
         self.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
     }
 }
+
+extension Notification.Name {
+    static let favoritesUpdated = Notification.Name(rawValue: "favoritesUpdated")
+}
+
+extension UIStoryboard {
+    // Storyboards
+    static let selectedWallpaper = UIStoryboard(name: "SelectedWallpaper", bundle: nil)
+    
+    // Segues
+    static let favoritesSegue = "Favorites"
+}

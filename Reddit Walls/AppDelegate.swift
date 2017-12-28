@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         navBar.barStyle = .black
         navBar.tintColor = .white
         navBar.barTintColor = .redditBlue
-        refreshControl.backgroundColor = .hintOfGray
+        refreshControl.backgroundColor = .redditBlue
+        refreshControl.tintColor = .white
     }
 }
 

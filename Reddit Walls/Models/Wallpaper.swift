@@ -9,22 +9,7 @@
 import SwiftyJSON
 import Foundation
 
-func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool
-{
-    if lhs.title == rhs.title &&
-        lhs.author == rhs.author &&
-        lhs.middleResolutionURL == rhs.middleResolutionURL &&
-        lhs.fullResolutionURL == rhs.fullResolutionURL
-    {
-        return true
-    }
-    else
-    {
-        return false
-    }
-}
-
-class Wallpaper
+class Wallpaper: Equatable
 {
     static let title = "title"
     static let author = "author"
@@ -46,6 +31,21 @@ class Wallpaper
         self.fullResolutionURL = fullResolutionURL
         self.favorite = favorite
     }
+    
+    static func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool
+    {
+        if lhs.title == rhs.title &&
+            lhs.author == rhs.author &&
+            lhs.middleResolutionURL == rhs.middleResolutionURL &&
+            lhs.fullResolutionURL == rhs.fullResolutionURL
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
 }
 
 extension Wallpaper
@@ -59,11 +59,11 @@ extension Wallpaper
         self.init(title, author, fullResolutionURL)
     }
     
-    convenience init?(_ dict: [String: String], favorite: Bool)
+    convenience init?(_ wallpaperInfo: [String: String], favorite: Bool)
     {
-        if let title = dict["title"],
-            let author = dict["author"],
-            let fullResolutionURL = dict["url"]
+        if let title = wallpaperInfo["title"],
+            let author = wallpaperInfo["author"],
+            let fullResolutionURL = wallpaperInfo["url"]
         {
             self.init(title, author, fullResolutionURL, favorite)
         }

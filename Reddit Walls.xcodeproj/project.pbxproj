@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		891F3A4EAD1FD2B9705909C0 /* Pods_Reddit_Walls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01ABD71294A79AEC9425D28 /* Pods_Reddit_Walls.framework */; };
-		CA10252D1F876BDD00FFD9D6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025281F876BDD00FFD9D6 /* DataManager.swift */; };
+		CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */; };
 		CA10252E1F876BDD00FFD9D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025291F876BDD00FFD9D6 /* Extensions.swift */; };
 		CA10252F1F876BDD00FFD9D6 /* StuffManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10252A1F876BDD00FFD9D6 /* StuffManager.swift */; };
 		CA1025301F876BDD00FFD9D6 /* SwiftyJSONPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10252B1F876BDD00FFD9D6 /* SwiftyJSONPaths.swift */; };
@@ -25,23 +25,13 @@
 		CA10254F1F876D8A00FFD9D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254B1F876D8A00FFD9D6 /* Main.storyboard */; };
 		CA1025501F876D8A00FFD9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254D1F876D8A00FFD9D6 /* LaunchScreen.storyboard */; };
 		CA11D8601FF4ACE700430D86 /* SelectedWallpaper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */; };
-		CA5CC5EB1FB97E510014C901 /* PresentationOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5DE1FB97E510014C901 /* PresentationOption.swift */; };
-		CA5CC5EC1FB97E510014C901 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5DF1FB97E510014C901 /* WhatsNew.swift */; };
-		CA5CC5ED1FB97E510014C901 /* WhatsNewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5E01FB97E510014C901 /* WhatsNewItem.swift */; };
-		CA5CC5EE1FB97E510014C901 /* WhatsNewItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5E11FB97E510014C901 /* WhatsNewItemImageView.swift */; };
-		CA5CC5EF1FB97E510014C901 /* WhatsNewItemTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5E21FB97E510014C901 /* WhatsNewItemTextView.swift */; };
-		CA5CC5F01FB97E510014C901 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = CA5CC5E41FB97E510014C901 /* .gitkeep */; };
-		CA5CC5F11FB97E510014C901 /* WhatsNew.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5CC5E51FB97E510014C901 /* WhatsNew.xib */; };
-		CA5CC5F21FB97E510014C901 /* WhatsNewItemImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5CC5E61FB97E510014C901 /* WhatsNewItemImageView.xib */; };
-		CA5CC5F31FB97E510014C901 /* WhatsNewItemTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5CC5E71FB97E510014C901 /* WhatsNewItemTextView.xib */; };
-		CA5CC5F41FB97E510014C901 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5E91FB97E510014C901 /* NibLoadable.swift */; };
-		CA5CC5F51FB97E510014C901 /* WhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CC5EA1FB97E510014C901 /* WhatsNewViewController.swift */; };
+		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B01ABD71294A79AEC9425D28 /* Pods_Reddit_Walls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reddit_Walls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AACFFB0FF50759C1BEA765 /* Pods-Reddit Walls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.release.xcconfig"; sourceTree = "<group>"; };
-		CA1025281F876BDD00FFD9D6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperRequester.swift; sourceTree = "<group>"; };
 		CA1025291F876BDD00FFD9D6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CA10252A1F876BDD00FFD9D6 /* StuffManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StuffManager.swift; sourceTree = "<group>"; };
 		CA10252B1F876BDD00FFD9D6 /* SwiftyJSONPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPaths.swift; sourceTree = "<group>"; };
@@ -59,17 +49,7 @@
 		CA10254C1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA10254E1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectedWallpaper.storyboard; sourceTree = "<group>"; };
-		CA5CC5DE1FB97E510014C901 /* PresentationOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationOption.swift; sourceTree = "<group>"; };
-		CA5CC5DF1FB97E510014C901 /* WhatsNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
-		CA5CC5E01FB97E510014C901 /* WhatsNewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewItem.swift; sourceTree = "<group>"; };
-		CA5CC5E11FB97E510014C901 /* WhatsNewItemImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewItemImageView.swift; sourceTree = "<group>"; };
-		CA5CC5E21FB97E510014C901 /* WhatsNewItemTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewItemTextView.swift; sourceTree = "<group>"; };
-		CA5CC5E41FB97E510014C901 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		CA5CC5E51FB97E510014C901 /* WhatsNew.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsNew.xib; sourceTree = "<group>"; };
-		CA5CC5E61FB97E510014C901 /* WhatsNewItemImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsNewItemImageView.xib; sourceTree = "<group>"; };
-		CA5CC5E71FB97E510014C901 /* WhatsNewItemTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsNewItemTextView.xib; sourceTree = "<group>"; };
-		CA5CC5E91FB97E510014C901 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
-		CA5CC5EA1FB97E510014C901 /* WhatsNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewViewController.swift; sourceTree = "<group>"; };
+		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,10 +78,12 @@
 			isa = PBXGroup;
 			children = (
 				CA10252C1F876BDD00FFD9D6 /* Wallpaper.swift */,
-				CA1025281F876BDD00FFD9D6 /* DataManager.swift */,
+				CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */,
 				CA10252A1F876BDD00FFD9D6 /* StuffManager.swift */,
 				CA10252B1F876BDD00FFD9D6 /* SwiftyJSONPaths.swift */,
+				CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */,
 				CA1025291F876BDD00FFD9D6 /* Extensions.swift */,
+				CA1025451F876D5000FFD9D6 /* WallpaperCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,52 +115,9 @@
 				CA10254B1F876D8A00FFD9D6 /* Main.storyboard */,
 				CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */,
 				CA1025441F876D5000FFD9D6 /* InformationVC.xib */,
-				CA1025451F876D5000FFD9D6 /* WallpaperCell.swift */,
 				CA10254D1F876D8A00FFD9D6 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		CA5CC5DC1FB97E510014C901 /* WhatsNew */ = {
-			isa = PBXGroup;
-			children = (
-				CA5CC5DD1FB97E510014C901 /* Items */,
-				CA5CC5E31FB97E510014C901 /* Resources */,
-				CA5CC5E81FB97E510014C901 /* Utils */,
-				CA5CC5EA1FB97E510014C901 /* WhatsNewViewController.swift */,
-			);
-			path = WhatsNew;
-			sourceTree = "<group>";
-		};
-		CA5CC5DD1FB97E510014C901 /* Items */ = {
-			isa = PBXGroup;
-			children = (
-				CA5CC5DE1FB97E510014C901 /* PresentationOption.swift */,
-				CA5CC5DF1FB97E510014C901 /* WhatsNew.swift */,
-				CA5CC5E01FB97E510014C901 /* WhatsNewItem.swift */,
-				CA5CC5E11FB97E510014C901 /* WhatsNewItemImageView.swift */,
-				CA5CC5E21FB97E510014C901 /* WhatsNewItemTextView.swift */,
-			);
-			path = Items;
-			sourceTree = "<group>";
-		};
-		CA5CC5E31FB97E510014C901 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CA5CC5E41FB97E510014C901 /* .gitkeep */,
-				CA5CC5E51FB97E510014C901 /* WhatsNew.xib */,
-				CA5CC5E61FB97E510014C901 /* WhatsNewItemImageView.xib */,
-				CA5CC5E71FB97E510014C901 /* WhatsNewItemTextView.xib */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		CA5CC5E81FB97E510014C901 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CA5CC5E91FB97E510014C901 /* NibLoadable.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		CAC2C4211E7BE8F1004F6EA1 = {
@@ -206,7 +145,6 @@
 				CA1025271F876BDD00FFD9D6 /* Models */,
 				CA1025321F876BF900FFD9D6 /* Controllers */,
 				CA1025431F876D5000FFD9D6 /* Views */,
-				CA5CC5DC1FB97E510014C901 /* WhatsNew */,
 				CA1025401F876D5000FFD9D6 /* Support Files */,
 			);
 			path = "Reddit Walls";
@@ -285,12 +223,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA5CC5F11FB97E510014C901 /* WhatsNew.xib in Resources */,
-				CA5CC5F31FB97E510014C901 /* WhatsNewItemTextView.xib in Resources */,
-				CA5CC5F21FB97E510014C901 /* WhatsNewItemImageView.xib in Resources */,
 				CA1025491F876D5000FFD9D6 /* InformationVC.xib in Resources */,
 				CA1025471F876D5000FFD9D6 /* Assets.xcassets in Resources */,
-				CA5CC5F01FB97E510014C901 /* .gitkeep in Resources */,
 				CA1025501F876D8A00FFD9D6 /* LaunchScreen.storyboard in Resources */,
 				CA11D8601FF4ACE700430D86 /* SelectedWallpaper.storyboard in Resources */,
 				CA10254F1F876D8A00FFD9D6 /* Main.storyboard in Resources */,
@@ -355,19 +289,13 @@
 				CA1025461F876D5000FFD9D6 /* AppDelegate.swift in Sources */,
 				CA1025301F876BDD00FFD9D6 /* SwiftyJSONPaths.swift in Sources */,
 				CA1025381F876BF900FFD9D6 /* BaseVC.swift in Sources */,
-				CA5CC5F41FB97E510014C901 /* NibLoadable.swift in Sources */,
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
-				CA5CC5EE1FB97E510014C901 /* WhatsNewItemImageView.swift in Sources */,
-				CA5CC5EB1FB97E510014C901 /* PresentationOption.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
-				CA10252D1F876BDD00FFD9D6 /* DataManager.swift in Sources */,
+				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
+				CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */,
 				CA10252E1F876BDD00FFD9D6 /* Extensions.swift in Sources */,
-				CA5CC5EF1FB97E510014C901 /* WhatsNewItemTextView.swift in Sources */,
-				CA5CC5EC1FB97E510014C901 /* WhatsNew.swift in Sources */,
 				CA1025391F876BF900FFD9D6 /* FavoritesVC.swift in Sources */,
-				CA5CC5ED1FB97E510014C901 /* WhatsNewItem.swift in Sources */,
 				CA10253A1F876BF900FFD9D6 /* InformationVC.swift in Sources */,
-				CA5CC5F51FB97E510014C901 /* WhatsNewViewController.swift in Sources */,
 				CA1025311F876BDD00FFD9D6 /* Wallpaper.swift in Sources */,
 				CA10254A1F876D5000FFD9D6 /* WallpaperCell.swift in Sources */,
 				CA10252F1F876BDD00FFD9D6 /* StuffManager.swift in Sources */,
