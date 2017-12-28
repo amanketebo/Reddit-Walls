@@ -46,7 +46,23 @@ class WallpapersVC: BaseVC
 
     private func setupViews()
     {
+//
+//        let whatsNewVC = WhatsNewViewController(items: [WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello"),
+//                                                        WhatsNewItem.text(title: "Bruhh", subtitle: "Hello")])
+//        present(whatsNewVC, animated: true, completion: nil)
+        
         // Navigation bar setup
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         // Collection view setup
@@ -54,6 +70,8 @@ class WallpapersVC: BaseVC
         collectionView.delegate = self
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
         collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.backgroundColor = .redditBlue
+        collectionView.refreshControl?.tintColor = .white
         collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
         
         // Activity indicator setup
@@ -62,7 +80,7 @@ class WallpapersVC: BaseVC
         activityIndicator.startAnimating()
     }
     
-    func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
+    @objc func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
     {
         guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
         
@@ -160,10 +178,18 @@ extension WallpapersVC: UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let cell = collectionView.cellForItem(at: indexPath)
+        let cell = collectionView.cellForItem(at: indexPath) as! WallpaperCell
         let associatedWallpaper = wallpapers[indexPath.row]
         
-        performSegue(withIdentifier: Segue.wallpaper, sender: (cell, associatedWallpaper))
+        if let selectedWallpaperVC = UIStoryboard.init(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as? SelectedWallpaperVC {
+            selectedWallpaperVC.wallpaper = cell.wallpaper.image
+            selectedWallpaperVC.selectedWallpaper = associatedWallpaper
+            selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+            
+            present(selectedWallpaperVC, animated: true, completion: nil)
+        } else {
+            print("Naaaa!")
+        }
     }
 }
 

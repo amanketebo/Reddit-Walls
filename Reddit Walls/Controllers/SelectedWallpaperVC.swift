@@ -12,12 +12,18 @@ import Photos
 class SelectedWallpaperVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var xContainerView: UIView!
     
     var selectedWallpaper: Wallpaper!
     var wallpaper: UIImage!
     var imageView: UIImageView!
     var wallpaperHasLoaded = false
     let wallpaperRequester = WallpaperRequester.shared
+    var hideX: Bool = false {
+        didSet {
+            xContainerView.isHidden = hideX
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -105,7 +111,7 @@ class SelectedWallpaperVC: UIViewController {
         }
     }
     
-    func saveWallpaper() {
+    @objc func saveWallpaper() {
         if (PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized)
         {
             saveImage()
@@ -156,6 +162,15 @@ class SelectedWallpaperVC: UIViewController {
             self.present(informationVC, animated: true, completion: nil)
         }
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+
+    @IBAction func tappedX(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SelectedWallpaperVC: UIScrollViewDelegate
@@ -174,5 +189,13 @@ extension SelectedWallpaperVC: UIScrollViewDelegate
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
         
         scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+        
+        if scrollView.zoomScale <= 1 {
+            hideX = false
+        } else {
+            hideX = true
+        }
+        
+        print(scrollView.zoomScale)
     }
 }

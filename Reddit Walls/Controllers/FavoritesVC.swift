@@ -31,7 +31,7 @@ class FavoritesVC: BaseVC
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
+    @objc func changeFavoriteStatus(_ sender: UITapGestureRecognizer)
     {
         guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
         
@@ -71,14 +71,18 @@ extension FavoritesVC: UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let cell = collectionView.cellForItem(at: indexPath)
-        var associatedWallpaper: Wallpaper?
+        guard let cell = collectionView.cellForItem(at: indexPath) as? WallpaperCell else { return }
+        guard stuffManager.favorites.count > 0 else { return }
         
-        if stuffManager.favorites.count != 0 {
-            associatedWallpaper = stuffManager.favorites[indexPath.row]
+        let associatedWallpaper = stuffManager.favorites[indexPath.row]
+        
+        if let selectedWallpaperVC = UIStoryboard.init(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as? SelectedWallpaperVC {
+            selectedWallpaperVC.wallpaper = cell.wallpaper.image
+            selectedWallpaperVC.selectedWallpaper = associatedWallpaper
+            selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+            
+            present(selectedWallpaperVC, animated: true, completion: nil)
         }
-        
-        performSegue(withIdentifier: Segue.wallpaper, sender: (cell, associatedWallpaper))
     }
 }
 
