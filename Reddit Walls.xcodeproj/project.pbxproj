@@ -25,6 +25,7 @@
 		CA10254F1F876D8A00FFD9D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254B1F876D8A00FFD9D6 /* Main.storyboard */; };
 		CA1025501F876D8A00FFD9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254D1F876D8A00FFD9D6 /* LaunchScreen.storyboard */; };
 		CA11D8601FF4ACE700430D86 /* SelectedWallpaper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */; };
+		CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		CA10254C1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA10254E1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectedWallpaper.storyboard; sourceTree = "<group>"; };
+		CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaveToCameraRollActivity.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */,
 				CA1025291F876BDD00FFD9D6 /* Extensions.swift */,
 				CA1025451F876D5000FFD9D6 /* WallpaperCell.swift */,
+				CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				CA10253A1F876BF900FFD9D6 /* InformationVC.swift in Sources */,
 				CA1025311F876BDD00FFD9D6 /* Wallpaper.swift in Sources */,
 				CA10254A1F876D5000FFD9D6 /* WallpaperCell.swift in Sources */,
+				CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */,
 				CA10252F1F876BDD00FFD9D6 /* StuffManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,6 +25,10 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-b9-k9z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8Sl-DP-sI8" appends="YES" id="9bA-dA-u6r"/>
+                                </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-x0-qyh">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -71,6 +75,11 @@
                         <action selector="tappedCloseButton:" destination="M5v-ei-Exa" id="bbs-k7-1jQ"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="8Sl-DP-sI8">
+                    <connections>
+                        <action selector="longPresssed:" destination="M5v-ei-Exa" id="gZq-xb-nKz"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="341.5" y="1079.5"/>
         </scene>
