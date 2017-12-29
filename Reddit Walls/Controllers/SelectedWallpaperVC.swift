@@ -9,8 +9,11 @@
 import UIKit
 import Photos
 
+extension UIActivityType {
+    public static let customSaveToCameraRoll: UIActivityType =  UIActivityType(rawValue: "customSaveToCameraRoll")
+}
+
 class SelectedWallpaperVC: UIViewController {
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButtonContainerView: UIView!
     
@@ -34,6 +37,10 @@ class SelectedWallpaperVC: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,6 +102,18 @@ class SelectedWallpaperVC: UIViewController {
         }
     }
     
+    private func presentActivityController() {
+        let activityController = UIActivityViewController(activityItems: [wallpaperImage], applicationActivities: [CustomSaveToCameraRollActivity()])
+        activityController.excludedActivityTypes = [.addToReadingList, .markupAsPDF, .openInIBooks, .postToVimeo, .saveToCameraRoll]
+        activityController.completionWithItemsHandler = { [weak self] (activity, success, returnedItems, activityError) in
+            if activity == .customSaveToCameraRoll {
+                self?.saveWallpaper()
+            }
+        }
+        
+        present(activityController, animated: true, completion: nil)
+    }
+    
     @objc private func zoomIn(_ tapGesture: UITapGestureRecognizer)
     {
         let tapPoint = tapGesture.location(in: scrollView)
@@ -110,7 +129,7 @@ class SelectedWallpaperVC: UIViewController {
             scrollView.zoom(to: rect, animated: true)
         }
     }
-    
+        
     @objc func saveWallpaper() {
         if (PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized)
         {
@@ -144,7 +163,7 @@ class SelectedWallpaperVC: UIViewController {
     {
         UIImageWriteToSavedPhotosAlbum(wallpaperImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-    
+        
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer)
     {
         if let _ = error
@@ -163,11 +182,12 @@ class SelectedWallpaperVC: UIViewController {
         }
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    @IBAction func longPresssed(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            presentActivityController()
+        }
     }
     
-
     @IBAction func tappedCloseButton(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
