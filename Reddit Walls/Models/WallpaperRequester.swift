@@ -12,7 +12,7 @@ import Foundation
 
 class WallpaperRequester
 {
-    private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json?raw_json=1")!
+    private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json")!
     let stuffManager = StuffManager.shared
     
     static let shared = WallpaperRequester()
