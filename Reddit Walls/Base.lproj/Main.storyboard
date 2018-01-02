@@ -125,6 +125,48 @@
                                             <outlet property="wallpaper" destination="AqS-4r-Ps8" id="PHk-rC-uAh"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadingCell" id="AJa-OL-lV4">
+                                        <rect key="frame" x="1" y="238" width="373" height="228"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="228"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-TZ-k45">
+                                                    <rect key="frame" x="10" y="8" width="353" height="162"/>
+                                                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-sg-kZ7">
+                                                    <rect key="frame" x="10" y="176" width="240" height="36"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="93S-4I-eOH"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-QK-34N">
+                                                    <rect key="frame" x="0.0" y="227" width="373" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="NlP-K1-uBj"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="3AJ-sg-kZ7" firstAttribute="top" secondItem="Qsy-TZ-k45" secondAttribute="bottom" constant="6" id="2fT-Jh-BS4"/>
+                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="leading" secondItem="3AJ-sg-kZ7" secondAttribute="trailing" constant="-240" id="4yT-aA-Qz5"/>
+                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="trailing" secondItem="AJa-OL-lV4" secondAttribute="trailingMargin" constant="-2" id="55b-V2-Mm6"/>
+                                            <constraint firstItem="hmP-QK-34N" firstAttribute="top" secondItem="3AJ-sg-kZ7" secondAttribute="bottom" constant="15" id="U31-fN-G4F"/>
+                                            <constraint firstAttribute="bottom" secondItem="hmP-QK-34N" secondAttribute="bottom" id="Vlb-aN-CL4"/>
+                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="leading" secondItem="AJa-OL-lV4" secondAttribute="leadingMargin" constant="2" id="gO8-e3-NhW"/>
+                                            <constraint firstAttribute="trailing" secondItem="hmP-QK-34N" secondAttribute="trailing" id="hDn-Gf-VC9"/>
+                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="top" secondItem="AJa-OL-lV4" secondAttribute="topMargin" id="o7K-OH-w77"/>
+                                            <constraint firstItem="hmP-QK-34N" firstAttribute="leading" secondItem="AJa-OL-lV4" secondAttribute="leading" id="u6A-5S-ew2"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Qsy-TZ-k45" secondAttribute="bottom" constant="50" id="yE0-DA-jLV"/>
+                                        </constraints>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbK-BD-bLH">

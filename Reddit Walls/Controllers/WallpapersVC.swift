@@ -81,6 +81,7 @@ class WallpapersVC: BaseVC
     func fetchWallpapers()
     {
         wallpaperRequester.fetchWallpapers(page: currentPage, completion: { [weak self] (wallpapers, error) in
+            
             if let _ = error
             {
                 self?.activityIndicator.stopAnimating()
@@ -100,11 +101,19 @@ class WallpapersVC: BaseVC
             }
             else
             {
-                self?.wallpapers = wallpapers!
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.removeFromSuperview()
-                self?.collectionView.refreshControl?.endRefreshing()
-                self?.collectionView.reloadData()
+                if self?.currentPage == 0 {
+                    self?.wallpapers = wallpapers!
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.removeFromSuperview()
+                    self?.collectionView.refreshControl?.endRefreshing()
+                    self?.collectionView.reloadData()
+                } else {
+                    self?.wallpapers += wallpapers!
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.removeFromSuperview()
+                    self?.collectionView.refreshControl?.endRefreshing()
+                    self?.collectionView.reloadData()
+                }
             }
         })
     }
@@ -140,6 +149,13 @@ extension WallpapersVC: UICollectionViewDelegate
         
         present(selectedWallpaperVC, animated: true, completion: nil)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row >= wallpapers.count {
+            currentPage += 1
+            fetchWallpapers()
+        }
+    }
 }
 
 extension WallpapersVC: UICollectionViewDelegateFlowLayout
@@ -171,16 +187,22 @@ extension WallpapersVC: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return wallpapers.count
+        return wallpapers.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
-        
-        setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers)
-        cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
-        
-        return cell
+        if indexPath.row != wallpapers.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
+            
+            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers)
+            cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "loadingCell", for: indexPath)
+            
+            return cell
+        }
     }
 }
