@@ -12,10 +12,10 @@ import Foundation
 
 class WallpaperRequester
 {
-    private let wallpapersEndpoint = "https://www.reddit.com/r/wallpapers.json"
-    private lazy var redditAPI = URL(string: wallpapersEndpoint)!
+    private let baseURL = "https://www.reddit.com/r/wallpapers.json"
+    private lazy var wallpapersURL = URL(string: baseURL)!
+    var nextPages: [String] = []
     let stuffManager = StuffManager.shared
-    var pages: [String] = []
     
     static let shared = WallpaperRequester()
     
@@ -28,11 +28,10 @@ class WallpaperRequester
         var request: URLRequest!
         
         if page == 0 {
-            request = URLRequest(url: redditAPI)
+            request = URLRequest(url: wallpapersURL)
         } else {
-            if let nextPageURL = nextPageURL(page: page),
-                let fullEndpointURL = URL(string: nextPageURL) {
-                request = URLRequest(url: fullEndpointURL)
+            if let nextPageURL = nextPageURL(page: page) {
+                request = URLRequest(url: nextPageURL)
             } else {
                 return
             }
@@ -54,7 +53,7 @@ class WallpaperRequester
                 }
                 
                 if let nextPage = self?.nextPage(data: data!) {
-                    self?.pages.append(nextPage)
+                    self?.nextPages.append(nextPage)
                 }
             }
         }
@@ -131,12 +130,9 @@ class WallpaperRequester
         }
     }
     
-    private func nextPageURL(page: Int) -> String? {
-        guard let nextPage = pages.last else { return nil }
+    private func nextPageURL(page: Int) -> URL? {
+        guard let nextPage = nextPages.last else { return nil }
         
-        return wallpapersEndpoint + "?after=" + "\(nextPage)"
+        return URL(string: baseURL + "?after=" + "\(nextPage)")
     }
 }
-
-
-

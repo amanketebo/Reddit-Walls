@@ -16,6 +16,7 @@ class WallpapersVC: BaseVC
     var wallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
     var currentPage = 0
+    var initialFetch = true
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -103,17 +104,15 @@ class WallpapersVC: BaseVC
             {
                 if self?.currentPage == 0 {
                     self?.wallpapers = wallpapers!
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.removeFromSuperview()
-                    self?.collectionView.refreshControl?.endRefreshing()
-                    self?.collectionView.reloadData()
                 } else {
                     self?.wallpapers += wallpapers!
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.removeFromSuperview()
-                    self?.collectionView.refreshControl?.endRefreshing()
-                    self?.collectionView.reloadData()
                 }
+                
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.refreshControl?.endRefreshing()
+                self?.collectionView.reloadData()
+                self?.initialFetch = false
             }
         })
     }
@@ -125,6 +124,7 @@ class WallpapersVC: BaseVC
     
     @objc private func refreshWallpapers()
     {
+        currentPage = 0
         fetchWallpapers()
     }
     
@@ -187,12 +187,12 @@ extension WallpapersVC: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return wallpapers.count + 1
+        return initialFetch ? wallpapers.count : wallpapers.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        if indexPath.row != wallpapers.count {
+        if indexPath.row < wallpapers.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
             
             setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers)
