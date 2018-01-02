@@ -12,8 +12,10 @@ import Foundation
 
 class WallpaperRequester
 {
-    private let redditAPI = URL(string: "https://www.reddit.com/r/wallpapers.json")!
+    private let wallpapersEndpoint = "https://www.reddit.com/r/wallpapers.json"
+    private lazy var redditAPI = URL(string: wallpapersEndpoint)!
     let stuffManager = StuffManager.shared
+    var pages: [String] = []
     
     static let shared = WallpaperRequester()
     
@@ -22,10 +24,21 @@ class WallpaperRequester
     
     // MARK: - Wallpaper fetching methods
     
-    func fetchWallpapers(completion: @escaping WallpapersCallback) {
-        let request = URLRequest(url: redditAPI)
+    func fetchWallpapers(page: Int, completion: @escaping WallpapersCallback) {
+        var request: URLRequest!
         
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        if page == 0 {
+            request = URLRequest(url: redditAPI)
+        } else {
+            if let nextPageURL = nextPageURL(page: page),
+                let fullEndpointURL = URL(string: nextPageURL) {
+                request = URLRequest(url: fullEndpointURL)
+            } else {
+                return
+            }
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) in
             if let taskError = error
             {
                 DispatchQueue.main.async {
@@ -34,10 +47,14 @@ class WallpaperRequester
             }
             else
             {
-                let returnedWallpapers = self.parseWallpaperJSON(data: data!)
+                let returnedWallpapers = self?.parseWallpaperJSON(data: data!)
                 
                 DispatchQueue.main.async {
                     completion(returnedWallpapers, nil)
+                }
+                
+                if let nextPage = self?.nextPage(data: data!) {
+                    self?.pages.append(nextPage)
                 }
             }
         }
@@ -102,6 +119,22 @@ class WallpaperRequester
         }
         
         return wallpapers
+    }
+    
+    private func nextPage(data: Data) -> String? {
+        let json = JSON(data)
+        
+        if let nextPage = json[SwiftyJSONPaths.nextPage].string {
+            return nextPage
+        } else {
+            return nil
+        }
+    }
+    
+    private func nextPageURL(page: Int) -> String? {
+        guard let nextPage = pages.last else { return nil }
+        
+        return wallpapersEndpoint + "?after=" + "\(nextPage)"
     }
 }
 
