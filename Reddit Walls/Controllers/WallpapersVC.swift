@@ -15,6 +15,7 @@ class WallpapersVC: BaseVC
     
     var wallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
+    var currentPage = 0
     
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
@@ -79,7 +80,7 @@ class WallpapersVC: BaseVC
     
     func fetchWallpapers()
     {
-        wallpaperRequester.fetchWallpapers(completion: { [weak self] (wallpapers, error) in
+        wallpaperRequester.fetchWallpapers(page: currentPage, completion: { [weak self] (wallpapers, error) in
             if let _ = error
             {
                 self?.activityIndicator.stopAnimating()
