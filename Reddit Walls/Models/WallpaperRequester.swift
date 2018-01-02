@@ -14,7 +14,7 @@ class WallpaperRequester
 {
     private let baseURL = "https://www.reddit.com/r/wallpapers.json"
     private lazy var wallpapersURL = URL(string: baseURL)!
-    var nextPages: [String] = []
+    var nextPage: String?
     let stuffManager = StuffManager.shared
     
     static let shared = WallpaperRequester()
@@ -33,6 +33,9 @@ class WallpaperRequester
             if let nextPageURL = nextPageURL(page: page) {
                 request = URLRequest(url: nextPageURL)
             } else {
+                DispatchQueue.main.async {
+                    completion([], nil)
+                }
                 return
             }
         }
@@ -46,14 +49,16 @@ class WallpaperRequester
             }
             else
             {
+                if let nextPage = self?.nextPage(data: data!) {
+                    self?.nextPage = nextPage
+                } else {
+                    self?.nextPage = nil
+                }
+                
                 let returnedWallpapers = self?.parseWallpaperJSON(data: data!)
                 
                 DispatchQueue.main.async {
                     completion(returnedWallpapers, nil)
-                }
-                
-                if let nextPage = self?.nextPage(data: data!) {
-                    self?.nextPages.append(nextPage)
                 }
             }
         }
@@ -131,7 +136,7 @@ class WallpaperRequester
     }
     
     private func nextPageURL(page: Int) -> URL? {
-        guard let nextPage = nextPages.last else { return nil }
+        guard let nextPage = nextPage else { return nil }
         
         return URL(string: baseURL + "?after=" + "\(nextPage)")
     }
