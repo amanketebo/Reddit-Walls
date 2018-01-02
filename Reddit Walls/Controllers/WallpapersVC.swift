@@ -187,7 +187,13 @@ extension WallpapersVC: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return initialFetch ? wallpapers.count : wallpapers.count + 1
+        if initialFetch {
+            return wallpapers.count
+        } else if !initialFetch && wallpaperRequester.nextPage == nil {
+            return wallpapers.count
+        } else {
+            return wallpapers.count + 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
