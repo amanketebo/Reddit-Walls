@@ -16,6 +16,7 @@ extension UIActivityType {
 class SelectedWallpaperVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButtonContainerView: UIView!
+    @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
     var selectedWallpaper: Wallpaper!
     var wallpaperImage: UIImage!
@@ -31,7 +32,7 @@ class SelectedWallpaperVC: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         modalTransitionStyle = .crossDissolve
-        modalPresentationStyle = .currentContext
+        modalPresentationStyle = .overCurrentContext
     }
     
     override func viewDidLoad()
@@ -195,6 +196,47 @@ class SelectedWallpaperVC: UIViewController {
         }
     }
     
+    @IBAction func panned(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            hideCloseButton = true
+        case .changed:
+            let panTranslation = sender.translation(in: scrollView).y
+            let viewAlpha = 1 - abs(panTranslation / scrollView.bounds.height)
+            
+            view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: CGFloat(viewAlpha))
+            scrollView.frame.origin.y = sender.translation(in: scrollView).y
+        case .ended:
+            let velocity = abs(Double(sender.velocity(in: view).y))
+            let movingUpwards = sender.velocity(in: view).y < 0 ? true : false
+            
+            if velocity > 100 {
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    guard let strongSelf = self else { return }
+                    
+                    if movingUpwards {
+                        strongSelf.scrollView.frame.origin.y = -(strongSelf.view.bounds.height)
+                    } else {
+                        strongSelf.scrollView.frame.origin.y = strongSelf.view.bounds.height
+                    }
+                    
+                    strongSelf.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+                    }, completion: { [weak self] (_) in
+                        guard let strongSelf = self else { return }
+                        
+                        strongSelf.dismiss(animated: false, completion: nil)
+                })
+            } else {
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    self?.scrollView.frame.origin.y = 0
+                    self?.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+                })
+                
+                hideCloseButton = false
+            }
+        default: break
+        }
+    }
     @IBAction func tappedCloseButton(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
@@ -219,8 +261,10 @@ extension SelectedWallpaperVC: UIScrollViewDelegate
         
         if scrollView.zoomScale <= 1 {
             hideCloseButton = false
+            panGestureRecognizer.isEnabled = true
         } else {
             hideCloseButton = true
+            panGestureRecognizer.isEnabled = false
         }
     }
 }
