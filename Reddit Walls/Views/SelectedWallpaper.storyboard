@@ -24,10 +24,10 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQc-b9-k9z">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8Sl-DP-sI8" appends="YES" id="9bA-dA-u6r"/>
+                                    <outletCollection property="gestureRecognizers" destination="Vwl-eM-nE4" appends="YES" id="0vL-7l-0BF"/>
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-x0-qyh">
@@ -54,6 +54,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XQc-b9-k9z" firstAttribute="top" secondItem="F0P-yx-iLD" secondAttribute="top" id="GXT-UV-nqV"/>
                             <constraint firstItem="hzG-x0-qyh" firstAttribute="leading" secondItem="d5u-ao-tU5" secondAttribute="leading" id="Hog-K1-sjV"/>
@@ -66,6 +67,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButtonContainerView" destination="hzG-x0-qyh" id="Hgg-LB-b2a"/>
+                        <outlet property="panGestureRecognizer" destination="Vwl-eM-nE4" id="FKp-Tz-Im5"/>
                         <outlet property="scrollView" destination="XQc-b9-k9z" id="QOO-sn-ciC"/>
                     </connections>
                 </viewController>
@@ -80,6 +82,11 @@
                         <action selector="longPresssed:" destination="M5v-ei-Exa" id="gZq-xb-nKz"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Vwl-eM-nE4">
+                    <connections>
+                        <action selector="panned:" destination="M5v-ei-Exa" id="cPZ-fR-Crz"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="341.5" y="1079.5"/>
         </scene>
