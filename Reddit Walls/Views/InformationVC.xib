@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,8 @@
                 <outlet property="buttonStackView" destination="t0K-Xl-M6E" id="9O4-cc-qYA"/>
                 <outlet property="imageView" destination="AP7-Sv-SBR" id="zFJ-FK-vd2"/>
                 <outlet property="messageLabel" destination="7eb-7h-nwC" id="8so-2D-SyR"/>
+                <outlet property="stackViewBorder" destination="eqV-qu-7C9" id="ZRC-Xi-vbu"/>
+                <outlet property="stackViewConstraint" destination="2R3-Bi-BD7" id="ndP-1G-NkA"/>
                 <outlet property="view" destination="eG1-Wu-dJt" id="Q86-uv-fH4"/>
             </connections>
         </placeholder>

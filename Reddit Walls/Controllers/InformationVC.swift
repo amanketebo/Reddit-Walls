@@ -19,6 +19,8 @@ class InformationVC: UIViewController
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
+    @IBOutlet weak var stackViewBorder: UIView!
+    @IBOutlet weak var stackViewConstraint: NSLayoutConstraint!
     
     
     private var image: UIImage?
@@ -53,6 +55,11 @@ class InformationVC: UIViewController
         messageLabel.text = message
         imageView.image = image
         setupStackView()
+        
+        if leftButtonData == nil && rightButtonData == nil {
+            stackViewBorder.backgroundColor = .clear
+            stackViewConstraint.constant = 0
+        }
     }
     
     private func setupStackView()
