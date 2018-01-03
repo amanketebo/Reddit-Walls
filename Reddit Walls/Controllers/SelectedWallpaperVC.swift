@@ -176,9 +176,16 @@ class SelectedWallpaperVC: UIViewController {
         else
         {
             let message = "Wallpaper saved sucessfully!"
-            let buttonData = ButtonData(title: "Okay", color: .black)
-            let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "check"), leftButtonData: buttonData, rightButtonData: nil)
-            self.present(informationVC, animated: true, completion: nil)
+            let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "check"), leftButtonData: nil, rightButtonData: nil)
+            self.present(informationVC, animated: true) {
+                let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+                    UIView.animate(withDuration: 0.5, animations: {
+                        informationVC.view.alpha = 0
+                    }, completion: { (_) in
+                        informationVC.dismiss(animated: false, completion: nil)
+                    })
+                })
+            }
         }
     }
     
