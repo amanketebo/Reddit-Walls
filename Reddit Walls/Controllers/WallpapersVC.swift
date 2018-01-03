@@ -104,14 +104,28 @@ class WallpapersVC: BaseVC
             {
                 if self?.currentPage == 0 {
                     self?.wallpapers = wallpapers!
+                    self?.collectionView.reloadData()
                 } else {
+                    let previousWallpaperCount = self!.wallpapers.count
+                    let currentWallpaperCount = previousWallpaperCount + wallpapers!.count
+                    var newIndexPaths: [IndexPath] = []
+                    for i in previousWallpaperCount..<currentWallpaperCount {
+                        newIndexPaths.append(IndexPath(row: i - 1, section: 0))
+                    }
+                    
                     self?.wallpapers += wallpapers!
+                    
+                    
+                    self?.collectionView.performBatchUpdates({ [weak self] in
+                        self?.collectionView.insertItems(at: newIndexPaths)
+                        }, completion: { (_) in
+    
+                    })
                 }
                 
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.removeFromSuperview()
                 self?.collectionView.refreshControl?.endRefreshing()
-                self?.collectionView.reloadData()
                 self?.initialFetch = false
             }
         })
