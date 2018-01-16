@@ -170,6 +170,19 @@ extension WallpapersVC: UICollectionViewDelegate
             fetchWallpapers()
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.row < wallpapers.count else { return }
+        guard let url = URL(string: wallpapers[indexPath.row].fullResolutionURL) else { return }
+
+        URLSession.shared.getAllTasks { (tasks) in
+            guard let taskIndex = tasks.index(where: { (task) -> Bool in
+                return url == task.originalRequest?.url
+            }) else { return }
+
+            tasks[taskIndex].cancel()
+        }
+    }
 }
 
 extension WallpapersVC: UICollectionViewDelegateFlowLayout
