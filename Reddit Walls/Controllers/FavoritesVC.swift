@@ -13,6 +13,7 @@ class FavoritesVC: BaseVC
     @IBOutlet weak var collectionView: UICollectionView!
     
     let notificationCenter = NotificationCenter.default
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad()
     {
@@ -22,6 +23,16 @@ class FavoritesVC: BaseVC
     
     private func setupViews()
     {
+        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
+        let theme = AppTheme(rawValue: savedTheme)
+
+        if let theme = theme {
+            switch theme {
+            case .dark: collectionView.subviews[0].backgroundColor = .darkBlack
+            case .light: collectionView.subviews[0].backgroundColor = .white
+            }
+        }
+
         // Navigation bar setup
         navigationItem.title = "Favorites"
         
@@ -111,8 +122,10 @@ extension FavoritesVC: UICollectionViewDataSource {
         if stuffManager.favorites.count != 0
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
+            let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
+            let theme = AppTheme(rawValue: savedTheme)
             
-            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: stuffManager.favorites)
+            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: stuffManager.favorites, theme: theme)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
             
             return cell
