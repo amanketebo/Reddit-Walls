@@ -20,6 +20,9 @@ extension UIColor
     {
         return UIColor(red: 38/255, green: 130/255, blue: 211/255, alpha: 1)
     }
+
+    static let darkBlack = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.0)
+    static let lightBlack = UIColor(red:0.16, green:0.16, blue:0.16, alpha: 1.0)
 }
 
 extension UIView
@@ -36,6 +39,7 @@ extension UIView
 
 extension Notification.Name {
     static let favoritesUpdated = Notification.Name(rawValue: "favoritesUpdated")
+    static let themeUpdated = Notification.Name(rawValue: "themeUpdated")
 }
 
 extension UIStoryboard {
@@ -44,4 +48,8 @@ extension UIStoryboard {
     
     // Segues
     static let favoritesSegue = "Favorites"
+}
+
+extension UserDefaults {
+    static let themeKey = "theme"
 }
