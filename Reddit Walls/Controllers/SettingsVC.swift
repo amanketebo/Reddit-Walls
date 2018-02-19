@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum AppTheme: Int {
-    case light
-    case dark
-}
-
 class SettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
@@ -36,17 +31,8 @@ class SettingsVC: UIViewController {
     }
 
     @objc private func setApperance() {
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        guard let appTheme = AppTheme(rawValue: savedTheme) else { return }
-
-        switch  appTheme{
-        case .light:
-            navigationController?.navigationBar.barTintColor = .redditBlue
-            view.backgroundColor = .white
-        case .dark:
-            navigationController?.navigationBar.barTintColor = .lightBlack
-            view.backgroundColor = .darkBlack
-        }
+        Theme.shared.styleNavbar(navigationController?.navigationBar)
+        Theme.shared.styleBackground(view)
     }
 
     @IBAction func tappedDone(_ sender: UIBarButtonItem) {
@@ -65,24 +51,10 @@ extension SettingsVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ThemeCell.identifier, for: indexPath) as! ThemeCell
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
 
         cell.delegate = self
-
-        if let theme = AppTheme(rawValue: savedTheme) {
-            cell.darkSwitch.isOn = theme == .dark ? true : false
-
-            switch theme {
-            case .light:
-                cell.contentView.backgroundColor = .white
-                cell.darkLabel.textColor = .black
-                cell.darkSwitch.onTintColor = nil
-            case .dark:
-                cell.contentView.backgroundColor = .darkBlack
-                cell.darkLabel.textColor = .white
-                cell.darkSwitch.onTintColor = .redditBlue
-            }
-        }
+        cell.darkSwitch.isOn = Theme.shared.appTheme == .dark ? true : false
+        Theme.shared.styleCell(cell)
 
         return cell
     }

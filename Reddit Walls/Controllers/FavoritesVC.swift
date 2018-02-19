@@ -23,15 +23,7 @@ class FavoritesVC: BaseVC
     
     private func setupViews()
     {
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        let theme = AppTheme(rawValue: savedTheme)
-
-        if let theme = theme {
-            switch theme {
-            case .dark: collectionView.subviews[0].backgroundColor = .darkBlack
-            case .light: collectionView.subviews[0].backgroundColor = .white
-            }
-        }
+        Theme.shared.styleBackground(collectionView.subviews[0])
 
         // Navigation bar setup
         navigationItem.title = "Favorites"
