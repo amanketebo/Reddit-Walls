@@ -18,7 +18,7 @@ class BaseVC: UIViewController
         super.viewDidLoad()
     }
     
-    func setupCollectionView(cell: WallpaperCell,  indexPath: IndexPath, wallpapers: [Wallpaper])
+    func setupCollectionView(cell: WallpaperCell,  indexPath: IndexPath, wallpapers: [Wallpaper], theme: AppTheme?)
     {
         let wallpaper = wallpapers[indexPath.row]
         
@@ -26,16 +26,17 @@ class BaseVC: UIViewController
         cell.title.text = wallpapers[indexPath.row].title
         cell.author.text = wallpapers[indexPath.row].author
         cell.wallpaper.image = #imageLiteral(resourceName: "gray")
-        cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
+        cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
+        Theme.shared.styleWallpaperCell(cell)
         
         // Set up favorite icon
         if stuffManager.favoritesContains(wallpaper)
         {
-            cell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
         }
         else
         {
-            cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
         }
         
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
