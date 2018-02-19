@@ -32,15 +32,7 @@ class WallpapersVC: BaseVC
 
     private func setupViews()
     {
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        let theme = AppTheme(rawValue: savedTheme)
-
-        if let theme = theme {
-            switch theme {
-            case .dark: collectionView.subviews[0].backgroundColor = .darkBlack
-            case .light: collectionView.subviews[0].backgroundColor = .white
-            }
-        }
+        Theme.shared.styleBackground(collectionView.subviews[0])
 
         // Navigation bar setup
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
@@ -65,8 +57,6 @@ class WallpapersVC: BaseVC
         let wallpaperCellTag = wallpaperCell.tag
         let indexPath = IndexPath(row: wallpaperCellTag, section: 0)
         let selectedWallpaper = wallpapers[wallpaperCellTag]
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        let theme = AppTheme(rawValue: savedTheme)
         
         if stuffManager.favoritesContains(selectedWallpaper)
         {
@@ -75,14 +65,7 @@ class WallpapersVC: BaseVC
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
                 {
-                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
-
-                    if let theme = theme {
-                        switch theme {
-                        case .dark: wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledbluestar")
-                        case .light: wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
-                        }
-                    }
+                    wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
                 }
             }, completion: nil)
         }
@@ -93,32 +76,15 @@ class WallpapersVC: BaseVC
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
                 {
-                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
-
-                    if let theme = theme {
-                        switch theme {
-                        case .dark: wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "filledbluestar")
-                        case .light: wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "filledblackstar")
-                        }
-                    }
+                    wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
                 }
             }, completion: nil)
         }
     }
 
     @objc private func updateTheme() {
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        let theme = AppTheme(rawValue: savedTheme)
-
-        if let theme = theme {
-            collectionView.reloadData()
-            switch theme {
-            case .dark:
-                collectionView.subviews[0].backgroundColor = .darkBlack
-            case .light:
-                collectionView.subviews[0].backgroundColor = .white
-            }
-        }
+        collectionView.reloadData()
+        Theme.shared.styleBackground(collectionView.subviews[0])
     }
     
     func fetchWallpapers()

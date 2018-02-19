@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     @objc private func setupAppearance()
     {
-        let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-        guard let appTheme = AppTheme(rawValue: savedTheme) else { return }
         let navBar = UINavigationBar.appearance()
         let refreshControl = UIRefreshControl.appearance()
 
@@ -34,13 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         navBar.barStyle = .black
         navBar.tintColor = .white
         refreshControl.tintColor = .white
-
-        switch appTheme {
-        case .light:
-            navBar.barTintColor = .redditBlue
-        case .dark:
-            navBar.barTintColor = .lightBlack
-        }
+        Theme.shared.styleNavbar(navBar)
     }
 }
 

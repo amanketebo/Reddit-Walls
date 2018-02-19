@@ -26,53 +26,17 @@ class BaseVC: UIViewController
         cell.title.text = wallpapers[indexPath.row].title
         cell.author.text = wallpapers[indexPath.row].author
         cell.wallpaper.image = #imageLiteral(resourceName: "gray")
-        cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
-
-        if let theme = theme {
-            switch theme {
-            case .dark:
-                cell.contentView.backgroundColor = .darkBlack
-                cell.title.textColor = .white
-                cell.submittedByLabel.textColor = .white
-                cell.author.textColor = .white
-                cell.seperator.backgroundColor = .lightBlack
-                cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledbluestar")
-            case .light:
-                cell.contentView.backgroundColor = .white
-                cell.title.textColor = .black
-                cell.submittedByLabel.textColor = .black
-                cell.author.textColor = .redditBlue
-                cell.seperator.backgroundColor = .lightGray
-                cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledblackstar")
-            }
-        }
+        cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
+        Theme.shared.styleWallpaperCell(cell)
         
         // Set up favorite icon
         if stuffManager.favoritesContains(wallpaper)
         {
-            cell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
-
-            if let theme = theme {
-                switch theme {
-                case .dark:
-                    cell.favoriteIcon.image = #imageLiteral(resourceName: "filledbluestar")
-                case .light:
-                    cell.favoriteIcon.image = #imageLiteral(resourceName: "filledblackstar")
-                }
-            }
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
         }
         else
         {
-            cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
-
-            if let theme = theme {
-                switch theme {
-                case .dark:
-                    cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledbluestar")
-                case .light:
-                    cell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledblackstar")
-                }
-            }
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
         }
         
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL)
