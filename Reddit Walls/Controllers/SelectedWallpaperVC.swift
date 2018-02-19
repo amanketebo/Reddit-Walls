@@ -93,7 +93,13 @@ class SelectedWallpaperVC: UIViewController {
                     
                     self?.present(informationVC, animated: true, completion: nil)
                 }
-                else {
+                else if wallpaper == nil {
+                    let message = "Whoops, looks like something is wrong with the Reddit servers. Please try again later."
+                    let leftButton = ButtonData(title: "Okay", color: .black)
+                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
+
+                    self?.present(informationVC, animated: true, completion: nil)
+                } else {
                     self?.wallpaperImage = wallpaper!
                     self?.wallpaperHasLoaded = true
                     activityIndicator.stopAnimating()

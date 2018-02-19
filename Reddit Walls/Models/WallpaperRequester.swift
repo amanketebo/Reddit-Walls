@@ -137,7 +137,7 @@ class WallpaperRequester
     
     private func nextPageURL(page: Int) -> URL? {
         guard let nextPage = nextPage else { return nil }
-        
+
         return URL(string: baseURL + "?after=" + "\(nextPage)")
     }
 }
