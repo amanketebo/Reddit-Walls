@@ -15,6 +15,7 @@ class WallpapersVC: BaseVC
     
     var wallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
+    let userDefaults = UserDefaults.standard
     var currentPage = 0
     var initialFetch = true
     
@@ -25,13 +26,15 @@ class WallpapersVC: BaseVC
         super.viewDidLoad()
         setupViews()
         notificationCenter.addObserver(self, selector: #selector(updateFavoriteIcons), name: .favoritesUpdated, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(updateTheme), name: .themeUpdated, object: nil)
         fetchWallpapers()
     }
 
     private func setupViews()
     {
+        Theme.shared.styleBackground(collectionView.subviews[0])
+
         // Navigation bar setup
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
         // Collection view setup
@@ -62,7 +65,7 @@ class WallpapersVC: BaseVC
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
                 {
-                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "unfilledstar")
+                    wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
                 }
             }, completion: nil)
         }
@@ -73,10 +76,15 @@ class WallpapersVC: BaseVC
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell
                 {
-                    wallpaperCell.favoriteIcon.image = #imageLiteral(resourceName: "filledstar")
+                    wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
                 }
             }, completion: nil)
         }
+    }
+
+    @objc private func updateTheme() {
+        collectionView.reloadData()
+        Theme.shared.styleBackground(collectionView.subviews[0])
     }
     
     func fetchWallpapers()
@@ -227,8 +235,10 @@ extension WallpapersVC: UICollectionViewDataSource
     {
         if indexPath.row < wallpapers.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
+            let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
+            let theme = AppTheme(rawValue: savedTheme)
             
-            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers)
+            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: wallpapers, theme: theme)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
             
             return cell

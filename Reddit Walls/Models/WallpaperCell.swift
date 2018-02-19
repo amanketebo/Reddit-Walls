@@ -18,7 +18,11 @@ class WallpaperCell: UICollectionViewCell
     
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var submittedByLabel: UILabel!
+    
     @IBOutlet weak var author: UILabel!
     
     @IBOutlet weak var favoriteIcon: UIImageView!
+    
+    @IBOutlet weak var seperator: UIView!
 }
