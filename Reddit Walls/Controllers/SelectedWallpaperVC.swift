@@ -268,9 +268,11 @@ extension SelectedWallpaperVC: UIScrollViewDelegate
         if scrollView.zoomScale <= 1 {
             hideCloseButton = false
             panGestureRecognizer.isEnabled = true
+            UIApplication.shared.isStatusBarHidden = false
         } else {
             hideCloseButton = true
             panGestureRecognizer.isEnabled = false
+             UIApplication.shared.isStatusBarHidden = true
         }
     }
 }
