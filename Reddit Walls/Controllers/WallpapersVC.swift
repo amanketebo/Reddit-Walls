@@ -117,9 +117,10 @@ class WallpapersVC: BaseVC
                     let previousWallpaperCount = self!.wallpapers.count
                     let currentWallpaperCount = previousWallpaperCount + wallpapers!.count
                     var newIndexPaths: [IndexPath] = []
-                    for i in previousWallpaperCount..<currentWallpaperCount {
-                        newIndexPaths.append(IndexPath(row: i - 1, section: 0))
+                    for index in previousWallpaperCount..<currentWallpaperCount {
+                        newIndexPaths.append(IndexPath(row: index - 1, section: 0))
                     }
+
                     
                     self?.wallpapers += wallpapers!
                     
@@ -234,7 +235,9 @@ extension WallpapersVC: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         if indexPath.row < wallpapers.count {
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
+            // swiftlint:disable:previous force_cast
             let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
             let theme = AppTheme(rawValue: savedTheme)
             

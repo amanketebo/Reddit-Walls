@@ -184,6 +184,7 @@
 				CAC2C4281E7BE8F1004F6EA1 /* Resources */,
 				37298183BE89911ABBC6959C /* [CP] Embed Pods Frameworks */,
 				E37285B74872F495D69237FA /* [CP] Copy Pods Resources */,
+				CA1266632082AD1400AD4FF9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -275,6 +276,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CA1266632082AD1400AD4FF9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		E37285B74872F495D69237FA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

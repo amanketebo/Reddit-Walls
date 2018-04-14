@@ -113,7 +113,10 @@ extension FavoritesVC: UICollectionViewDataSource {
     {
         if stuffManager.favorites.count != 0
         {
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
+            // swiftlint:disable:previous force_cast
+
             let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
             let theme = AppTheme(rawValue: savedTheme)
             

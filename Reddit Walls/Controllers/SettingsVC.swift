@@ -50,7 +50,10 @@ extension SettingsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: ThemeCell.identifier, for: indexPath) as! ThemeCell
+        // swiftlint:disable:previous force_cast
+
 
         cell.delegate = self
         cell.darkSwitch.isOn = Theme.shared.appTheme == .dark ? true : false
