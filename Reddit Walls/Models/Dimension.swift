@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-struct Dimension
-{
+struct Dimension {
     static let cellHeight: CGFloat = 275
     static let footerHeight: CGFloat = 75
     static let edgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0)

@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'Reddit Walls' do
 	pod 'SwiftyJSON'
+	pod 'SwiftLint'
 end

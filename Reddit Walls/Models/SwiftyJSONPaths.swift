@@ -9,11 +9,10 @@
 import Foundation
 import SwiftyJSON
 
-struct SwiftyJSONPaths
-{
+struct SwiftyJSONPaths {
     static let wallpapers: [JSONSubscriptType] = ["data", "children"]
     static let title: [JSONSubscriptType] = ["data", "title"]
     static let author: [JSONSubscriptType] = ["data", "author"]
-    static let fullResolution: [JSONSubscriptType] = ["data", "preview", "images", 0, "source","url"]
+    static let fullResolution: [JSONSubscriptType] = ["data", "preview", "images", 0, "source", "url"]
     static let nextPage: [JSONSubscriptType] = ["data", "after"]
 }
