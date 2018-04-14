@@ -9,15 +9,12 @@
 import Foundation
 import UIKit
 
-extension UIColor
-{
-    class var hintOfGray: UIColor
-    {
+extension UIColor {
+    class var hintOfGray: UIColor {
         return UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     }
-    
-    class var redditBlue: UIColor
-    {
+
+    class var redditBlue: UIColor {
         return UIColor(red: 38/255, green: 130/255, blue: 211/255, alpha: 1)
     }
 
@@ -25,12 +22,10 @@ extension UIColor
     static let lightBlack = UIColor(red:0.16, green:0.16, blue:0.16, alpha: 1.0)
 }
 
-extension UIView
-{
-    func centerInParentView()
-    {
+extension UIView {
+    func centerInParentView() {
         guard let parentView = self.superview else { return }
-        
+
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
         self.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
@@ -45,7 +40,7 @@ extension Notification.Name {
 extension UIStoryboard {
     // Storyboards
     static let selectedWallpaper = UIStoryboard(name: "SelectedWallpaper", bundle: nil)
-    
+
     // Segues
     static let favoritesSegue = "Favorites"
 }

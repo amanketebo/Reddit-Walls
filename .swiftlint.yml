@@ -1,0 +1,8 @@
+white-list-rules:
+- opening_brace
+excluded:
+- Carthage
+- Pods
+
+
+line_length: 200

@@ -8,28 +8,24 @@
 
 import UIKit
 
-struct ButtonData
-{
+struct ButtonData {
     let title: String
     let color: UIColor
 }
 
-class InformationVC: UIViewController
-{
+class InformationVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var stackViewBorder: UIView!
     @IBOutlet weak var stackViewConstraint: NSLayoutConstraint!
-    
-    
+
     private var image: UIImage?
     private var message: String!
     private var leftButtonData: ButtonData?
     private var rightButtonData: ButtonData?
-    
-    init(message: String, image: UIImage?, leftButtonData: ButtonData?, rightButtonData: ButtonData?)
-    {
+
+    init(message: String, image: UIImage?, leftButtonData: ButtonData?, rightButtonData: ButtonData?) {
         super.init(nibName: "InformationVC", bundle: nil)
         self.message = message
         self.image = image
@@ -38,64 +34,57 @@ class InformationVC: UIViewController
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
     }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
+
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    override func viewDidLoad()
-    {
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
-    
-    private func setupViews()
-    {
+
+    private func setupViews() {
         messageLabel.text = message
         imageView.image = image
         setupStackView()
-        
+
         if leftButtonData == nil && rightButtonData == nil {
             stackViewBorder.backgroundColor = .clear
             stackViewConstraint.constant = 0
         }
     }
-    
-    private func setupStackView()
-    {
+
+    private func setupStackView() {
         var buttons: [UIView] = []
         let buttonFont = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
-        
-        if let leftButtonData = leftButtonData
-        {
+
+        if let leftButtonData = leftButtonData {
             let leftButton = UIButton(type: .system)
-            
+
             leftButton.setTitle(leftButtonData.title, for: .normal)
             leftButton.setTitleColor(leftButtonData.color, for: .normal)
             leftButton.titleLabel?.font = buttonFont
             leftButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
             buttons.append(leftButton)
         }
-        
-        if let rightButtonData = rightButtonData
-        {
+
+        if let rightButtonData = rightButtonData {
             let rightButton = UIButton(type: .system)
-            
+
             rightButton.setTitle(rightButtonData.title, for: .normal)
             rightButton.setTitleColor(rightButtonData.color, for: .normal)
             rightButton.titleLabel?.font = buttonFont
             rightButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
             buttons.append(rightButton)
         }
-        
+
         buttons.forEach { (view) in
             buttonStackView.addArrangedSubview(view)
         }
     }
-    
-    @objc private func dismissVC()
-    {
+
+    @objc private func dismissVC() {
         dismiss(animated: true, completion: nil)
     }
 }
