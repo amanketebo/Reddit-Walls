@@ -3,3 +3,6 @@ white-list-rules:
 excluded:
 - Carthage
 - Pods
+
+
+line_length: 200
