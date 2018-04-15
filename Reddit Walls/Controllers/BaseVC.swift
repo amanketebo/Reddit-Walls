@@ -62,5 +62,9 @@ class BaseVC: UIViewController
             }
         }
     }
+
+    func setupCollectionView(cell: LoadingCell) {
+        Theme.shared.styleLoadingCell(cell)
+    }
 }
 
