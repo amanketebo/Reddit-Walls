@@ -243,7 +243,9 @@ extension WallpapersVC: UICollectionViewDataSource
             
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "loadingCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "loadingCell", for: indexPath) as! LoadingCell
+
+            setupCollectionView(cell: cell)
             
             return cell
         }

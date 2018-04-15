@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OBK-qc-ow3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -127,20 +127,20 @@
                                             <outlet property="wallpaper" destination="AqS-4r-Ps8" id="PHk-rC-uAh"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadingCell" id="AJa-OL-lV4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadingCell" id="AJa-OL-lV4" customClass="LoadingCell" customModule="Reddit_Walls" customModuleProvider="target">
                                         <rect key="frame" x="1" y="238" width="373" height="228"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-TZ-k45">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-TZ-k45">
                                                     <rect key="frame" x="10" y="8" width="353" height="162"/>
                                                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-sg-kZ7">
                                                     <rect key="frame" x="10" y="176" width="240" height="36"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="93S-4I-eOH"/>
                                                     </constraints>
@@ -168,6 +168,10 @@
                                             <constraint firstItem="hmP-QK-34N" firstAttribute="leading" secondItem="AJa-OL-lV4" secondAttribute="leading" id="u6A-5S-ew2"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="Qsy-TZ-k45" secondAttribute="bottom" constant="50" id="yE0-DA-jLV"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="infoPlaceHolder" destination="3AJ-sg-kZ7" id="w4V-bN-2FT"/>
+                                            <outlet property="wallpaperPlaceHolder" destination="Qsy-TZ-k45" id="Muu-fs-Roi"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

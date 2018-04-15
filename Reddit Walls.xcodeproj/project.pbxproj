@@ -25,6 +25,7 @@
 		CA10254F1F876D8A00FFD9D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254B1F876D8A00FFD9D6 /* Main.storyboard */; };
 		CA1025501F876D8A00FFD9D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA10254D1F876D8A00FFD9D6 /* LaunchScreen.storyboard */; };
 		CA11D8601FF4ACE700430D86 /* SelectedWallpaper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */; };
+		CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1266642082E34F00AD4FF9 /* LoadingCell.swift */; };
 		CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
@@ -53,6 +54,7 @@
 		CA10254C1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA10254E1F876D8A00FFD9D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Reddit Walls/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		CA11D85F1FF4ACE700430D86 /* SelectedWallpaper.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectedWallpaper.storyboard; sourceTree = "<group>"; };
+		CA1266642082E34F00AD4FF9 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaveToCameraRollActivity.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA4F3E04203AAD8800B82A56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				CA1025451F876D5000FFD9D6 /* WallpaperCell.swift */,
 				CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */,
 				CA8B4B57202798180006127D /* ThemeCell.swift */,
+				CA1266642082E34F00AD4FF9 /* LoadingCell.swift */,
 				CA4F3E04203AAD8800B82A56 /* Theme.swift */,
 			);
 			path = Models;
@@ -304,6 +307,7 @@
 				CA1025381F876BF900FFD9D6 /* BaseVC.swift in Sources */,
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
+				CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
 				CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */,
 				CA10252E1F876BDD00FFD9D6 /* Extensions.swift in Sources */,

@@ -80,6 +80,10 @@ class Theme {
         styleCellSeperator(seperatorView: wallpaperCell.seperator)
     }
 
+    func styleLoadingCell(_ loadingCell: LoadingCell) {
+        styleBackground(loadingCell.contentView)
+    }
+
     func styleCellSeperator(seperatorView: UIView) {
         switch appTheme {
         case .light: seperatorView.backgroundColor = .lightGray
