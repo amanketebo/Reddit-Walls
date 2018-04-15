@@ -8,21 +8,20 @@
 
 import UIKit
 
-class WallpaperCell: UICollectionViewCell
-{
+class WallpaperCell: UICollectionViewCell {
     static let identifier = "wallpaperCell"
-    
+
     var wallpaperHasLoaded = false
-    
+
     @IBOutlet weak var wallpaper: UIImageView!
-    
+
     @IBOutlet weak var title: UILabel!
-    
+
     @IBOutlet weak var submittedByLabel: UILabel!
-    
+
     @IBOutlet weak var author: UILabel!
-    
+
     @IBOutlet weak var favoriteIcon: UIImageView!
-    
+
     @IBOutlet weak var seperator: UIView!
 }

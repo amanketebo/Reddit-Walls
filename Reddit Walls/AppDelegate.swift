@@ -9,22 +9,19 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate
-{
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private let userDefaults = UserDefaults.standard
     private let notificationCenter = NotificationCenter.default
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
-    {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupAppearance()
         notificationCenter.addObserver(self, selector: #selector(setupAppearance), name: .themeUpdated, object: nil)
         return true
     }
-    
-    @objc private func setupAppearance()
-    {
+
+    @objc private func setupAppearance() {
         let navBar = UINavigationBar.appearance()
         let refreshControl = UIRefreshControl.appearance()
 
@@ -35,4 +32,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         Theme.shared.styleNavbar(navBar)
     }
 }
-
