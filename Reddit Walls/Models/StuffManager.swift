@@ -63,7 +63,8 @@ class StuffManager
             
             wallpaperInfo[Wallpaper.title] = wallpaper.title
             wallpaperInfo[Wallpaper.author] = wallpaper.author
-            wallpaperInfo[Wallpaper.url] = wallpaper.fullResolutionURL
+            wallpaperInfo[Wallpaper.fullResolutionURL] = wallpaper.fullResolutionURL
+            wallpaperInfo[Wallpaper.lowerResolutionURL] = wallpaper.lowerResolutionURL
             
             favoritesPropertyList.append(wallpaperInfo)
         }
