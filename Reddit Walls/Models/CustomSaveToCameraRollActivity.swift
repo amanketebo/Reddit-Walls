@@ -30,7 +30,9 @@ class CustomSaveToCameraRollActivity: UIActivity {
         var canPerform = true
 
         for activityItem in activityItems {
-            if let activityImage = activityItem as? UIImage {
+            // swiftlint:disable:next unused_optional_binding
+            if let _ = activityItem as? UIImage {
+            // swiftlint:disable:previous unused_optional_binding
                 // Since this is empty, try to refactor this
             } else {
                 canPerform = false
