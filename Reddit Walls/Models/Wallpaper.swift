@@ -51,7 +51,7 @@ extension Wallpaper {
         let author = json[SwiftyJSONPaths.author].stringValue
         let fullResolutionURL = json[SwiftyJSONPaths.fullResolution].stringValue
         let resolutionsCount = json["data", "preview", "images", 0, "resolutions"].count
-        let lowerResolutionURL = json["data", "preview", "images", 0, "resolutions", resolutionsCount-1, "url"].stringValue
+        let lowerResolutionURL = json["data", "preview", "images", 0, "resolutions", resolutionsCount - 1, "url"].stringValue
 
         self.init(title, author, lowerResolutionURL, fullResolutionURL)
     }
