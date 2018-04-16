@@ -19,6 +19,7 @@ extension UIColor {
     }
 
     static let darkBlack = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.0)
+    
     static let lightBlack = UIColor(red:0.16, green:0.16, blue:0.16, alpha: 1.0)
 }
 
@@ -29,6 +30,30 @@ extension UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
         self.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
+    }
+
+    func fillSuperView() {
+        if let superView = self.superview {
+            self.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                self.leftAnchor.constraint(equalTo: superView.leftAnchor),
+                self.rightAnchor.constraint(equalTo: superView.rightAnchor),
+                self.topAnchor.constraint(equalTo: superView.topAnchor),
+                self.bottomAnchor.constraint(equalTo: superView.bottomAnchor)
+                ])
+        }
+    }
+
+    func fadeIn(duration: TimeInterval) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = 1
+        }
+    }
+
+    func fadeOut(duration: TimeInterval) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = 0
+        }
     }
 }
 
@@ -43,6 +68,13 @@ extension UIStoryboard {
 
     // Segues
     static let favoritesSegue = "Favorites"
+
+    // VC
+    class var wallpapersVC: WallpapersVC {
+        // swiftlint:disable:next force_cast
+        return UIStoryboard.init(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
+        // swiftlint:disable:previous force_cas
+    }
 }
 
 extension UserDefaults {

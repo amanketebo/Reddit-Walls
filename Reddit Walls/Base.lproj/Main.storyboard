@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +30,7 @@
         <!--Reddit Walls-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WallpapersVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RedditsVC" customModule="Reddit_Walls" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,143 +39,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6OS-2L-MxX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vRh-RO-gIh">
-                                    <size key="itemSize" width="373" height="228"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <view key="backgroundView" contentMode="scaleToFill" id="c9s-i5-p82">
-                                    <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wallpaperCell" id="ncS-DQ-2Cd" customClass="WallpaperCell" customModule="Reddit_Walls" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="0.0" width="373" height="228"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="228"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="AqS-4r-Ps8">
-                                                    <rect key="frame" x="10" y="8" width="353" height="162"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost Road [3080 x 5450]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50a-gD-NR0">
-                                                    <rect key="frame" x="10" y="177" width="304" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="0.0" height="1"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="submitted by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-Kl-pJC">
-                                                    <rect key="frame" x="10" y="199" width="79" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="faceIt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zW3-AI-fWT">
-                                                    <rect key="frame" x="93" y="199" width="35" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.0" green="0.30588235289999999" blue="0.52549019610000003" alpha="1" colorSpace="deviceRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unfilledstar" translatesAutoresizingMaskIntoConstraints="NO" id="Iiz-49-kJF">
-                                                    <rect key="frame" x="324" y="184" width="30" height="30"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="Re8-K0-Mhv"/>
-                                                        <constraint firstAttribute="height" constant="30" id="f6a-o7-84k"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-Ut-f4x">
-                                                    <rect key="frame" x="0.0" y="227" width="373" height="1"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="xDF-PQ-eOU"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstItem="50a-gD-NR0" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leadingMargin" constant="2" id="4cd-EF-JoX"/>
-                                            <constraint firstItem="Iiz-49-kJF" firstAttribute="top" secondItem="AqS-4r-Ps8" secondAttribute="bottom" constant="14" id="6Ya-a6-kdh"/>
-                                            <constraint firstItem="zW3-AI-fWT" firstAttribute="top" secondItem="50a-gD-NR0" secondAttribute="bottom" constant="1" id="HSD-T1-A6e"/>
-                                            <constraint firstItem="AqS-4r-Ps8" firstAttribute="top" secondItem="ncS-DQ-2Cd" secondAttribute="topMargin" id="HfP-vi-7yg"/>
-                                            <constraint firstItem="AqS-4r-Ps8" firstAttribute="trailing" secondItem="ncS-DQ-2Cd" secondAttribute="trailingMargin" constant="-2" id="IuO-fR-mGH"/>
-                                            <constraint firstItem="Iiz-49-kJF" firstAttribute="leading" secondItem="50a-gD-NR0" secondAttribute="trailing" constant="10" id="MeU-Qs-Q2R"/>
-                                            <constraint firstItem="zW3-AI-fWT" firstAttribute="leading" secondItem="B9U-Kl-pJC" secondAttribute="trailing" constant="4" id="NDO-hq-Q4X"/>
-                                            <constraint firstItem="50a-gD-NR0" firstAttribute="top" secondItem="AqS-4r-Ps8" secondAttribute="bottom" constant="7" id="QoO-my-A0d"/>
-                                            <constraint firstItem="B9U-Kl-pJC" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leadingMargin" constant="2" id="VgC-fV-pQm"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Iiz-49-kJF" secondAttribute="trailing" constant="11" id="WGe-dv-JcW"/>
-                                            <constraint firstAttribute="trailing" secondItem="eUJ-Ut-f4x" secondAttribute="trailing" id="YIs-tj-7Hs"/>
-                                            <constraint firstAttribute="bottom" secondItem="eUJ-Ut-f4x" secondAttribute="bottom" id="gKX-kI-F5T"/>
-                                            <constraint firstItem="AqS-4r-Ps8" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leadingMargin" constant="2" id="ohc-FA-5fi"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="AqS-4r-Ps8" secondAttribute="bottom" constant="50" id="wAE-WU-lNN"/>
-                                            <constraint firstItem="B9U-Kl-pJC" firstAttribute="top" secondItem="50a-gD-NR0" secondAttribute="bottom" constant="1" id="wZ2-XU-OLs"/>
-                                            <constraint firstItem="eUJ-Ut-f4x" firstAttribute="leading" secondItem="ncS-DQ-2Cd" secondAttribute="leading" id="yIb-t3-yLJ"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="author" destination="zW3-AI-fWT" id="ACj-bS-SXy"/>
-                                            <outlet property="favoriteIcon" destination="Iiz-49-kJF" id="XLF-ml-Fqa"/>
-                                            <outlet property="seperator" destination="eUJ-Ut-f4x" id="wcj-Ev-Bds"/>
-                                            <outlet property="submittedByLabel" destination="B9U-Kl-pJC" id="VgQ-8Q-mRx"/>
-                                            <outlet property="title" destination="50a-gD-NR0" id="HfX-h0-Ncj"/>
-                                            <outlet property="wallpaper" destination="AqS-4r-Ps8" id="PHk-rC-uAh"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadingCell" id="AJa-OL-lV4" customClass="LoadingCell" customModule="Reddit_Walls" customModuleProvider="target">
-                                        <rect key="frame" x="1" y="238" width="373" height="228"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="228"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-TZ-k45">
-                                                    <rect key="frame" x="10" y="8" width="353" height="162"/>
-                                                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-sg-kZ7">
-                                                    <rect key="frame" x="10" y="176" width="240" height="36"/>
-                                                    <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="240" id="93S-4I-eOH"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-QK-34N">
-                                                    <rect key="frame" x="0.0" y="227" width="373" height="1"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="NlP-K1-uBj"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstItem="3AJ-sg-kZ7" firstAttribute="top" secondItem="Qsy-TZ-k45" secondAttribute="bottom" constant="6" id="2fT-Jh-BS4"/>
-                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="leading" secondItem="3AJ-sg-kZ7" secondAttribute="trailing" constant="-240" id="4yT-aA-Qz5"/>
-                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="trailing" secondItem="AJa-OL-lV4" secondAttribute="trailingMargin" constant="-2" id="55b-V2-Mm6"/>
-                                            <constraint firstItem="hmP-QK-34N" firstAttribute="top" secondItem="3AJ-sg-kZ7" secondAttribute="bottom" constant="15" id="U31-fN-G4F"/>
-                                            <constraint firstAttribute="bottom" secondItem="hmP-QK-34N" secondAttribute="bottom" id="Vlb-aN-CL4"/>
-                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="leading" secondItem="AJa-OL-lV4" secondAttribute="leadingMargin" constant="2" id="gO8-e3-NhW"/>
-                                            <constraint firstAttribute="trailing" secondItem="hmP-QK-34N" secondAttribute="trailing" id="hDn-Gf-VC9"/>
-                                            <constraint firstItem="Qsy-TZ-k45" firstAttribute="top" secondItem="AJa-OL-lV4" secondAttribute="topMargin" id="o7K-OH-w77"/>
-                                            <constraint firstItem="hmP-QK-34N" firstAttribute="leading" secondItem="AJa-OL-lV4" secondAttribute="leading" id="u6A-5S-ew2"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Qsy-TZ-k45" secondAttribute="bottom" constant="50" id="yE0-DA-jLV"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="infoPlaceHolder" destination="3AJ-sg-kZ7" id="w4V-bN-2FT"/>
-                                            <outlet property="wallpaperPlaceHolder" destination="Qsy-TZ-k45" id="Muu-fs-Roi"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JX-SG-CbP">
+                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbK-BD-bLH">
                                 <rect key="frame" x="-4" y="607" width="383" height="60"/>
                                 <subviews>
@@ -198,35 +66,119 @@
                                     <outletCollection property="gestureRecognizers" destination="X41-cq-iSJ" appends="YES" id="DBL-10-Q4J"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hl2-LD-ob4" customClass="RedditsView" customModule="Reddit_Walls" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="55"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i9I-P2-Vf1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="k4P-7x-oxf">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r/wallpapers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6S-sQ-GgT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                                        <gestureRecognizers/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="3y8-Pc-hBF" appends="YES" id="91k-mR-Se8"/>
+                                                        </connections>
+                                                    </label>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="r/iphonewallpapers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEd-qk-AK7">
+                                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                                        <gestureRecognizers/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="zeA-FT-AQP" appends="YES" id="lRZ-VK-Xd0"/>
+                                                        </connections>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUt-7Z-SMy">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6H-8o-rJd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="5"/>
+                                                        <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="s6H-8o-rJd" firstAttribute="top" secondItem="GUt-7Z-SMy" secondAttribute="top" id="86V-uD-qaW"/>
+                                                    <constraint firstAttribute="height" constant="5" id="9Nu-Y5-aax"/>
+                                                    <constraint firstAttribute="bottom" secondItem="s6H-8o-rJd" secondAttribute="bottom" id="AQR-5B-Ieg"/>
+                                                    <constraint firstItem="s6H-8o-rJd" firstAttribute="leading" secondItem="GUt-7Z-SMy" secondAttribute="leading" id="xX3-XO-7hW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="s6H-8o-rJd" firstAttribute="width" secondItem="P6S-sQ-GgT" secondAttribute="width" id="Azu-5c-IVg"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6YS-Q4-Keg" firstAttribute="bottom" secondItem="i9I-P2-Vf1" secondAttribute="bottom" id="6uk-KD-tNZ"/>
+                                    <constraint firstItem="i9I-P2-Vf1" firstAttribute="top" secondItem="6YS-Q4-Keg" secondAttribute="top" id="Js7-W0-xyh"/>
+                                    <constraint firstAttribute="height" constant="55" id="P8F-0F-gDQ"/>
+                                    <constraint firstItem="6YS-Q4-Keg" firstAttribute="trailing" secondItem="i9I-P2-Vf1" secondAttribute="trailing" id="VBy-Iq-AZL"/>
+                                    <constraint firstItem="i9I-P2-Vf1" firstAttribute="leading" secondItem="6YS-Q4-Keg" secondAttribute="leading" id="r1x-Jn-hft"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="6YS-Q4-Keg"/>
+                                <connections>
+                                    <outlet property="iphoneWallpapersLabel" destination="LEd-qk-AK7" id="5cP-WQ-6pq"/>
+                                    <outlet property="leadingConstraint" destination="xX3-XO-7hW" id="JUe-cg-4Yo"/>
+                                    <outlet property="sameWidthConstraint" destination="Azu-5c-IVg" id="g70-LA-pv0"/>
+                                    <outlet property="underlineHolderView" destination="GUt-7Z-SMy" id="SJZ-bH-dQO"/>
+                                    <outlet property="underlineView" destination="s6H-8o-rJd" id="0fy-Cx-BXU"/>
+                                    <outlet property="wallpapersLabel" destination="P6S-sQ-GgT" id="iGH-ge-Ih6"/>
+                                </connections>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hl2-LD-ob4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3aP-ey-kmJ"/>
+                            <constraint firstAttribute="trailing" secondItem="hl2-LD-ob4" secondAttribute="trailing" id="OeK-Xi-leY"/>
+                            <constraint firstItem="2JX-SG-CbP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rnb-1u-Zv6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HbK-BD-bLH" secondAttribute="trailing" constant="-20" id="SUf-Rz-yqe"/>
                             <constraint firstItem="HbK-BD-bLH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Wqv-mP-I8x"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HbK-BD-bLH" secondAttribute="bottom" id="ayQ-ez-doj"/>
-                            <constraint firstItem="6OS-2L-MxX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gnm-4J-GyB"/>
-                            <constraint firstAttribute="trailing" secondItem="6OS-2L-MxX" secondAttribute="trailing" id="nZk-Di-KK2"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6OS-2L-MxX" secondAttribute="bottom" id="wri-V6-dAt"/>
-                            <constraint firstItem="6OS-2L-MxX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xUe-Mv-5Sh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2JX-SG-CbP" secondAttribute="bottom" id="cha-Xv-NVq"/>
+                            <constraint firstItem="2JX-SG-CbP" firstAttribute="top" secondItem="hl2-LD-ob4" secondAttribute="bottom" id="hq8-B1-EgR"/>
+                            <constraint firstItem="hl2-LD-ob4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="k2M-4M-DpA"/>
+                            <constraint firstAttribute="trailing" secondItem="2JX-SG-CbP" secondAttribute="trailing" id="sYe-WI-12v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reddit Walls" id="vMX-iu-Epb">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="settingsgear" id="BMS-K1-Z4Z">
                             <connections>
-                                <segue destination="ZIU-rO-bCX" kind="presentation" id="vmP-i9-UPe"/>
+                                <segue destination="ZIU-rO-bCX" kind="presentation" id="2RB-Z3-LWD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="6OS-2L-MxX" id="Boy-B7-hgr"/>
-                        <outlet property="favoritesView" destination="HbK-BD-bLH" id="MMV-LQ-YC2"/>
+                        <outlet property="redditsView" destination="hl2-LD-ob4" id="uz0-nz-rIC"/>
+                        <outlet property="wallpapersView" destination="2JX-SG-CbP" id="JvI-SL-bv4"/>
                         <segue destination="aZy-E9-5py" kind="show" identifier="Favorites" id="IlU-st-s0r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="X41-cq-iSJ">
                     <connections>
-                        <action selector="segueToFavoritesView:" destination="BYZ-38-t0r" id="so8-ZV-FXc"/>
+                        <action selector="tappedFavorites:" destination="BYZ-38-t0r" id="zLO-s4-dnA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3y8-Pc-hBF">
+                    <connections>
+                        <action selector="tappedWallpapers:" destination="hl2-LD-ob4" id="Rrs-rA-5sA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="zeA-FT-AQP">
+                    <connections>
+                        <action selector="tappedIphoneWallpapers:" destination="hl2-LD-ob4" id="TRi-8b-c7N"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -424,7 +376,7 @@
                                             <outlet property="wallpaper" destination="g4g-VL-1Dh" id="skV-gL-o92"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noFavorites" id="LQi-cm-9q0">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noFavoritesCell" id="LQi-cm-9q0" customClass="NoFavoritesCell" customModule="Reddit_Walls" customModuleProvider="target">
                                         <rect key="frame" x="0.5" y="238" width="374" height="302"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -455,6 +407,9 @@
                                             <constraint firstItem="Y6M-FQ-bAH" firstAttribute="centerX" secondItem="LQi-cm-9q0" secondAttribute="centerX" id="dLu-LV-6aE"/>
                                         </constraints>
                                         <size key="customSize" width="374" height="302"/>
+                                        <connections>
+                                            <outlet property="label" destination="Y6M-FQ-bAH" id="1bR-RP-MPR"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
