@@ -49,10 +49,21 @@ class Theme {
         styleSwitch(themeCell.darkSwitch)
     }
 
-    func styleLabel(_ label: UILabel) {
+    func styleLabel(_ label: UILabel, favoritesScreen: Bool = false) {
         switch appTheme {
-        case .light: label.textColor = .black
+        case .light: label.textColor = favoritesScreen ? .gray : .black
         case .dark: label.textColor = .white
+        }
+    }
+
+    func styleRedditViewsLabel(_ label: UILabel) {
+        switch appTheme {
+        case .light:
+            label.backgroundColor = .white
+            label.textColor = .black
+        case .dark:
+            label.backgroundColor = .darkBlack
+            label.textColor = .white
         }
     }
 

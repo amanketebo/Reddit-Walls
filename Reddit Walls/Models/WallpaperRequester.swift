@@ -11,12 +11,14 @@ import SwiftyJSON
 import Foundation
 
 class WallpaperRequester {
-    private let baseURL = "https://www.reddit.com/r/wallpapers.json"
+    private var baseURL = "https://www.reddit.com/r/wallpapers.json"
     private lazy var wallpapersURL = URL(string: baseURL)!
     var nextPage: String?
     let stuffManager = StuffManager.shared
 
-    static let shared = WallpaperRequester()
+    init(subredditURL: String) {
+        self.baseURL = subredditURL
+    }
 
     typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
     typealias WallpaperImageDataCallback = (UIImage?, Error?) -> Void

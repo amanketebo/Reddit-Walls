@@ -106,7 +106,11 @@ extension FavoritesVC: UICollectionViewDataSource {
 
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "noFavorites", for: indexPath)
+            // swiftlint:disable:next force_cast
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoFavoritesCell.identifier, for: indexPath) as! NoFavoritesCell
+            //swiftlint:disable:previous force_cast
+
+            setupCollectionView(noFavoritesCell: cell)
 
             return cell
         }

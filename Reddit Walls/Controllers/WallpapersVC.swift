@@ -10,13 +10,21 @@ import UIKit
 
 class WallpapersVC: BaseVC {
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var favoritesView: UIView!
 
     var wallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
     let userDefaults = UserDefaults.standard
     var currentPage = 0
     var initialFetch = true
+
+    init(baseURL: String) {
+        let wallpaperRequester = WallpaperRequester(subredditURL: baseURL)
+        super.init(wallpaperRequester: wallpaperRequester)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
@@ -30,9 +38,6 @@ class WallpapersVC: BaseVC {
 
     private func setupViews() {
         Theme.shared.styleBackground(collectionView.subviews[0])
-
-        // Navigation bar setup
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
         // Collection view setup
         collectionView.dataSource = self
@@ -149,6 +154,7 @@ extension WallpapersVC: UICollectionViewDelegate {
         selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
         selectedWallpaperVC.selectedWallpaper = associatedWallpaper
         selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+        selectedWallpaperVC.wallpaperRequester = wallpaperRequester
 
         present(selectedWallpaperVC, animated: true, completion: nil)
     }
@@ -219,7 +225,7 @@ extension WallpapersVC: UICollectionViewDataSource {
             return cell
         } else {
             // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "loadingCell", for: indexPath) as! LoadingCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
             // swiftlint:disable:previous force_cast
 
             setupCollectionView(cell: cell)

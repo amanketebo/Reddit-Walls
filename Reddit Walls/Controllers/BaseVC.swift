@@ -10,7 +10,16 @@ import UIKit
 
 class BaseVC: UIViewController {
     let stuffManager = StuffManager.shared
-    let wallpaperRequester = WallpaperRequester.shared
+    var wallpaperRequester: WallpaperRequester = WallpaperRequester(subredditURL: "https://www.reddit.com/r/wallpapers.json")
+
+    init(wallpaperRequester: WallpaperRequester) {
+        self.wallpaperRequester = wallpaperRequester
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +62,10 @@ class BaseVC: UIViewController {
 
     func setupCollectionView(cell: LoadingCell) {
         Theme.shared.styleLoadingCell(cell)
+    }
+
+    func setupCollectionView(noFavoritesCell: NoFavoritesCell) {
+        Theme.shared.styleLabel(noFavoritesCell.label, favoritesScreen: true)
+        Theme.shared.styleBackground(noFavoritesCell.contentView)
     }
 }
