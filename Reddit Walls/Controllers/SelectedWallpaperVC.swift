@@ -22,7 +22,7 @@ class SelectedWallpaperVC: UIViewController {
     var wallpaperImage: UIImage!
     var imageView: UIImageView!
     var wallpaperHasLoaded = false
-    let wallpaperRequester = WallpaperRequester.shared
+    var wallpaperRequester: WallpaperRequester!
     var hideCloseButton: Bool = false {
         didSet {
             closeButtonContainerView.isHidden = hideCloseButton
