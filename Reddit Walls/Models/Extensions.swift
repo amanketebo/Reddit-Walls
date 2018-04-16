@@ -70,10 +70,13 @@ extension UIStoryboard {
     static let favoritesSegue = "Favorites"
 
     // VC
-    class var wallpapersVC: WallpapersVC {
+    class func wallpapersVC(baseURL: String) -> WallpapersVC {
         // swiftlint:disable:next force_cast
-        return UIStoryboard.init(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
-        // swiftlint:disable:previous force_cas
+        let wallpapersVC = UIStoryboard.init(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
+        // swiftlint:disable:previous force_cast
+
+        wallpapersVC.wallpaperRequester = WallpaperRequester(subredditURL: baseURL)
+        return wallpapersVC
     }
 }
 

@@ -17,6 +17,15 @@ class WallpapersVC: BaseVC {
     var currentPage = 0
     var initialFetch = true
 
+    init(baseURL: String) {
+        let wallpaperRequester = WallpaperRequester(subredditURL: baseURL)
+        super.init(wallpaperRequester: wallpaperRequester)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
     override func viewDidLoad() {
@@ -29,7 +38,6 @@ class WallpapersVC: BaseVC {
 
     private func setupViews() {
         Theme.shared.styleBackground(collectionView.subviews[0])
-
 
         // Collection view setup
         collectionView.dataSource = self
@@ -146,6 +154,7 @@ extension WallpapersVC: UICollectionViewDelegate {
         selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
         selectedWallpaperVC.selectedWallpaper = associatedWallpaper
         selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+        selectedWallpaperVC.wallpaperRequester = wallpaperRequester
 
         present(selectedWallpaperVC, animated: true, completion: nil)
     }

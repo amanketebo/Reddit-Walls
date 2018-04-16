@@ -12,8 +12,8 @@ class RedditsVC: UIViewController {
     @IBOutlet weak var redditsView: RedditsView!
     @IBOutlet weak var wallpapersView: UIView!
 
-    let wallpapersVC = UIStoryboard.wallpapersVC
-    let iphoneWallpapersVC = UIStoryboard.wallpapersVC
+    let wallpapersVC = UIStoryboard.wallpapersVC(baseURL: "https://www.reddit.com/r/wallpapers.json")
+    let iphoneWallpapersVC = UIStoryboard.wallpapersVC(baseURL: "https://www.reddit.com/r/iphonewallpapers.json")
 
     let notificationCenter = NotificationCenter.default
 
