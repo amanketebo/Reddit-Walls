@@ -52,8 +52,10 @@ class SelectedWallpaperVC: UIViewController {
     func setupViews() {
         // Image view and scroll view setup
         if wallpaperHasLoaded {
+            let height = wallpaperImage.size.height > wallpaperImage.size.width ? view.bounds.size.height : Dimension.imageViewHeight
+
             imageView = UIImageView(image: wallpaperImage)
-            imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: Dimension.imageViewHeight)
+            imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
 
             let padding = (scrollView.bounds.size.height - imageView.frame.size.height) / 2
 
