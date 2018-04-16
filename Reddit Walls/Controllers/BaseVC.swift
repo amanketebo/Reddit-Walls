@@ -54,4 +54,9 @@ class BaseVC: UIViewController {
     func setupCollectionView(cell: LoadingCell) {
         Theme.shared.styleLoadingCell(cell)
     }
+
+    func setupCollectionView(noFavoritesCell: NoFavoritesCell) {
+        Theme.shared.styleLabel(noFavoritesCell.label, favoritesScreen: true)
+        Theme.shared.styleBackground(noFavoritesCell.contentView)
+    }
 }

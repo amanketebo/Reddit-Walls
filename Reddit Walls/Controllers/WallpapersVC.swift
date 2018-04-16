@@ -10,7 +10,6 @@ import UIKit
 
 class WallpapersVC: BaseVC {
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var favoritesView: UIView!
 
     var wallpapers = [Wallpaper]()
     let notificationCenter = NotificationCenter.default
@@ -31,8 +30,6 @@ class WallpapersVC: BaseVC {
     private func setupViews() {
         Theme.shared.styleBackground(collectionView.subviews[0])
 
-        // Navigation bar setup
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
 
         // Collection view setup
         collectionView.dataSource = self
@@ -219,7 +216,7 @@ extension WallpapersVC: UICollectionViewDataSource {
             return cell
         } else {
             // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "loadingCell", for: indexPath) as! LoadingCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
             // swiftlint:disable:previous force_cast
 
             setupCollectionView(cell: cell)
