@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CAC2C4291E7BE8F1004F6EA1"
-               BuildableName = "Reddit Walls.app"
-               BlueprintName = "Reddit Walls"
+               BlueprintIdentifier = "CA5A515520A12BB1009521B3"
+               BuildableName = "RedditWallsUITests.xctest"
+               BlueprintName = "RedditWallsUITests"
                ReferencedContainer = "container:Reddit Walls.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -39,15 +39,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAC2C4291E7BE8F1004F6EA1"
-            BuildableName = "Reddit Walls.app"
-            BlueprintName = "Reddit Walls"
-            ReferencedContainer = "container:Reddit Walls.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,23 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAC2C4291E7BE8F1004F6EA1"
-            BuildableName = "Reddit Walls.app"
-            BlueprintName = "Reddit Walls"
+            BlueprintIdentifier = "CA5A515520A12BB1009521B3"
+            BuildableName = "RedditWallsUITests.xctest"
+            BlueprintName = "RedditWallsUITests"
             ReferencedContainer = "container:Reddit Walls.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -87,16 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAC2C4291E7BE8F1004F6EA1"
-            BuildableName = "Reddit Walls.app"
-            BlueprintName = "Reddit Walls"
+            BlueprintIdentifier = "CA5A515520A12BB1009521B3"
+            BuildableName = "RedditWallsUITests.xctest"
+            BlueprintName = "RedditWallsUITests"
             ReferencedContainer = "container:Reddit Walls.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
