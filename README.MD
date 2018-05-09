@@ -1,3 +1,3 @@
 # Reddit Walls
 
-![](readmeimages/screenshots.png)
+![](readmeimages/whitescreenshots.png)
