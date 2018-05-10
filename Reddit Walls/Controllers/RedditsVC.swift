@@ -45,6 +45,7 @@ class RedditsVC: UIViewController {
     }
 
     @objc private func updateRedditsViewTheme() {
+        Theme.shared.styleBackground(view)
         Theme.shared.styleBackground(redditsView.underlineHolderView)
         Theme.shared.styleRedditViewsLabel(redditsView.wallpapersLabel)
         Theme.shared.styleRedditViewsLabel(redditsView.iphoneWallpapersLabel)

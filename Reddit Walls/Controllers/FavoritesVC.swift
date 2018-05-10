@@ -21,6 +21,7 @@ class FavoritesVC: BaseVC {
 
     private func setupViews() {
         Theme.shared.styleBackground(collectionView.subviews[0])
+        Theme.shared.styleBackground(view)
 
         // Navigation bar setup
         navigationItem.title = "Favorites"
@@ -46,6 +47,11 @@ class FavoritesVC: BaseVC {
 
         collectionView.reloadData()
         notificationCenter.post(name: .favoritesUpdated, object: nil)
+    }
+
+    func setBackgroundColors() {
+        Theme.shared.styleBackground(view)
+        Theme.shared.styleBackground(collectionView.subviews[0])
     }
 }
 
