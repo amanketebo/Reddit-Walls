@@ -31,8 +31,8 @@ class SettingsVC: UIViewController {
     }
 
     @objc private func setApperance() {
-        Theme.shared.styleNavbar(navigationController?.navigationBar)
         Theme.shared.styleBackground(view)
+        Theme.shared.styleNavbar(navigationController?.navigationBar)
     }
 
     @IBAction func tappedDone(_ sender: UIBarButtonItem) {
