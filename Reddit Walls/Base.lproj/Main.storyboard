@@ -39,10 +39,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JX-SG-CbP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKy-tA-3MM">
                                 <rect key="frame" x="0.0" y="119" width="375" height="548"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbK-BD-bLH">
                                 <rect key="frame" x="-4" y="607" width="383" height="60"/>
                                 <subviews>
@@ -141,15 +140,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hl2-LD-ob4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3aP-ey-kmJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QKy-tA-3MM" secondAttribute="bottom" id="IN3-t2-Aje"/>
                             <constraint firstAttribute="trailing" secondItem="hl2-LD-ob4" secondAttribute="trailing" id="OeK-Xi-leY"/>
-                            <constraint firstItem="2JX-SG-CbP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Rnb-1u-Zv6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HbK-BD-bLH" secondAttribute="trailing" constant="-20" id="SUf-Rz-yqe"/>
                             <constraint firstItem="HbK-BD-bLH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Wqv-mP-I8x"/>
+                            <constraint firstItem="QKy-tA-3MM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="a9g-Z3-IBP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HbK-BD-bLH" secondAttribute="bottom" id="ayQ-ez-doj"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2JX-SG-CbP" secondAttribute="bottom" id="cha-Xv-NVq"/>
-                            <constraint firstItem="2JX-SG-CbP" firstAttribute="top" secondItem="hl2-LD-ob4" secondAttribute="bottom" id="hq8-B1-EgR"/>
+                            <constraint firstItem="QKy-tA-3MM" firstAttribute="top" secondItem="hl2-LD-ob4" secondAttribute="bottom" id="cHh-Pg-HUF"/>
+                            <constraint firstAttribute="trailing" secondItem="QKy-tA-3MM" secondAttribute="trailing" id="d3w-py-4v9"/>
                             <constraint firstItem="hl2-LD-ob4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="k2M-4M-DpA"/>
-                            <constraint firstAttribute="trailing" secondItem="2JX-SG-CbP" secondAttribute="trailing" id="sYe-WI-12v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reddit Walls" id="vMX-iu-Epb">
@@ -161,7 +160,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="redditsView" destination="hl2-LD-ob4" id="uz0-nz-rIC"/>
-                        <outlet property="wallpapersView" destination="2JX-SG-CbP" id="JvI-SL-bv4"/>
+                        <outlet property="wallpapersScrollView" destination="QKy-tA-3MM" id="gAu-q8-sJR"/>
                         <segue destination="aZy-E9-5py" kind="show" identifier="Favorites" id="IlU-st-s0r"/>
                     </connections>
                 </viewController>
