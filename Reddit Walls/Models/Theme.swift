@@ -101,4 +101,18 @@ class Theme {
         case .dark: seperatorView.backgroundColor = .lightBlack
         }
     }
+
+    func styleUIRefreshControl(_ refreshControl: UIRefreshControl) {
+        switch appTheme {
+        case .light: refreshControl.tintColor = .gray
+        case .dark: refreshControl.tintColor = .white
+        }
+    }
+
+    func styleUIActivityIndicator(_ activityIndicator: UIActivityIndicatorView) {
+        switch appTheme {
+        case .light: activityIndicator.color = .gray
+        case .dark: activityIndicator.color = .white
+        }
+    }
 }
