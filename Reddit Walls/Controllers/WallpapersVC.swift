@@ -37,7 +37,7 @@ class WallpapersVC: BaseVC {
     }
 
     private func setupViews() {
-        Theme.shared.styleBackground(collectionView.subviews[0])
+        setBackgroundColors()
 
         // Collection view setup
         collectionView.dataSource = self
@@ -80,7 +80,7 @@ class WallpapersVC: BaseVC {
 
     @objc private func updateTheme() {
         collectionView.reloadData()
-        Theme.shared.styleBackground(collectionView.subviews[0])
+        setBackgroundColors()
     }
 
     func fetchWallpapers() {
@@ -137,6 +137,11 @@ class WallpapersVC: BaseVC {
     @objc private func refreshWallpapers() {
         currentPage = 0
         fetchWallpapers()
+    }
+
+    private func setBackgroundColors() {
+        Theme.shared.styleBackground(view)
+        Theme.shared.styleBackground(collectionView.subviews[0])
     }
 
     @IBAction func segueToFavoritesView(_ sender: UITapGestureRecognizer) {
