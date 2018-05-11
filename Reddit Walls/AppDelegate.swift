@@ -24,12 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc private func setupAppearance() {
         let navBar = UINavigationBar.appearance()
         let refreshControl = UIRefreshControl.appearance()
+        let activityIndicator = UIActivityIndicatorView.appearance()
 
         navBar.isTranslucent = false
         navBar.barStyle = .black
         navBar.tintColor = .white
-        navBar.prefersLargeTitles = true
-        refreshControl.tintColor = .white
+        
         Theme.shared.styleNavbar(navBar)
+        Theme.shared.styleUIRefreshControl(refreshControl)
+        Theme.shared.styleUIActivityIndicator(activityIndicator)
     }
 }
