@@ -17,6 +17,7 @@ class SelectedWallpaperVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButtonContainerView: UIView!
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
+    @IBOutlet weak var xButtonContainerConstraint: NSLayoutConstraint!
 
     var selectedWallpaper: Wallpaper!
     var wallpaperImage: UIImage!
@@ -37,6 +38,10 @@ class SelectedWallpaperVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436 {
+            xButtonContainerConstraint.constant = 40
+        }
     }
 
     override var prefersStatusBarHidden: Bool {
