@@ -53,7 +53,11 @@ extension Wallpaper {
         let resolutionsCount = json["data", "preview", "images", 0, "resolutions"].count
         let lowerResolutionURL = json["data", "preview", "images", 0, "resolutions", resolutionsCount - 1, "url"].stringValue
 
-        self.init(title, author, lowerResolutionURL, fullResolutionURL)
+        if fullResolutionURL.isEmpty || lowerResolutionURL.isEmpty {
+            return nil
+        } else {
+            self.init(title, author, lowerResolutionURL, fullResolutionURL)
+        }
     }
 
     convenience init?(_ wallpaperInfo: [String: String], favorite: Bool) {
@@ -61,7 +65,12 @@ extension Wallpaper {
             let author = wallpaperInfo[Wallpaper.author],
             let fullResolutionURL = wallpaperInfo[Wallpaper.fullResolutionURL],
             let lowerResolutionURL = wallpaperInfo[Wallpaper.lowerResolutionURL] {
-            self.init(title, author, lowerResolutionURL, fullResolutionURL, favorite)
+
+            if fullResolutionURL.isEmpty || lowerResolutionURL.isEmpty {
+                return nil
+            } else {
+                self.init(title, author, lowerResolutionURL, fullResolutionURL)
+            }
         } else {
             return nil
         }
