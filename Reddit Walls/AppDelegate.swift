@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBar.isTranslucent = false
         navBar.barStyle = .black
         navBar.tintColor = .white
+        navBar.prefersLargeTitles = true
         refreshControl.tintColor = .white
         Theme.shared.styleNavbar(navBar)
     }
