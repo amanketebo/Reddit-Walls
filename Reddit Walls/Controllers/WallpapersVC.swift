@@ -177,7 +177,11 @@ extension WallpapersVC: UICollectionViewDelegate {
 
         URLSession.shared.getAllTasks { (tasks) in
             guard let taskIndex = tasks.index(where: { (task) -> Bool in
-                return url == task.originalRequest?.url
+                if let taskURL = task.originalRequest?.url {
+                    return url.absoluteString == taskURL.absoluteString
+                } else {
+                    return false
+                }
             }) else { return }
 
             tasks[taskIndex].cancel()
