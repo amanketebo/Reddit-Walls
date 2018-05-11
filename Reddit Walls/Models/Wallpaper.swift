@@ -69,7 +69,7 @@ extension Wallpaper {
             if fullResolutionURL.isEmpty || lowerResolutionURL.isEmpty {
                 return nil
             } else {
-                self.init(title, author, lowerResolutionURL, fullResolutionURL)
+                self.init(title, author, lowerResolutionURL, fullResolutionURL, favorite)
             }
         } else {
             return nil
