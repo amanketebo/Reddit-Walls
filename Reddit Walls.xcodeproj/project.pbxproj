@@ -31,16 +31,24 @@
 		CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
-		CA5A515920A12BB1009521B3 /* RedditWallsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A515820A12BB1009521B3 /* RedditWallsUITests.swift */; };
+		CA5A515920A12BB1009521B3 /* SnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A515820A12BB1009521B3 /* SnapshotTest.swift */; };
 		CA5A516120A12CD9009521B3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A516020A12CD9009521B3 /* SnapshotHelper.swift */; };
 		CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EAEC7208442FA005EEFB2 /* RedditsVC.swift */; };
 		CA6EAECC20844EE8005EEFB2 /* WallpapersVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */; };
 		CA8B4B58202798180006127D /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B4B57202798180006127D /* ThemeCell.swift */; };
+		CABC193520A62C3C00496056 /* WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABC193420A62C3C00496056 /* WallpaperTests.swift */; };
 		CACE30BC201A669400358747 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE30BB201A669400358747 /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		CA5A515B20A12BB1009521B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAC2C4221E7BE8F1004F6EA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAC2C4291E7BE8F1004F6EA1;
+			remoteInfo = "Reddit Walls";
+		};
+		CABC192F20A61EB100496056 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAC2C4221E7BE8F1004F6EA1 /* Project object */;
 			proxyType = 1;
@@ -77,19 +85,29 @@
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA4F3E04203AAD8800B82A56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CA5A515620A12BB1009521B3 /* RedditWallsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditWallsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA5A515820A12BB1009521B3 /* RedditWallsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditWallsUITests.swift; sourceTree = "<group>"; };
+		CA5A515820A12BB1009521B3 /* SnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTest.swift; sourceTree = "<group>"; };
 		CA5A515A20A12BB1009521B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5A516020A12CD9009521B3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		CA6EAEC7208442FA005EEFB2 /* RedditsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditsVC.swift; sourceTree = "<group>"; };
 		CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WallpapersVC.storyboard; sourceTree = "<group>"; };
 		CA8B4B57202798180006127D /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
+		CABC192A20A61EB100496056 /* RedditWallsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditWallsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CABC192E20A61EB100496056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CABC193420A62C3C00496056 /* WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperTests.swift; sourceTree = "<group>"; };
 		CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit Walls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACE30BB201A669400358747 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CA5A515320A12BB1009521B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CABC192720A61EB100496056 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,16 +200,26 @@
 			isa = PBXGroup;
 			children = (
 				CA5A516020A12CD9009521B3 /* SnapshotHelper.swift */,
-				CA5A515820A12BB1009521B3 /* RedditWallsUITests.swift */,
+				CA5A515820A12BB1009521B3 /* SnapshotTest.swift */,
 				CA5A515A20A12BB1009521B3 /* Info.plist */,
 			);
 			path = RedditWallsUITests;
+			sourceTree = "<group>";
+		};
+		CABC192B20A61EB100496056 /* RedditWallsUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				CABC193420A62C3C00496056 /* WallpaperTests.swift */,
+				CABC192E20A61EB100496056 /* Info.plist */,
+			);
+			path = RedditWallsUnitTests;
 			sourceTree = "<group>";
 		};
 		CAC2C4211E7BE8F1004F6EA1 = {
 			isa = PBXGroup;
 			children = (
 				CAC2C42C1E7BE8F1004F6EA1 /* Reddit Walls */,
+				CABC192B20A61EB100496056 /* RedditWallsUnitTests */,
 				CA5A515720A12BB1009521B3 /* RedditWallsUITests */,
 				CAC2C42B1E7BE8F1004F6EA1 /* Products */,
 				FF3CA68FB6BB4C9BF04AD3DD /* Pods */,
@@ -204,6 +232,7 @@
 			children = (
 				CAC2C42A1E7BE8F1004F6EA1 /* Reddit Walls.app */,
 				CA5A515620A12BB1009521B3 /* RedditWallsUITests.xctest */,
+				CABC192A20A61EB100496056 /* RedditWallsUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +287,24 @@
 			productReference = CA5A515620A12BB1009521B3 /* RedditWallsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CABC192920A61EB100496056 /* RedditWallsUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CABC193320A61EB100496056 /* Build configuration list for PBXNativeTarget "RedditWallsUnitTests" */;
+			buildPhases = (
+				CABC192620A61EB100496056 /* Sources */,
+				CABC192720A61EB100496056 /* Frameworks */,
+				CABC192820A61EB100496056 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CABC193020A61EB100496056 /* PBXTargetDependency */,
+			);
+			name = RedditWallsUnitTests;
+			productName = RedditWallsUnitTests;
+			productReference = CABC192A20A61EB100496056 /* RedditWallsUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAC2C43C1E7BE8F1004F6EA1 /* Build configuration list for PBXNativeTarget "Reddit Walls" */;
@@ -295,6 +342,12 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = CAC2C4291E7BE8F1004F6EA1;
 					};
+					CABC192920A61EB100496056 = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = 6Z5EK2Z6N5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CAC2C4291E7BE8F1004F6EA1;
+					};
 					CAC2C4291E7BE8F1004F6EA1 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = WYET37TU46;
@@ -318,12 +371,20 @@
 			targets = (
 				CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */,
 				CA5A515520A12BB1009521B3 /* RedditWallsUITests */,
+				CABC192920A61EB100496056 /* RedditWallsUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CA5A515420A12BB1009521B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CABC192820A61EB100496056 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,8 +472,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA5A515920A12BB1009521B3 /* RedditWallsUITests.swift in Sources */,
+				CA5A515920A12BB1009521B3 /* SnapshotTest.swift in Sources */,
 				CA5A516120A12CD9009521B3 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CABC192620A61EB100496056 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CABC193520A62C3C00496056 /* WallpaperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +520,11 @@
 			isa = PBXTargetDependency;
 			target = CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */;
 			targetProxy = CA5A515B20A12BB1009521B3 /* PBXContainerItemProxy */;
+		};
+		CABC193020A61EB100496056 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAC2C4291E7BE8F1004F6EA1 /* Reddit Walls */;
+			targetProxy = CABC192F20A61EB100496056 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -515,6 +589,52 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Reddit Walls";
+			};
+			name = Release;
+		};
+		CABC193120A61EB100496056 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RedditWallsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unlv.keteboa.RedditWallsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit Walls.app/Reddit Walls";
+			};
+			name = Debug;
+		};
+		CABC193220A61EB100496056 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Z5EK2Z6N5;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RedditWallsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.unlv.keteboa.RedditWallsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reddit Walls.app/Reddit Walls";
 			};
 			name = Release;
 		};
@@ -667,6 +787,15 @@
 			buildConfigurations = (
 				CA5A515D20A12BB1009521B3 /* Debug */,
 				CA5A515E20A12BB1009521B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CABC193320A61EB100496056 /* Build configuration list for PBXNativeTarget "RedditWallsUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CABC193120A61EB100496056 /* Debug */,
+				CABC193220A61EB100496056 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

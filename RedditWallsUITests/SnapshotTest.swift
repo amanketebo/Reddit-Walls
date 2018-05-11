@@ -8,7 +8,7 @@
 
 import XCTest
 
-class RedditWallsUITests: XCTestCase {
+class SnapshotTest: XCTestCase {
     override func setUp() {
         super.setUp()
         let app = XCUIApplication()
@@ -33,7 +33,7 @@ class RedditWallsUITests: XCTestCase {
                 snapshot("\(i)OneWallpaper")
                 XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.tap()
             }
-            
+
             app.staticTexts["FAVORITES"].tap()
             snapshot("\(i)Favorites")
             app.navigationBars["Favorites"].buttons["Back"].tap()
