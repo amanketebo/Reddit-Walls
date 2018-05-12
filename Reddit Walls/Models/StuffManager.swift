@@ -23,7 +23,7 @@ class StuffManager {
 
     init() {
         // Setup wallpaper cache
-        wallpaperCache.countLimit = 4
+        wallpaperCache.countLimit = 8
         favorites = fetchSavedFavorites()
     }
 

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navBar.isTranslucent = false
         navBar.barStyle = .black
         navBar.tintColor = .white
-        
+
         Theme.shared.styleNavbar(navBar)
         Theme.shared.styleUIRefreshControl(refreshControl)
         Theme.shared.styleUIActivityIndicator(activityIndicator)
