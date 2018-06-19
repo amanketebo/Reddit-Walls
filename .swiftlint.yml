@@ -1,8 +1,0 @@
-excluded:
-- Carthage
-- Pods
-line_length: 200
-white-list-rules:
-- opening_brace
-disabled_rules:
-- identifier_name

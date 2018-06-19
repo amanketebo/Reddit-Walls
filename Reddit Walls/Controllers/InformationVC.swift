@@ -62,20 +62,20 @@ class InformationVC: UIViewController {
         if let leftButtonData = leftButtonData {
             let leftButton = UIButton(type: .system)
 
-            leftButton.setTitle(leftButtonData.title, for: .normal)
-            leftButton.setTitleColor(leftButtonData.color, for: .normal)
+            leftButton.setTitle(leftButtonData.title, for: UIControl.State.normal)
+            leftButton.setTitleColor(leftButtonData.color, for: UIControl.State.normal)
             leftButton.titleLabel?.font = buttonFont
-            leftButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+            leftButton.addTarget(self, action: #selector(dismissVC), for: UIControl.Event.touchUpInside)
             buttons.append(leftButton)
         }
 
         if let rightButtonData = rightButtonData {
             let rightButton = UIButton(type: .system)
 
-            rightButton.setTitle(rightButtonData.title, for: .normal)
-            rightButton.setTitleColor(rightButtonData.color, for: .normal)
+            rightButton.setTitle(rightButtonData.title, for: UIControl.State.normal)
+            rightButton.setTitleColor(rightButtonData.color, for: UIControl.State.normal)
             rightButton.titleLabel?.font = buttonFont
-            rightButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+            rightButton.addTarget(self, action: #selector(dismissVC), for: UIControl.Event.touchUpInside)
             buttons.append(rightButton)
         }
 

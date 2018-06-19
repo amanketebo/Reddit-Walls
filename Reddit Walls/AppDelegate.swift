@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let userDefaults = UserDefaults.standard
     private let notificationCenter = NotificationCenter.default
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupAppearance()
         notificationCenter.addObserver(self, selector: #selector(setupAppearance), name: .themeUpdated, object: nil)
         return true
