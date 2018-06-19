@@ -43,7 +43,7 @@ class BaseVC: UIViewController {
         }
 
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL) {
-            if let wallpaper = stuffManager.wallpaperForURL(wallpaperURL) {
+            if let wallpaper = wallpaperRequester.wallpaperForURL(wallpaperURL) {
                 cell.wallpaper.image = wallpaper
                 cell.wallpaperHasLoaded = true
             } else {
@@ -51,7 +51,7 @@ class BaseVC: UIViewController {
                 wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { [weak self] (wallpaper, _) in
                     if cell.tag == indexPath.row {
                         if let wallpaper = wallpaper {
-                            self?.stuffManager.addToCache(wallpaperURL, wallpaper: wallpaper)
+                            self?.wallpaperRequester.addToCache(wallpaperURL, wallpaper: wallpaper)
                             cell.wallpaper.image = wallpaper
                             cell.wallpaperHasLoaded = true
                         }
