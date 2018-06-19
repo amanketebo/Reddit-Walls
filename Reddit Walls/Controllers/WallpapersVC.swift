@@ -26,7 +26,7 @@ class WallpapersVC: BaseVC {
         super.init(coder: aDecoder)
     }
 
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.gray)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class WallpapersVC: BaseVC {
         collectionView.delegate = self
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: Dimension.footerHeight, right: 0)
         collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: .valueChanged)
+        collectionView.refreshControl?.addTarget(self, action: #selector(refreshWallpapers), for: UIControl.Event.valueChanged)
 
         // Activity indicator setup
         view.addSubview(activityIndicator)

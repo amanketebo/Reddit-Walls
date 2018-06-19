@@ -9,8 +9,8 @@
 import UIKit
 import Photos
 
-extension UIActivityType {
-    public static let customSaveToCameraRoll: UIActivityType =  UIActivityType(rawValue: "customSaveToCameraRoll")
+extension UIActivity.ActivityType {
+    public static let customSaveToCameraRoll: UIActivity.ActivityType =  UIActivity.ActivityType(rawValue: "customSaveToCameraRoll")
 }
 
 class SelectedWallpaperVC: UIViewController {
@@ -80,7 +80,7 @@ class SelectedWallpaperVC: UIViewController {
             tapGestureRecognizer.numberOfTapsRequired = 2
             view.addGestureRecognizer(tapGestureRecognizer)
         } else {
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.whiteLarge)
 
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
@@ -112,7 +112,7 @@ class SelectedWallpaperVC: UIViewController {
 
     private func presentActivityController() {
         let activityController = UIActivityViewController(activityItems: [wallpaperImage], applicationActivities: [CustomSaveToCameraRollActivity()])
-        activityController.excludedActivityTypes = [.addToReadingList, .markupAsPDF, .openInIBooks, .postToVimeo, .saveToCameraRoll]
+        activityController.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.markupAsPDF, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.saveToCameraRoll]
         activityController.completionWithItemsHandler = { [weak self] (activity, success, returnedItems, activityError) in
             if activity == .customSaveToCameraRoll {
                 self?.saveWallpaper()
@@ -250,11 +250,13 @@ extension SelectedWallpaperVC: UIScrollViewDelegate {
         if scrollView.zoomScale <= 1 {
             hideCloseButton = false
             panGestureRecognizer.isEnabled = true
-            UIApplication.shared.isStatusBarHidden = false
+            var status = self.prefersStatusBarHidden
+            status.toggle()
         } else {
             hideCloseButton = true
             panGestureRecognizer.isEnabled = false
-             UIApplication.shared.isStatusBarHidden = true
+            var status = self.prefersStatusBarHidden
+            status.toggle()
         }
     }
 }

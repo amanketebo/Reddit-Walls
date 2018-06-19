@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CustomSaveToCameraRollActivity: UIActivity {
-    override var activityType: UIActivityType? {
+    override var activityType: UIActivity.ActivityType? {
         return .customSaveToCameraRoll
     }
 
@@ -22,7 +22,7 @@ class CustomSaveToCameraRollActivity: UIActivity {
         return #imageLiteral(resourceName: "savewallpaper")
     }
 
-    override class var activityCategory: UIActivityCategory {
+    override class var activityCategory: UIActivity.Category {
         return .action
     }
 

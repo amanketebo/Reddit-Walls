@@ -66,7 +66,7 @@ class WallpaperRequester {
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {
         let request = URLRequest(url: wallpaperURL)
 
-        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let taskError = error {
                 DispatchQueue.main.async {
                     completion(nil, taskError)

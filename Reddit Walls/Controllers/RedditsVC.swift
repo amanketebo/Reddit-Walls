@@ -37,15 +37,15 @@ class RedditsVC: UIViewController {
 
         wallpapersScrollView.contentSize = CGSize(width: width * 2, height: height)
 
-        addChildViewController(wallpapersVC)
+        addChild(wallpapersVC)
         wallpapersVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
         wallpapersScrollView.addSubview(wallpapersVC.view)
-        wallpapersVC.didMove(toParentViewController: self)
+        wallpapersVC.didMove(toParent: self)
 
-        addChildViewController(iphoneWallpapersVC)
+        addChild(iphoneWallpapersVC)
         iphoneWallpapersVC.view.frame = CGRect(x: width, y: 0, width: width, height: height)
         wallpapersScrollView.addSubview(iphoneWallpapersVC.view)
-        iphoneWallpapersVC.didMove(toParentViewController: self)
+        iphoneWallpapersVC.didMove(toParent: self)
     }
 
     @objc private func updateRedditsViewTheme() {

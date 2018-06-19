@@ -22,7 +22,7 @@ class ThemeCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        darkSwitch.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
+        darkSwitch.addTarget(self, action: #selector(valueChanged), for: UIControl.Event.valueChanged)
     }
 
     @objc private func valueChanged() {
