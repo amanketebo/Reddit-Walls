@@ -57,8 +57,8 @@ class SelectedWallpaperVC: UIViewController {
     func setupViews() {
         // Image view and scroll view setup
         if wallpaperHasLoaded {
-            let height = wallpaperImage.size.height > wallpaperImage.size.width ? view.bounds.size.height : Dimension.imageViewHeight
-
+            // Calculate height make sure to keep the aspect ratio
+            let height = (wallpaperImage.size.height / wallpaperImage.size.width) * view.bounds.width
             imageView = UIImageView(image: wallpaperImage)
             imageView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
 
