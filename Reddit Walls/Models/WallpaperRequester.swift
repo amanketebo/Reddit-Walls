@@ -14,10 +14,12 @@ class WallpaperRequester {
     private var baseURL = "https://www.reddit.com/r/wallpapers.json"
     private lazy var wallpapersURL = URL(string: baseURL)!
     var nextPage: String?
+    var wallpaperCache = NSCache<NSURL, UIImage>()
     let stuffManager = StuffManager.shared
 
     init(subredditURL: String) {
         self.baseURL = subredditURL
+        self.wallpaperCache.countLimit = 8
     }
 
     typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
@@ -61,6 +63,16 @@ class WallpaperRequester {
             }
         }
         task.resume()
+    }
+
+    // MARK: - Wallpaper Cache methods
+
+    func wallpaperForURL(_ url: URL) -> UIImage? {
+        return wallpaperCache.object(forKey: url as NSURL)
+    }
+
+    func addToCache(_ url: URL, wallpaper: UIImage) {
+        wallpaperCache.setObject(wallpaper, forKey: url as NSURL)
     }
 
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {

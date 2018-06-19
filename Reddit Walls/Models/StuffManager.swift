@@ -18,12 +18,9 @@ class StuffManager {
             saveFavorites()
         }
     }
-    var wallpaperCache = NSCache<NSURL, UIImage>()
     let userDefaults = UserDefaults.standard
 
     init() {
-        // Setup wallpaper cache
-        wallpaperCache.countLimit = 8
         favorites = fetchSavedFavorites()
     }
 
@@ -79,15 +76,5 @@ class StuffManager {
         } else {
             return false
         }
-    }
-
-    // MARK: - Wallpaper Cache methods
-
-    func wallpaperForURL(_ url: URL) -> UIImage? {
-        return wallpaperCache.object(forKey: url as NSURL)
-    }
-
-    func addToCache(_ url: URL, wallpaper: UIImage) {
-        wallpaperCache.setObject(wallpaper, forKey: url as NSURL)
     }
 }
