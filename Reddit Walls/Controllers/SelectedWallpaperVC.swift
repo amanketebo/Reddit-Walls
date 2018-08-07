@@ -80,7 +80,7 @@ class SelectedWallpaperVC: UIViewController {
             tapGestureRecognizer.numberOfTapsRequired = 2
             view.addGestureRecognizer(tapGestureRecognizer)
         } else {
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.whiteLarge)
+            let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
 
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
@@ -88,18 +88,12 @@ class SelectedWallpaperVC: UIViewController {
 
             let fullResURL = URL(string: selectedWallpaper.fullResolutionURL)!
             wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (wallpaper, error) in
+                guard let strongSelf = self else { return }
+
                 if error != nil {
-                    let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
-                    let leftButton = ButtonData(title: "Okay", color: .black)
-                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
-
-                    self?.present(informationVC, animated: true, completion: nil)
+                    Alert.showNetworkErrorAlert(vc: strongSelf)
                 } else if wallpaper == nil {
-                    let message = "Whoops, looks like something is wrong with the Reddit servers. Please try again later."
-                    let leftButton = ButtonData(title: "Okay", color: .black)
-                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
-
-                    self?.present(informationVC, animated: true, completion: nil)
+                    Alert.showRedditServerErrorAlert(vc: strongSelf)
                 } else {
                     self?.wallpaperImage = wallpaper!
                     self?.wallpaperHasLoaded = true
@@ -112,7 +106,8 @@ class SelectedWallpaperVC: UIViewController {
 
     private func presentActivityController() {
         let activityController = UIActivityViewController(activityItems: [wallpaperImage], applicationActivities: [CustomSaveToCameraRollActivity()])
-        activityController.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.markupAsPDF, UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.saveToCameraRoll]
+        
+        activityController.excludedActivityTypes = [.addToReadingList, .markupAsPDF, .openInIBooks, .postToVimeo, .saveToCameraRoll]
         activityController.completionWithItemsHandler = { [weak self] (activity, success, returnedItems, activityError) in
             if activity == .customSaveToCameraRoll {
                 self?.saveWallpaper()
@@ -144,14 +139,13 @@ class SelectedWallpaperVC: UIViewController {
 
     private func requestPhotoLibraryAccess() {
         PHPhotoLibrary.requestAuthorization({ [weak self] (status) in
+            guard let strongSelf = self else { return }
+
             if PHAuthorizationStatus.authorized == status {
                 self?.saveImage()
             } else if PHAuthorizationStatus.denied == status {
                 // Show information vc telling user to change setting
-                let message = "Please change Photo's access settings to be able to save wallpapers"
-                let buttonData = ButtonData(title: "Okay", color: .black)
-                let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: buttonData, rightButtonData: nil)
-                self?.present(informationVC, animated: true, completion: nil)
+                Alert.showPhotosAccessError(vc: strongSelf)
             }
         })
     }
@@ -162,22 +156,9 @@ class SelectedWallpaperVC: UIViewController {
 
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if error != nil {
-            let message = "Please change Photo's access settings to be able to save wallpapers"
-            let buttonData = ButtonData(title: "Okay", color: .black)
-            let informationVC = InformationVC(message: message, image: UIImage(named: "warning"), leftButtonData: buttonData, rightButtonData: nil)
-            present(informationVC, animated: true, completion: nil)
+            Alert.showPhotosAccessError(vc: self)
         } else {
-            let message = "Wallpaper saved sucessfully!"
-            let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "check"), leftButtonData: nil, rightButtonData: nil)
-            self.present(informationVC, animated: true) {
-                _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
-                    UIView.animate(withDuration: 0.5, animations: {
-                        informationVC.view.alpha = 0
-                    }, completion: { (_) in
-                        informationVC.dismiss(animated: false, completion: nil)
-                    })
-                })
-            }
+            Alert.showWallpaperSaveSuccess(vc: self)
         }
     }
 

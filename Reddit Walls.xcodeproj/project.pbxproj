@@ -36,6 +36,7 @@
 		CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EAEC7208442FA005EEFB2 /* RedditsVC.swift */; };
 		CA6EAECC20844EE8005EEFB2 /* WallpapersVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */; };
 		CA8B4B58202798180006127D /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B4B57202798180006127D /* ThemeCell.swift */; };
+		CA997D8921190DFC0062562A /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA997D8821190DFC0062562A /* Alert.swift */; };
 		CABC193520A62C3C00496056 /* WallpaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABC193420A62C3C00496056 /* WallpaperTests.swift */; };
 		CACE30BC201A669400358747 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACE30BB201A669400358747 /* SettingsVC.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		CA8B4B57202798180006127D /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		CA8ECE5DAFE7260F881B7CA2 /* Pods-Reddit Walls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit Walls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit Walls/Pods-Reddit Walls.debug.xcconfig"; sourceTree = "<group>"; };
 		CA91FCDF20ECBB29000AA853 /* Scratch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Scratch.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		CA997D8821190DFC0062562A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CABC192A20A61EB100496056 /* RedditWallsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditWallsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABC192E20A61EB100496056 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CABC193420A62C3C00496056 /* WallpaperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperTests.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				CA10252B1F876BDD00FFD9D6 /* SwiftyJSONPaths.swift */,
 				CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */,
 				CA1025291F876BDD00FFD9D6 /* Extensions.swift */,
+				CA997D8821190DFC0062562A /* Alert.swift */,
 				CA12666E2083447500AD4FF9 /* Cells */,
 				CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */,
 			);
@@ -492,6 +495,7 @@
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
 				CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */,
+				CA997D8921190DFC0062562A /* Alert.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
 				CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */,
 				CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */,
