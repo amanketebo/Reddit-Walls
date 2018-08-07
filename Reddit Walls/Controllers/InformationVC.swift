@@ -12,6 +12,10 @@ struct Button {
     let title: String
     let color: UIColor
 
+    static var okayButton: Button {
+        return Button(title: "Okay", color: .black)
+    }
+
     func makeSystemUIButton() -> UIButton {
         let systemUIButton = UIButton(type: .system)
 

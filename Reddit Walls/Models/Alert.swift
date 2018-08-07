@@ -25,7 +25,7 @@ struct Alert {
 
     static func showPhotosAccessError(vc: UIViewController, completion: (() -> Void)? = nil) {
         let message = "Please change Photo's access settings to be able to save wallpapers"
-        let okayButton = Button(title: "Okay", color: .black)
+        let okayButton = Button.okayButton
         let networkErrorImage = #imageLiteral(resourceName: "warning")
 
         Alert.showAlert(vc: vc, message: message, image: networkErrorImage, buttons: [okayButton], autoFadeOut: false, completion: completion)
@@ -33,7 +33,7 @@ struct Alert {
 
     static func showNetworkErrorAlert(vc: UIViewController, completion: (() -> Void)? = nil) {
         let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
-        let okayButton = Button(title: "Okay", color: .black)
+        let okayButton = Button.okayButton
         let networkErrorImage = #imageLiteral(resourceName: "warning")
 
         Alert.showAlert(vc: vc, message: message, image: networkErrorImage, buttons: [okayButton], autoFadeOut: false, completion: completion)
@@ -41,7 +41,7 @@ struct Alert {
 
     static func showRedditServerErrorAlert(vc: UIViewController, completion: (() -> Void)? = nil) {
         let message = "Whoops, looks like something is wrong with the Reddit servers. Please try again later."
-        let okayButton = Button(title: "Okay", color: .black)
+        let okayButton = Button.okayButton
         let networkErrorImage = #imageLiteral(resourceName: "warning")
 
         Alert.showAlert(vc: vc, message: message, image: networkErrorImage, buttons: [okayButton], autoFadeOut: false, completion: completion)
