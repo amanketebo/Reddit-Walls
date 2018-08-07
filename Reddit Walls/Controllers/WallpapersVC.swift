@@ -26,7 +26,7 @@ class WallpapersVC: BaseVC {
         super.init(coder: aDecoder)
     }
 
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.gray)
+    let activityIndicator = UIActivityIndicatorView(style: .gray)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,21 +85,11 @@ class WallpapersVC: BaseVC {
 
     func fetchWallpapers() {
         wallpaperRequester.fetchWallpapers(page: currentPage, completion: { [weak self] (wallpapers, error) in
+            guard let strongSelf = self else { return }
 
             if error != nil {
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.removeFromSuperview()
-                self?.collectionView.refreshControl?.endRefreshing()
-
-                let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
-                let leftButton = ButtonData(title: "Okay", color: .black)
-                let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), leftButtonData: leftButton, rightButtonData: nil)
-
-                self?.present(informationVC, animated: true, completion: { [weak self] in
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.removeFromSuperview()
-                    self?.collectionView.refreshControl?.endRefreshing()
-                    self?.collectionView.scrollRectToVisible(CGRect(), animated: true)
+                Alert.showNetworkErrorAlert(vc: strongSelf, completion: {
+                    strongSelf.collectionView.scrollRectToVisible(CGRect(), animated: true)
                 })
             } else {
                 if self?.currentPage == 0 {
