@@ -10,6 +10,11 @@ import UIKit
 import SwiftyJSON
 import Foundation
 
+enum Result<T> {
+    case success(T)
+    case failure(Error)
+}
+
 class WallpaperRequester {
     private var baseURL = "https://www.reddit.com/r/wallpapers.json"
     private lazy var wallpapersURL = URL(string: baseURL)!
@@ -22,8 +27,8 @@ class WallpaperRequester {
         self.wallpaperCache.countLimit = 8
     }
 
-    typealias WallpapersCallback = ([Wallpaper]?, Error?) -> Void
-    typealias WallpaperImageDataCallback = (UIImage?, Error?) -> Void
+    typealias WallpapersCallback = (Result<[Wallpaper]>) -> Void
+    typealias WallpaperImageDataCallback = (Result<UIImage>) -> Void
 
     // MARK: - Wallpaper fetching methods
 
@@ -37,28 +42,29 @@ class WallpaperRequester {
                 request = URLRequest(url: nextPageURL)
             } else {
                 DispatchQueue.main.async {
-                    completion([], nil)
+                    completion(.success([]))
                 }
                 return
             }
         }
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
+            guard let strongSelf = self else { return }
             if let taskError = error {
                 DispatchQueue.main.async {
-                    completion(nil, taskError)
+                    completion(.failure(taskError))
                 }
             } else {
                 if let nextPage = self?.nextPage(data: data!) {
-                    self?.nextPage = nextPage
+                    strongSelf.nextPage = nextPage
                 } else {
-                    self?.nextPage = nil
+                    strongSelf.nextPage = nil
                 }
 
-                let returnedWallpapers = self?.parseWallpaperJSON(data: data!)
+                let returnedWallpapers = strongSelf.parseWallpaperJSON(data: data!)
 
                 DispatchQueue.main.async {
-                    completion(returnedWallpapers, nil)
+                    completion(.success(returnedWallpapers))
                 }
             }
         }
@@ -79,22 +85,22 @@ class WallpaperRequester {
         let request = URLRequest(url: wallpaperURL)
 
         if let cachedWallpaper = self.wallpaperForURL(wallpaperURL) {
-            completion(cachedWallpaper, nil)
+            completion(.success(cachedWallpaper))
         } else {
             let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
                 if let taskError = error {
                     DispatchQueue.main.async {
-                        completion(nil, taskError)
+                        completion(.failure(taskError))
                     }
                 } else {
                     if let wallpaper = UIImage(data: data!) {
                         self.addToCache(wallpaperURL, wallpaper: wallpaper)
                         DispatchQueue.main.async {
-                            completion(wallpaper, nil)
+                            completion(.success(wallpaper))
                         }
                     } else {
                         DispatchQueue.main.async {
-                            completion(nil, error)
+                            completion(.failure(error!))
                         }
                     }
                 }
