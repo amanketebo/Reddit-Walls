@@ -35,14 +35,14 @@ class FavoritesVC: BaseVC {
         guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
 
         let wallpaperCellTag = wallpaperCell.tag
-        let selectedWallpaper = stuffManager.favorites[wallpaperCellTag]
+        let selectedWallpaper = favoritesManager.favorites[wallpaperCellTag]
 
-        if stuffManager.favoritesContains(selectedWallpaper) {
+        if favoritesManager.favoritesContains(selectedWallpaper) {
             selectedWallpaper.favorite = false
-            stuffManager.removeFavorite(selectedWallpaper)
+            favoritesManager.removeFavorite(selectedWallpaper)
         } else {
             selectedWallpaper.favorite = true
-            stuffManager.favorites.append(selectedWallpaper)
+            favoritesManager.favorites.append(selectedWallpaper)
         }
 
         collectionView.reloadData()
@@ -58,9 +58,9 @@ class FavoritesVC: BaseVC {
 extension FavoritesVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? WallpaperCell else { return }
-        guard stuffManager.favorites.count > 0 else { return }
+        guard favoritesManager.favorites.count > 0 else { return }
 
-        let associatedWallpaper = stuffManager.favorites[indexPath.row]
+        let associatedWallpaper = favoritesManager.favorites[indexPath.row]
 
         if let selectedWallpaperVC = UIStoryboard.selectedWallpaper.instantiateInitialViewController() as? SelectedWallpaperVC {
             selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
@@ -91,15 +91,15 @@ extension FavoritesVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if stuffManager.favorites.count == 0 {
+        if favoritesManager.favorites.count == 0 {
             return 1
         } else {
-            return stuffManager.favorites.count
+            return favoritesManager.favorites.count
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if stuffManager.favorites.count != 0 {
+        if favoritesManager.favorites.count != 0 {
             // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
             // swiftlint:disable:previous force_cast
@@ -107,7 +107,7 @@ extension FavoritesVC: UICollectionViewDataSource {
             let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
             let theme = AppTheme(rawValue: savedTheme)
 
-            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: stuffManager.favorites, theme: theme)
+            setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: favoritesManager.favorites, theme: theme)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))
 
             return cell

@@ -20,7 +20,7 @@ class WallpaperRequester {
     private lazy var wallpapersURL = URL(string: baseURL)!
     var nextPage: String?
     var wallpaperCache = NSCache<NSURL, UIImage>()
-    let stuffManager = StuffManager.shared
+    let favoritesManager = FavoritesManager.shared
 
     init(subredditURL: String) {
         self.baseURL = subredditURL

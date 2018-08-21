@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseVC: UIViewController {
-    let stuffManager = StuffManager.shared
+    let favoritesManager = FavoritesManager.shared
     var wallpaperRequester: WallpaperRequester = WallpaperRequester(subredditURL: "https://www.reddit.com/r/wallpapers.json")
 
     init(wallpaperRequester: WallpaperRequester) {
@@ -36,7 +36,7 @@ class BaseVC: UIViewController {
         Theme.shared.styleWallpaperCell(cell)
 
         // Set up favorite icon
-        if stuffManager.favoritesContains(wallpaper) {
+        if favoritesManager.favoritesContains(wallpaper) {
             cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
         } else {
             cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
