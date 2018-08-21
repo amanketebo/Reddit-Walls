@@ -84,26 +84,22 @@ class WallpapersVC: BaseVC {
     }
 
     func fetchWallpapers() {
-        wallpaperRequester.fetchWallpapers(page: currentPage, completion: { [weak self] (wallpapers, error) in
-            guard let strongSelf = self else { return }
+        wallpaperRequester.fetchWallpapers(page: currentPage, completion: { [weak self] (result) in
 
-            if error != nil {
-                Alert.showNetworkErrorAlert(vc: strongSelf, completion: {
-                    strongSelf.collectionView.scrollRectToVisible(CGRect(), animated: true)
-                })
-            } else {
+            switch result {
+            case .success(let wallpapers):
                 if self?.currentPage == 0 {
-                    self?.wallpapers = wallpapers!
+                    self?.wallpapers = wallpapers
                     self?.collectionView.reloadData()
                 } else {
                     let previousWallpaperCount = self!.wallpapers.count
-                    let currentWallpaperCount = previousWallpaperCount + wallpapers!.count
+                    let currentWallpaperCount = previousWallpaperCount + wallpapers.count
                     var newIndexPaths: [IndexPath] = []
                     for index in previousWallpaperCount..<currentWallpaperCount {
                         newIndexPaths.append(IndexPath(row: index - 1, section: 0))
                     }
 
-                    self?.wallpapers += wallpapers!
+                    self?.wallpapers += wallpapers
 
                     self?.collectionView.performBatchUpdates({ [weak self] in
                         self?.collectionView.insertItems(at: newIndexPaths)
@@ -111,12 +107,27 @@ class WallpapersVC: BaseVC {
 
                     })
                 }
+            case .failure(_):
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.removeFromSuperview()
+                    self?.collectionView.refreshControl?.endRefreshing()
 
-                self?.activityIndicator.stopAnimating()
-                self?.activityIndicator.removeFromSuperview()
-                self?.collectionView.refreshControl?.endRefreshing()
-                self?.initialFetch = false
+                    let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
+                    let okayButton = Button(title: "Okay", color: .black)
+                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), buttons: [okayButton], autoFadeOut: false)
+
+                    self?.present(informationVC, animated: true, completion: { [weak self] in
+                        self?.activityIndicator.stopAnimating()
+                        self?.activityIndicator.removeFromSuperview()
+                        self?.collectionView.refreshControl?.endRefreshing()
+                        self?.collectionView.scrollRectToVisible(CGRect(), animated: true)
+                    })
             }
+
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.removeFromSuperview()
+            self?.collectionView.refreshControl?.endRefreshing()
+            self?.initialFetch = false
         })
     }
 
