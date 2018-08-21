@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class StuffManager {
-    static let shared = StuffManager()
+class FavoritesManager {
+    static let shared = FavoritesManager()
     static let favorites = "favorites"
 
     var favorites: [Wallpaper] = [] {
@@ -27,7 +27,7 @@ class StuffManager {
     // MARK: - Favorites methods
 
     func fetchSavedFavorites() -> [Wallpaper] {
-        if let favorites = userDefaults.array(forKey: StuffManager.favorites) as? [[String: String]] {
+        if let favorites = userDefaults.array(forKey: FavoritesManager.favorites) as? [[String: String]] {
             var savedFavorites = [Wallpaper]()
 
             favorites.forEach({ (wallpaperInfo) in
@@ -57,7 +57,7 @@ class StuffManager {
             favoritesPropertyList.append(wallpaperInfo)
         }
 
-        userDefaults.set(favoritesPropertyList, forKey: StuffManager.favorites)
+        userDefaults.set(favoritesPropertyList, forKey: FavoritesManager.favorites)
     }
 
     func removeFavorite(_ wallpaper: Wallpaper) {

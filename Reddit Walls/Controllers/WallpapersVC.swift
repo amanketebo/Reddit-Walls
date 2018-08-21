@@ -59,9 +59,9 @@ class WallpapersVC: BaseVC {
         let indexPath = IndexPath(row: wallpaperCellTag, section: 0)
         let selectedWallpaper = wallpapers[wallpaperCellTag]
 
-        if stuffManager.favoritesContains(selectedWallpaper) {
+        if favoritesManager.favoritesContains(selectedWallpaper) {
             selectedWallpaper.favorite = false
-            stuffManager.removeFavorite(selectedWallpaper)
+            favoritesManager.removeFavorite(selectedWallpaper)
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell {
                     wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
@@ -69,7 +69,7 @@ class WallpapersVC: BaseVC {
             }, completion: nil)
         } else {
             selectedWallpaper.favorite = true
-            stuffManager.favorites.append(selectedWallpaper)
+            favoritesManager.favorites.append(selectedWallpaper)
             collectionView.performBatchUpdates({
                 if let wallpaperCell = collectionView.cellForItem(at: indexPath) as? WallpaperCell {
                     wallpaperCell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
