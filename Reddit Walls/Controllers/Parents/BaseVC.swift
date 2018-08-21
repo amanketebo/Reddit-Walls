@@ -44,12 +44,13 @@ class BaseVC: UIViewController {
 
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL) {
             cell.wallpaperHasLoaded = false
-            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (wallpaper, _) in
-                if cell.tag == indexPath.row {
-                    if let wallpaper = wallpaper {
-                        cell.wallpaper.image = wallpaper
-                        cell.wallpaperHasLoaded = true
-                    }
+            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (result) in
+
+                switch result {
+                case .success(let wallpaper):
+                    cell.wallpaper.image = wallpaper
+                    cell.wallpaperHasLoaded = true
+                case .failure(_): break
                 }
             }
         }
