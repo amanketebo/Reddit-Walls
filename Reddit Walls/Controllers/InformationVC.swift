@@ -83,6 +83,7 @@ class InformationVC: UIViewController {
     private func setupStackView() {
         buttons.forEach { (button) in
             let systemButton = button.makeSystemUIButton()
+            buttonStackView.addArrangedSubview(systemButton)
             systemButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         }
     }
