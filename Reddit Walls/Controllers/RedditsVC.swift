@@ -12,9 +12,8 @@ class RedditsVC: UIViewController {
     @IBOutlet weak var redditsView: RedditsView!
     @IBOutlet weak var wallpapersScrollView: UIScrollView!
 
-    let wallpapersVC = UIStoryboard.wallpapersVC(baseURL: "https://www.reddit.com/r/wallpapers.json")
-    let iphoneWallpapersVC = UIStoryboard.wallpapersVC(baseURL: "https://www.reddit.com/r/iphonewallpapers.json")
-
+    let wallpapersVC = UIStoryboard.wallpapersVC(dataSource: .wallpapers)
+    let iphoneWallpapersVC = UIStoryboard.wallpapersVC(dataSource: .iphoneWallpapers)
     let notificationCenter = NotificationCenter.default
 
     override func viewDidLoad() {

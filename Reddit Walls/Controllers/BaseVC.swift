@@ -10,7 +10,7 @@ import UIKit
 
 class BaseVC: UIViewController {
     let favoritesManager = FavoritesManager.shared
-    var wallpaperRequester: WallpaperRequester = WallpaperRequester(subredditURL: "https://www.reddit.com/r/wallpapers.json")
+    var wallpaperRequester: WallpaperRequester = WallpaperRequester(RedditURL.wallpapers)
 
     init(wallpaperRequester: WallpaperRequester) {
         self.wallpaperRequester = wallpaperRequester
@@ -25,7 +25,7 @@ class BaseVC: UIViewController {
         super.viewDidLoad()
     }
 
-    func setupCollectionView(cell: WallpaperCell, indexPath: IndexPath, wallpapers: [Wallpaper], theme: AppTheme?) {
+    func setupCollectionView(cell: WallpaperCell, indexPath: IndexPath, wallpapers: [Wallpaper], theme: Theme?) {
         let wallpaper = wallpapers[indexPath.row]
 
         cell.tag = indexPath.row
@@ -45,10 +45,9 @@ class BaseVC: UIViewController {
         if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL) {
             cell.wallpaperHasLoaded = false
             wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (result) in
-
                 switch result {
-                case .success(let wallpaper):
-                    cell.wallpaper.image = wallpaper
+                case .success(let image):
+                    cell.wallpaper.image = image
                     cell.wallpaperHasLoaded = true
                 case .failure(_): break
                 }

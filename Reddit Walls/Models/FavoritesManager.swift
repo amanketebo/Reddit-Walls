@@ -8,10 +8,25 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class FavoritesManager {
     static let shared = FavoritesManager()
     static let favorites = "favorites"
+
+    lazy var context = persistentContainer.viewContext
+
+    private lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "RedditWalls")
+
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+
+        return container
+    }()
 
     var favorites: [Wallpaper] = [] {
         didSet {
@@ -25,7 +40,6 @@ class FavoritesManager {
     }
 
     // MARK: - Favorites methods
-
     func fetchSavedFavorites() -> [Wallpaper] {
         if let favorites = userDefaults.array(forKey: FavoritesManager.favorites) as? [[String: String]] {
             var savedFavorites = [Wallpaper]()
@@ -75,6 +89,48 @@ class FavoritesManager {
             return true
         } else {
             return false
+        }
+    }
+
+    // MARK: Core Data Methods
+    func saveFavoriteWallpaper(_ wallpaper: Wallpaper, image: UIImage) {
+        let favoriteWallpaper = FavoriteWallpaper(context: context)
+        favoriteWallpaper.uid = wallpaper.fullResolutionURL
+
+        if let imageData = image.pngData() {
+            favoriteWallpaper.imageData = imageData as NSData
+        }
+
+        saveContext()
+    }
+
+    func fetchFavoriteWallpaper(_ wallpaper: Wallpaper) -> UIImage? {
+        let request: NSFetchRequest<FavoriteWallpaper> = FavoriteWallpaper.fetchRequest()
+
+        request.predicate = NSPredicate(format: "uid = %@", wallpaper.fullResolutionURL)
+
+        if let foundFavoriteWallpapers = try? context.fetch(request) {
+            if let imageData = foundFavoriteWallpapers.first?.imageData {
+                return UIImage(data: imageData as Data)
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
+    // MARK: - Core Data Saving support
+    func saveContext() {
+        let context = persistentContainer.viewContext
+
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
         }
     }
 }

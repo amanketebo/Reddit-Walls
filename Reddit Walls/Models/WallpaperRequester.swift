@@ -10,25 +10,32 @@ import UIKit
 import SwiftyJSON
 import Foundation
 
+struct RedditURL {
+    static let wallpapers = URL(staticString: "https://www.reddit.com/r/wallpapers.json")
+    static let iphoneWallpapers = URL(staticString: "https://www.reddit.com/r/iphonewallpapers.json")
+}
+
 enum Result<T> {
     case success(T)
     case failure(Error)
 }
 
 class WallpaperRequester {
-    private var baseURL = "https://www.reddit.com/r/wallpapers.json"
-    private lazy var wallpapersURL = URL(string: baseURL)!
+    private(set) var url: URL
     var nextPage: String?
     var wallpaperCache = NSCache<NSURL, UIImage>()
     let favoritesManager = FavoritesManager.shared
 
-    init(subredditURL: String) {
-        self.baseURL = subredditURL
+    static let wallpapers = WallpaperRequester(RedditURL.wallpapers)
+    static let iphoneWallpapers = WallpaperRequester(RedditURL.iphoneWallpapers)
+
+    init(_ url: URL) {
+        self.url = url
         self.wallpaperCache.countLimit = 8
     }
 
     typealias WallpapersCallback = (Result<[Wallpaper]>) -> Void
-    typealias WallpaperImageDataCallback = (Result<UIImage>) -> Void
+    typealias WallpaperImageCallback = (Result<UIImage>) -> Void
 
     // MARK: - Wallpaper fetching methods
 
@@ -36,7 +43,7 @@ class WallpaperRequester {
         var request: URLRequest!
 
         if page == 0 {
-            request = URLRequest(url: wallpapersURL)
+            request = URLRequest(url: url)
         } else {
             if let nextPageURL = nextPageURL(page: page) {
                 request = URLRequest(url: nextPageURL)
@@ -81,7 +88,7 @@ class WallpaperRequester {
         wallpaperCache.setObject(wallpaper, forKey: url as NSURL)
     }
 
-    func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageDataCallback) {
+    func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageCallback) {
         let request = URLRequest(url: wallpaperURL)
 
         if let cachedWallpaper = self.wallpaperForURL(wallpaperURL) {
@@ -140,6 +147,6 @@ class WallpaperRequester {
     private func nextPageURL(page: Int) -> URL? {
         guard let nextPage = nextPage else { return nil }
 
-        return URL(string: baseURL + "?after=" + "\(nextPage)")
+        return URL(string: url.absoluteString + "?after=" + "\(nextPage)")
     }
 }
