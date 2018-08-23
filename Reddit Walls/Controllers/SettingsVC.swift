@@ -50,12 +50,10 @@ extension SettingsVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: ThemeCell.identifier, for: indexPath) as! ThemeCell
-        // swiftlint:disable:previous force_cast
 
         cell.delegate = self
-        cell.darkSwitch.isOn = Theme.shared.appTheme == .dark ? true : false
+        cell.darkSwitch.isOn = Theme.shared.mode == .dark ? true : false
         Theme.shared.styleCell(cell)
 
         return cell
@@ -70,9 +68,9 @@ extension SettingsVC: UITableViewDelegate {
 
 extension SettingsVC: ThemeSwitchChanged {
     func themeSwitchChanged(darkSwitch: UISwitch) {
-        let theme = darkSwitch.isOn ? AppTheme.dark : AppTheme.light
+        let mode = darkSwitch.isOn ? Mode.dark : Mode.light
 
-        userDefaults.set(theme.rawValue, forKey: UserDefaults.themeKey)
+        userDefaults.set(mode.rawValue, forKey: UserDefaults.themeKey)
         setApperance()
         updateTheme()
         tableView.reloadData()

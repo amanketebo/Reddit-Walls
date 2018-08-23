@@ -53,6 +53,29 @@ class FavoritesVC: BaseVC {
         Theme.shared.styleBackground(view)
         Theme.shared.styleBackground(collectionView.subviews[0])
     }
+
+    override func setupCollectionView(cell: WallpaperCell, indexPath: IndexPath, wallpapers: [Wallpaper], theme: Theme?) {
+        let wallpaper = wallpapers[indexPath.row]
+
+        cell.tag = indexPath.row
+        cell.title.text = wallpapers[indexPath.row].title
+        cell.author.text = wallpapers[indexPath.row].author
+        cell.wallpaper.image = #imageLiteral(resourceName: "gray")
+        cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
+        Theme.shared.styleWallpaperCell(cell)
+
+        // Set up favorite icon
+        if favoritesManager.favoritesContains(wallpaper) {
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
+        } else {
+            cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
+        }
+
+        let image = favoritesManager.fetchFavoriteWallpaper(wallpaper)
+
+        cell.wallpaper.image = image
+        cell.wallpaperHasLoaded = true
+    }
 }
 
 extension FavoritesVC: UICollectionViewDelegate {
@@ -60,15 +83,14 @@ extension FavoritesVC: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? WallpaperCell else { return }
         guard favoritesManager.favorites.count > 0 else { return }
 
+        let selectedWallpaperVC = UIStoryboard.selectedWallpaperVC
         let associatedWallpaper = favoritesManager.favorites[indexPath.row]
 
-        if let selectedWallpaperVC = UIStoryboard.selectedWallpaper.instantiateInitialViewController() as? SelectedWallpaperVC {
-            selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
-            selectedWallpaperVC.selectedWallpaper = associatedWallpaper
-            selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
+        selectedWallpaperVC.wallpaperImage = cell.wallpaper.image
+        selectedWallpaperVC.selectedWallpaper = associatedWallpaper
+        selectedWallpaperVC.wallpaperHasLoaded = cell.wallpaperHasLoaded
 
-            present(selectedWallpaperVC, animated: true, completion: nil)
-        }
+        present(selectedWallpaperVC, animated: true, completion: nil)
     }
 }
 
@@ -104,8 +126,7 @@ extension FavoritesVC: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
             // swiftlint:disable:previous force_cast
 
-            let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
-            let theme = AppTheme(rawValue: savedTheme)
+            let theme = Theme.shared
 
             setupCollectionView(cell: cell, indexPath: indexPath, wallpapers: favoritesManager.favorites, theme: theme)
             cell.favoriteIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeFavoriteStatus(_:))))

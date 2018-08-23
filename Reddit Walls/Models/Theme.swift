@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum AppTheme: Int {
+enum Mode: Int {
     case light
     case dark
 }
@@ -19,25 +19,25 @@ class Theme {
 
     let userDefaults = UserDefaults.standard
 
-    var appTheme: AppTheme {
+    var mode: Mode {
         let savedTheme = userDefaults.integer(forKey: UserDefaults.themeKey)
 
-        if let appTheme = AppTheme(rawValue: savedTheme) {
-            return appTheme
-        } else {
+        if savedTheme == 0 {
             return .light
+        } else {
+            return .dark
         }
     }
 
     func styleNavbar(_ navbar: UINavigationBar?) {
-        switch appTheme {
+        switch mode {
         case .light: navbar?.barTintColor = .redditBlue
         case .dark: navbar?.barTintColor = .lightBlack
         }
     }
 
     func styleBackground(_ view: UIView) {
-        switch appTheme {
+        switch mode {
         case .light: view.backgroundColor = .white
         case .dark: view.backgroundColor = .darkBlack
         }
@@ -50,14 +50,14 @@ class Theme {
     }
 
     func styleLabel(_ label: UILabel, favoritesScreen: Bool = false) {
-        switch appTheme {
+        switch mode {
         case .light: label.textColor = favoritesScreen ? .gray : .black
         case .dark: label.textColor = .white
         }
     }
 
     func styleRedditViewsLabel(_ label: UILabel) {
-        switch appTheme {
+        switch mode {
         case .light:
             label.backgroundColor = .white
             label.textColor = .black
@@ -68,14 +68,14 @@ class Theme {
     }
 
     func styleSwitch(_ uiSwitch: UISwitch) {
-        switch appTheme {
+        switch mode {
         case .light: uiSwitch.onTintColor = nil
         case .dark: uiSwitch.onTintColor = .redditBlue
         }
     }
 
     func favoriteIconImage(selected: Bool) -> UIImage {
-        switch (appTheme, selected) {
+        switch (mode, selected) {
         case (.light, true): return #imageLiteral(resourceName: "filledstar")
         case (.light, false): return #imageLiteral(resourceName: "unfilledblackstar")
         case (.dark, true): return #imageLiteral(resourceName: "filledbluestar")
@@ -96,21 +96,21 @@ class Theme {
     }
 
     func styleCellSeperator(seperatorView: UIView) {
-        switch appTheme {
+        switch mode {
         case .light: seperatorView.backgroundColor = .lightGray
         case .dark: seperatorView.backgroundColor = .lightBlack
         }
     }
 
     func styleUIRefreshControl(_ refreshControl: UIRefreshControl) {
-        switch appTheme {
+        switch mode {
         case .light: refreshControl.tintColor = .gray
         case .dark: refreshControl.tintColor = .white
         }
     }
 
     func styleUIActivityIndicator(_ activityIndicator: UIActivityIndicatorView) {
-        switch appTheme {
+        switch mode {
         case .light: activityIndicator.color = .gray
         case .dark: activityIndicator.color = .white
         }

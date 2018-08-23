@@ -16,6 +16,6 @@ public class FavoriteWallpaper: NSManagedObject {
     @NSManaged public var imageData: NSData?
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FavoriteWallpaper> {
-        return NSFetchRequest<Wallpaper>(entityName: "FavoriteWallpaper")
+        return NSFetchRequest<FavoriteWallpaper>(entityName: "FavoriteWallpaper")
     }
 }

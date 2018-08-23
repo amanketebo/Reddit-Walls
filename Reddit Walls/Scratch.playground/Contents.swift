@@ -1,11 +1,6 @@
-enum Result<T> {
-    case success(T)
-    case failure(Error)
-}
+import Foundation
 
-let result = Result.success(5)
+let url = URL(string: "https://yahoo.comSOM")!
+print(url.absoluteString + "?" + "after")
 
-switch result {
-case .success(let number): print(number)
-case .failure(let error): print(error)
-}
+
