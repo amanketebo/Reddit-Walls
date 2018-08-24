@@ -9,19 +9,21 @@
 import UIKit
 
 class WallpaperCell: UICollectionViewCell {
-    static let identifier = "wallpaperCell"
+    @IBOutlet weak var wallpaper: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var submittedByLabel: UILabel!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var favoriteIcon: UIImageView!
+    @IBOutlet weak var seperator: UIView!
 
     var wallpaperHasLoaded = false
 
-    @IBOutlet weak var wallpaper: UIImageView!
+    static let identifier = "wallpaperCell"
 
-    @IBOutlet weak var title: UILabel!
-
-    @IBOutlet weak var submittedByLabel: UILabel!
-
-    @IBOutlet weak var author: UILabel!
-
-    @IBOutlet weak var favoriteIcon: UIImageView!
-
-    @IBOutlet weak var seperator: UIView!
+    func setup(_ wallpaper: Wallpaper, at indexPath: IndexPath) {
+        self.tag = indexPath.row
+        self.title.text = wallpaper.title
+        self.author.text = wallpaper.author
+        self.wallpaper.image = #imageLiteral(resourceName: "gray")
+    }
 }

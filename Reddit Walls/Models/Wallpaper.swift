@@ -8,6 +8,7 @@
 
 import SwiftyJSON
 import Foundation
+import CoreData
 
 class Wallpaper: Equatable {
     static let title = "title"

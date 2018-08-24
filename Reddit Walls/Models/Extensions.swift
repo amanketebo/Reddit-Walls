@@ -63,23 +63,27 @@ extension Notification.Name {
 }
 
 extension UIStoryboard {
-    // Storyboards
-    static let selectedWallpaper = UIStoryboard(name: "SelectedWallpaper", bundle: nil)
-
     // Segues
     static let favoritesSegue = "Favorites"
 
     // VC
-    class func wallpapersVC(baseURL: String) -> WallpapersVC {
-        // swiftlint:disable:next force_cast
-        let wallpapersVC = UIStoryboard.init(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
-        // swiftlint:disable:previous force_cast
+    static let selectedWallpaperVC = UIStoryboard(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as! SelectedWallpaperVC
 
-        wallpapersVC.wallpaperRequester = WallpaperRequester(subredditURL: baseURL)
+    class func wallpapersVC(dataSource: WallpapersDataSource) -> WallpapersVC {
+        let wallpapersVC = UIStoryboard(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
+
+        wallpapersVC.wallpapersDataSource = dataSource
+        
         return wallpapersVC
     }
 }
 
 extension UserDefaults {
     static let themeKey = "theme"
+}
+
+extension URL {
+    init(staticString: String) {
+        self.init(string: "\(staticString)")!
+    }
 }
