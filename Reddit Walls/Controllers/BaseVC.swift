@@ -49,7 +49,8 @@ class BaseVC: UIViewController {
                 case .success(let image):
                     cell.wallpaper.image = image
                     cell.wallpaperHasLoaded = true
-                case .failure(_): break
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             }
         }

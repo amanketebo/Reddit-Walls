@@ -107,7 +107,7 @@ class WallpaperRequester {
                         }
                     } else {
                         DispatchQueue.main.async {
-                            completion(.failure(error!))
+                            completion(.failure(RedditError.invalidDataForImage))
                         }
                     }
                 }
