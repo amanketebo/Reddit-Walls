@@ -21,47 +21,19 @@ class WallpaperTests: XCTestCase {
         super.tearDown()
     }
 
-    func testWallpaperDictionaryInit() {
-        let firstWallpaperInfo = [Wallpaper.title: "Cat",
-                                  Wallpaper.author: "catlover",
-                                  Wallpaper.lowerResolutionURL: "https://www.yahoo.com",
-                                  Wallpaper.fullResolutionURL: "https://www.google.com"]
-
-        let secondWallpaperInfo = [Wallpaper.title: "Dog",
-                                   Wallpaper.author: "doglover",
-                                   Wallpaper.lowerResolutionURL: "",
-                                   Wallpaper.fullResolutionURL: ""]
-
-        let thirdWallpaperInfo = [Wallpaper.title: "Nba Player",
-                                  Wallpaper.author: "nbafan",
-                                  Wallpaper.lowerResolutionURL: "https://www.nba.com",
-                                  Wallpaper.fullResolutionURL: ""]
-
-        let fourthWallpaperInfo = [Wallpaper.title: "Sunset",
-                                   Wallpaper.author: "nature",
-                                   Wallpaper.lowerResolutionURL: "",
-                                   Wallpaper.fullResolutionURL: "https://www.wallpapers.com"]
-
-        let firstWallpaper = Wallpaper(firstWallpaperInfo, favorite: true)
-        let secondWallpaper = Wallpaper(secondWallpaperInfo, favorite: true)
-        let thirdWallpaper = Wallpaper(thirdWallpaperInfo, favorite: true)
-        let fourthWallpaper = Wallpaper(fourthWallpaperInfo, favorite: true)
-
-        XCTAssertNotNil(firstWallpaper)
-        XCTAssertNil(secondWallpaper, "")
-        XCTAssertNil(thirdWallpaper, "")
-        XCTAssertNil(fourthWallpaper, "")
-    }
-
     func testEqualWallpaper() {
         let title = "Car"
         let author = "carenthusiast"
-        let lowerResolutionURL = "https://www.cars.com/lower"
-        let fullResolutionURL = "https://www.cars.com/full"
-
-        let firstWallpaper = Wallpaper(title, author, lowerResolutionURL, fullResolutionURL)
-        let secondWallpaper = Wallpaper(title, author, lowerResolutionURL, fullResolutionURL)
-        let thirdWallpaper = Wallpaper("Random", author, lowerResolutionURL, fullResolutionURL)
+        let fullResURLString = "https://www.cars.com/full"
+        let lowerResURLString = "https://www.cars.com/lower"
+        
+        let firstResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
+        let secondResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
+        let thirdResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
+        
+        let firstWallpaper = Wallpaper(title, author, firstResolution, favorite: false)
+        let secondWallpaper = Wallpaper(title, author, secondResolution, favorite: false)
+        let thirdWallpaper = Wallpaper("Random", author, thirdResolution, favorite: false)
 
         XCTAssertTrue(firstWallpaper == secondWallpaper)
         XCTAssertFalse(firstWallpaper == thirdWallpaper)
