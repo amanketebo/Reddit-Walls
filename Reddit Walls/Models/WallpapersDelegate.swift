@@ -40,7 +40,7 @@ class WallpapersDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDe
         guard let wallpapersVC = wallpapersVC else { return }
         guard indexPath.row < wallpapersVC.wallpapersDataSource.wallpapers.count else { return }
         let wallpaper = wallpapersVC.wallpapersDataSource.wallpapers[indexPath.row]
-        guard let url = URL(string: wallpaper.fullResolutionURL) else { return }
+        guard let url = wallpaper.resolutions.fullResURL else { return }
 
         func isSameTask(_ task: URLSessionTask) -> Bool {
             if let taskURL = task.originalRequest?.url {

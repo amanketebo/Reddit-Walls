@@ -86,22 +86,23 @@ class SelectedWallpaperVC: UIViewController {
             activityIndicator.centerInParentView()
             activityIndicator.startAnimating()
 
-            let fullResURL = URL(string: selectedWallpaper.fullResolutionURL)!
-            wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (result) in
-                switch result {
-                case .success(let wallpaper):
-                    self?.wallpaperImage = wallpaper
-                    self?.wallpaperHasLoaded = true
-                    activityIndicator.stopAnimating()
-                    self?.setupViews()
-                case .failure(_):
-                    let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
-                    let okayButton = Button.okayButton
-                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), buttons: [okayButton], autoFadeOut: false)
-
-                    self?.present(informationVC, animated: true, completion: nil)
-                }
-            })
+            if let fullResURL = selectedWallpaper.resolutions.fullResURL {
+                wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (result) in
+                    switch result {
+                    case .success(let wallpaper):
+                        self?.wallpaperImage = wallpaper
+                        self?.wallpaperHasLoaded = true
+                        activityIndicator.stopAnimating()
+                        self?.setupViews()
+                    case .failure(_):
+                        let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
+                        let okayButton = Button.okayButton
+                        let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), buttons: [okayButton], autoFadeOut: false)
+                        
+                        self?.present(informationVC, animated: true, completion: nil)
+                    }
+                })
+            }
         }
     }
 

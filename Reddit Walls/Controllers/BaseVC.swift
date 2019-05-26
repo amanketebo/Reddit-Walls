@@ -42,7 +42,7 @@ class BaseVC: UIViewController {
             cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
         }
 
-        if let wallpaperURL = URL(string: wallpapers[indexPath.row].fullResolutionURL) {
+        if let wallpaperURL = wallpapers[indexPath.row].resolutions.fullResURL {
             cell.wallpaperHasLoaded = false
             wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (result) in
                 switch result {

@@ -28,6 +28,7 @@
 		CA1266672083032300AD4FF9 /* RedditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1266662083032300AD4FF9 /* RedditsView.swift */; };
 		CA126670208344A900AD4FF9 /* NoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12666F208344A900AD4FF9 /* NoFavoritesCell.swift */; };
 		CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */; };
+		CA3EADC7229A667300440239 /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EADC6229A667300440239 /* Resolutions.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
 		CA5A515920A12BB1009521B3 /* SnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A515820A12BB1009521B3 /* SnapshotTest.swift */; };
@@ -85,6 +86,7 @@
 		CA1266662083032300AD4FF9 /* RedditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditsView.swift; sourceTree = "<group>"; };
 		CA12666F208344A900AD4FF9 /* NoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoritesCell.swift; sourceTree = "<group>"; };
 		CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaveToCameraRollActivity.swift; sourceTree = "<group>"; };
+		CA3EADC6229A667300440239 /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA4F3E04203AAD8800B82A56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CA5A515620A12BB1009521B3 /* RedditWallsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditWallsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				CA10252C1F876BDD00FFD9D6 /* Wallpaper.swift */,
+				CA3EADC6229A667300440239 /* Resolutions.swift */,
 				CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */,
 				CAF609E3212E194F00A7C2BF /* WallpapersDataSource.swift */,
 				CA941E51212E839900A6C505 /* WallpapersDelegate.swift */,
@@ -441,6 +444,7 @@
 				CA90B8F52299D4FB00B1BA10 /* RedditError.swift in Sources */,
 				CA997D8921190DFC0062562A /* Alert.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
+				CA3EADC7229A667300440239 /* Resolutions.swift in Sources */,
 				CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */,
 				CAF609E4212E194F00A7C2BF /* WallpapersDataSource.swift in Sources */,
 				CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */,

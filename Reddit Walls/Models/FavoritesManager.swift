@@ -40,38 +40,22 @@ class FavoritesManager {
     }
 
     // MARK: - Favorites methods
-    func fetchSavedFavorites() -> [Wallpaper] {
-        if let favorites = userDefaults.array(forKey: FavoritesManager.favorites) as? [[String: String]] {
-            var savedFavorites = [Wallpaper]()
-
-            favorites.forEach({ (wallpaperInfo) in
-                if let wallpaper = Wallpaper(wallpaperInfo, favorite: true) {
-                    savedFavorites.append(wallpaper)
-                }
-            })
-
-            return savedFavorites
-        }
-
-        return []
-    }
-
+    
     func saveFavorites() {
-        // User defaults can only contain Property Lists
-        var favoritesPropertyList = [[String: String]]()
-
-        // Convert each Wallpaper element to a Property List
-        favorites.forEach { (wallpaper) in
-            var wallpaperInfo = [String: String]()
-
-            wallpaperInfo[Wallpaper.title] = wallpaper.title
-            wallpaperInfo[Wallpaper.author] = wallpaper.author
-            wallpaperInfo[Wallpaper.fullResolutionURL] = wallpaper.fullResolutionURL
-            wallpaperInfo[Wallpaper.lowerResolutionURL] = wallpaper.lowerResolutionURL
-            favoritesPropertyList.append(wallpaperInfo)
+        if let data = try? JSONEncoder().encode(favorites) {
+            userDefaults.set(data, forKey: FavoritesManager.favorites)
+        } else {
+            print("Some issue saving favorites")
         }
-
-        userDefaults.set(favoritesPropertyList, forKey: FavoritesManager.favorites)
+    }
+    
+    func fetchSavedFavorites() -> [Wallpaper] {
+        if let data = userDefaults.data(forKey: FavoritesManager.favorites),
+            let wallpapers = try? JSONDecoder().decode([Wallpaper].self, from: data) {
+            return wallpapers
+        } else {
+            return []
+        }
     }
 
     func removeFavorite(_ wallpaper: Wallpaper) {
@@ -95,8 +79,7 @@ class FavoritesManager {
     // MARK: Core Data Methods
     func saveFavoriteWallpaper(_ wallpaper: Wallpaper, image: UIImage) {
         let favoriteWallpaper = FavoriteWallpaper(context: context)
-        favoriteWallpaper.uid = wallpaper.fullResolutionURL
-
+        favoriteWallpaper.uid = wallpaper.resolutions.fullResURL?.absoluteString
         if let imageData = image.pngData() {
             favoriteWallpaper.imageData = imageData as NSData
         }
@@ -107,7 +90,7 @@ class FavoritesManager {
     func fetchFavoriteWallpaper(_ wallpaper: Wallpaper) -> UIImage? {
         let request: NSFetchRequest<FavoriteWallpaper> = FavoriteWallpaper.fetchRequest()
 
-        request.predicate = NSPredicate(format: "uid = %@", wallpaper.fullResolutionURL)
+        request.predicate = NSPredicate(format: "uid = %@", wallpaper.resolutions.fullResURL?.absoluteString ?? "")
 
         if let foundFavoriteWallpapers = try? context.fetch(request) {
             if let imageData = foundFavoriteWallpapers.first?.imageData {

@@ -56,7 +56,7 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
     // TODO: - Show an image in the cell for a failed fetch
 
     func fetchWallpaper(_ wallpaper: Wallpaper, for cell: WallpaperCell) {
-        if let wallpaperURL = URL(string: wallpaper.fullResolutionURL) {
+        if let wallpaperURL = wallpaper.resolutions.fullResURL {
             cell.wallpaperHasLoaded = false
             wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (result) in
                 switch result {

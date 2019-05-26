@@ -67,7 +67,7 @@ class WallpaperRequester {
                     var wallpapers: [Wallpaper] = []
                     
                     for wallpaperData in wallpaperResponse.data.children {
-                        let wallpaper = Wallpaper(wallpaperData.data.title, wallpaperData.data.author, "", "")
+                        let wallpaper = Wallpaper(wallpaperData.data.title, wallpaperData.data.author, Resolutions(), favorite: false)
                         wallpapers.append(wallpaper)
                     }
                     
