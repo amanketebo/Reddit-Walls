@@ -14,11 +14,6 @@ struct RedditURL {
     static let iphoneWallpapers = URL(staticString: "https://www.reddit.com/r/iphonewallpapers.json")
 }
 
-enum Result<T> {
-    case success(T)
-    case failure(Error)
-}
-
 class WallpaperRequester {
     private(set) var url: URL
     var nextPage: String?
@@ -33,8 +28,8 @@ class WallpaperRequester {
         self.wallpaperCache.countLimit = 8
     }
 
-    typealias WallpapersCallback = (Result<[Wallpaper]>) -> Void
-    typealias WallpaperImageCallback = (Result<UIImage>) -> Void
+    typealias WallpapersCallback = (Result<[Wallpaper], Error>) -> Void
+    typealias WallpaperImageCallback = (Result<UIImage, Error>) -> Void
 
     // MARK: - Wallpaper fetching methods
 
@@ -55,7 +50,7 @@ class WallpaperRequester {
         }
 
         let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             if let taskError = error {
                 DispatchQueue.main.async {
                     completion(.failure(taskError))
@@ -63,7 +58,7 @@ class WallpaperRequester {
             } else {
                 if let data = data,
                     let wallpaperResponse = try? JSONDecoder().decode(WallpapersResponse.self, from: data) {
-                    self?.nextPage = wallpaperResponse.data.after
+                    self.nextPage = wallpaperResponse.data.after
                     var wallpapers: [Wallpaper] = []
                     
                     for wallpaperData in wallpaperResponse.data.children {

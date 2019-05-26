@@ -59,7 +59,7 @@ class FavoritesManager {
     }
 
     func removeFavorite(_ wallpaper: Wallpaper) {
-        guard let position = favorites.index(where: { (favoriteWallpaper) -> Bool in
+        guard let position = favorites.firstIndex(where: { (favoriteWallpaper) -> Bool in
             return wallpaper == favoriteWallpaper
         }) else { return }
 

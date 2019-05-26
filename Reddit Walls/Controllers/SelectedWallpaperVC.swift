@@ -107,7 +107,7 @@ class SelectedWallpaperVC: UIViewController {
     }
 
     private func presentActivityController() {
-        let activityController = UIActivityViewController(activityItems: [wallpaperImage], applicationActivities: [CustomSaveToCameraRollActivity()])
+        let activityController = UIActivityViewController(activityItems: [wallpaperImage as Any], applicationActivities: [CustomSaveToCameraRollActivity()])
         
         activityController.excludedActivityTypes = [.addToReadingList, .markupAsPDF, .openInIBooks, .postToVimeo, .saveToCameraRoll]
         activityController.completionWithItemsHandler = { [weak self] (activity, success, returnedItems, activityError) in
