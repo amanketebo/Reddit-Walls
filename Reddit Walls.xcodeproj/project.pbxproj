@@ -33,6 +33,7 @@
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
 		CA5A515920A12BB1009521B3 /* SnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A515820A12BB1009521B3 /* SnapshotTest.swift */; };
 		CA5A516120A12CD9009521B3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5A516020A12CD9009521B3 /* SnapshotHelper.swift */; };
+		CA67F09C229B14200062313C /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA67F09B229B14200062313C /* URLSessionExtension.swift */; };
 		CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EAEC7208442FA005EEFB2 /* RedditsVC.swift */; };
 		CA6EAECC20844EE8005EEFB2 /* WallpapersVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */; };
 		CA8B4B58202798180006127D /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8B4B57202798180006127D /* ThemeCell.swift */; };
@@ -93,6 +94,7 @@
 		CA5A515820A12BB1009521B3 /* SnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTest.swift; sourceTree = "<group>"; };
 		CA5A515A20A12BB1009521B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA5A516020A12CD9009521B3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		CA67F09B229B14200062313C /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		CA6EAEC7208442FA005EEFB2 /* RedditsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditsVC.swift; sourceTree = "<group>"; };
 		CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WallpapersVC.storyboard; sourceTree = "<group>"; };
 		CA8B4B57202798180006127D /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				CA10252B1F876BDD00FFD9D6 /* WallpapersResponse.swift */,
 				CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */,
+				CA67F09B229B14200062313C /* URLSessionExtension.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				CA6EAEC8208442FA005EEFB2 /* RedditsVC.swift in Sources */,
 				CAF609E4212E194F00A7C2BF /* WallpapersDataSource.swift in Sources */,
 				CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */,
+				CA67F09C229B14200062313C /* URLSessionExtension.swift in Sources */,
 				CA10252E1F876BDD00FFD9D6 /* Extensions.swift in Sources */,
 				CA1025391F876BF900FFD9D6 /* FavoritesVC.swift in Sources */,
 				CA126670208344A900AD4FF9 /* NoFavoritesCell.swift in Sources */,

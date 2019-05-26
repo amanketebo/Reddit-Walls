@@ -88,31 +88,21 @@ class WallpaperRequester {
     }
 
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageCallback) {
-        let request = URLRequest(url: wallpaperURL)
-
         if let cachedWallpaper = self.wallpaperForURL(wallpaperURL) {
             completion(.success(cachedWallpaper))
         } else {
-            let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            URLSession.shared.dataTask(with: url, completeOn: .main) { (data, _, error) in
                 if let taskError = error {
-                    DispatchQueue.main.async {
-                        completion(.failure(taskError))
-                    }
+                    completion(.failure(taskError))
                 } else {
                     if let wallpaper = UIImage(data: data!) {
                         self.addToCache(wallpaperURL, wallpaper: wallpaper)
-                        DispatchQueue.main.async {
-                            completion(.success(wallpaper))
-                        }
+                        completion(.success(wallpaper))
                     } else {
-                        DispatchQueue.main.async {
-                            completion(.failure(RedditError.invalidDataForImage))
-                        }
+                        completion(.failure(RedditError.invalidDataForImage))
                     }
                 }
-            }
-
-            task.resume()
+            }.resume()
         }
     }
 
