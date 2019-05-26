@@ -27,9 +27,9 @@ class WallpaperTests: XCTestCase {
         let fullResURLString = "https://www.cars.com/full"
         let lowerResURLString = "https://www.cars.com/lower"
         
-        let firstResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
-        let secondResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
-        let thirdResolution = Resolutions(fullResStringURL: fullResURLString, lowResStringURL: lowerResURLString)
+        let firstResolution = Resolutions(fullResURLString: fullResURLString, lowResURLString: lowerResURLString)
+        let secondResolution = Resolutions(fullResURLString: fullResURLString, lowResURLString: lowerResURLString)
+        let thirdResolution = Resolutions(fullResURLString: fullResURLString, lowResURLString: lowerResURLString)
         
         let firstWallpaper = Wallpaper(title, author, firstResolution, favorite: false)
         let secondWallpaper = Wallpaper(title, author, secondResolution, favorite: false)
