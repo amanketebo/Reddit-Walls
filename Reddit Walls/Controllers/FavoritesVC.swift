@@ -35,7 +35,7 @@ class FavoritesVC: BaseVC {
         guard let wallpaperCell = sender.view?.superview?.superview as? WallpaperCell else { return }
 
         let wallpaperCellTag = wallpaperCell.tag
-        let selectedWallpaper = favoritesManager.favorites[wallpaperCellTag]
+        var selectedWallpaper = favoritesManager.favorites[wallpaperCellTag]
 
         if favoritesManager.favoritesContains(selectedWallpaper) {
             selectedWallpaper.favorite = false

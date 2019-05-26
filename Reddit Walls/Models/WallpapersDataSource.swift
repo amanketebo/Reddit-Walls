@@ -36,7 +36,7 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
         guard let wallpaperImageView = wallpaperCell.subviews.first?.subviews.first as? UIImageView else { return }
 
         let wallpaperCellIndexPath = IndexPath(row: wallpaperCell.tag, section: 0)
-        let selectedWallpaper = wallpapers[wallpaperCellIndexPath.row]
+        var selectedWallpaper = wallpapers[wallpaperCellIndexPath.row]
 
         if favoritesManager.favoritesContains(selectedWallpaper) {
             selectedWallpaper.favorite = false

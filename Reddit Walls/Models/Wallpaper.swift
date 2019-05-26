@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Wallpaper: Codable, Equatable {
+struct Wallpaper: Codable, Equatable {
 
     var title = ""
     var author = ""
