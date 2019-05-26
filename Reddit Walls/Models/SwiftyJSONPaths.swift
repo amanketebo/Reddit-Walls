@@ -7,12 +7,23 @@
 //
 
 import Foundation
-import SwiftyJSON
 
-struct SwiftyJSONPaths {
-    static let wallpapers: [JSONSubscriptType] = ["data", "children"]
-    static let title: [JSONSubscriptType] = ["data", "title"]
-    static let author: [JSONSubscriptType] = ["data", "author"]
-    static let fullResolution: [JSONSubscriptType] = ["data", "preview", "images", 0, "source", "url"]
-    static let nextPage: [JSONSubscriptType] = ["data", "after"]
+struct WallpapersResponse: Decodable {
+    var data: WallpapersData
+}
+
+struct WallpapersData: Decodable {
+    var children: [WallpapersDataChild]
+    var before: String?
+    var after: String?
+}
+
+struct WallpapersDataChild: Decodable {
+    var data: WallpaperData
+}
+
+struct WallpaperData: Decodable {
+    var title: String
+    var author: String
+    var url: String
 }

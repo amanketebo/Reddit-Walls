@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Foundation
 
 struct RedditURL {
@@ -62,16 +61,21 @@ class WallpaperRequester {
                     completion(.failure(taskError))
                 }
             } else {
-                if let nextPage = self?.nextPage(data: data!) {
-                    strongSelf.nextPage = nextPage
+                if let data = data,
+                    let wallpaperResponse = try? JSONDecoder().decode(WallpapersResponse.self, from: data) {
+                    self?.nextPage = wallpaperResponse.data.after
+                    var wallpapers: [Wallpaper] = []
+                    
+                    for wallpaperData in wallpaperResponse.data.children {
+                        let wallpaper = Wallpaper(wallpaperData.data.title, wallpaperData.data.author, "", "")
+                        wallpapers.append(wallpaper)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(.success(wallpapers))
+                    }
                 } else {
-                    strongSelf.nextPage = nil
-                }
-
-                let returnedWallpapers = strongSelf.parseWallpaperJSON(data: data!)
-
-                DispatchQueue.main.async {
-                    completion(.success(returnedWallpapers))
+                    print("No data and no error")
                 }
             }
         }
@@ -118,31 +122,6 @@ class WallpaperRequester {
     }
 
     // MARK: - Helper methods
-
-    private func parseWallpaperJSON(data: Data) -> [Wallpaper] {
-        var wallpapers: [Wallpaper] = []
-        let json = JSON(data)
-
-        if let returnedWallpapers = json[SwiftyJSONPaths.wallpapers].array {
-            for wallpaperJSON in returnedWallpapers {
-                if let wallpaper = Wallpaper(wallpaperJSON) {
-                    wallpapers.append(wallpaper)
-                }
-            }
-        }
-
-        return wallpapers
-    }
-
-    private func nextPage(data: Data) -> String? {
-        let json = JSON(data)
-
-        if let nextPage = json[SwiftyJSONPaths.nextPage].string {
-            return nextPage
-        } else {
-            return nil
-        }
-    }
 
     private func nextPageURL(page: Int) -> URL? {
         guard let nextPage = nextPage else { return nil }

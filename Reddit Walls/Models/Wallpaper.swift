@@ -6,7 +6,6 @@
 //  Copyright © 2017 Amanuel Ketebo. All rights reserved.
 //
 
-import SwiftyJSON
 import Foundation
 import CoreData
 
@@ -47,20 +46,6 @@ class Wallpaper: Equatable {
 }
 
 extension Wallpaper {
-    convenience init?(_ json: JSON) {
-        let title = json[SwiftyJSONPaths.title].stringValue
-        let author = json[SwiftyJSONPaths.author].stringValue
-        let fullResolutionURL = json[SwiftyJSONPaths.fullResolution].stringValue
-        let resolutionsCount = json["data", "preview", "images", 0, "resolutions"].count
-        let lowerResolutionURL = json["data", "preview", "images", 0, "resolutions", resolutionsCount - 1, "url"].stringValue
-
-        if fullResolutionURL.isEmpty || lowerResolutionURL.isEmpty {
-            return nil
-        } else {
-            self.init(title, author, lowerResolutionURL, fullResolutionURL)
-        }
-    }
-
     convenience init?(_ wallpaperInfo: [String: String], favorite: Bool) {
         if let title = wallpaperInfo[Wallpaper.title],
             let author = wallpaperInfo[Wallpaper.author],
