@@ -79,7 +79,7 @@ class WallpaperRequester {
 
     // MARK: - Wallpaper Cache methods
 
-    func wallpaperForURL(_ url: URL) -> UIImage? {
+    func cachedWallpaperImage(for url: URL) -> UIImage? {
         return wallpaperCache.object(forKey: url as NSURL)
     }
 
@@ -88,7 +88,7 @@ class WallpaperRequester {
     }
 
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageCallback) {
-        if let cachedWallpaper = self.wallpaperForURL(wallpaperURL) {
+        if let cachedWallpaper = self.cachedWallpaperImage(for: wallpaperURL) {
             completion(.success(cachedWallpaper))
         } else {
             URLSession.shared.dataTask(with: url, completeOn: .main) { (data, _, error) in
