@@ -99,7 +99,6 @@
 		CA6EAECB20844EE8005EEFB2 /* WallpapersVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WallpapersVC.storyboard; sourceTree = "<group>"; };
 		CA8B4B57202798180006127D /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		CA90B8F42299D4FB00B1BA10 /* RedditError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditError.swift; sourceTree = "<group>"; };
-		CA91FCDF20ECBB29000AA853 /* Scratch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Scratch.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CA941E51212E839900A6C505 /* WallpapersDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpapersDelegate.swift; sourceTree = "<group>"; };
 		CA997D8821190DFC0062562A /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		CABC192A20A61EB100496056 /* RedditWallsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedditWallsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +277,6 @@
 				CA1025321F876BF900FFD9D6 /* Controllers */,
 				CA1025431F876D5000FFD9D6 /* Views */,
 				CA1025401F876D5000FFD9D6 /* Support Files */,
-				CA91FCDF20ECBB29000AA853 /* Scratch.playground */,
 			);
 			path = "Reddit Walls";
 			sourceTree = "<group>";
