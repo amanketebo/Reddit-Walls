@@ -50,9 +50,9 @@ extension Wallpaper {
     convenience init?(_ json: JSON) {
         let title = json[SwiftyJSONPaths.title].stringValue
         let author = json[SwiftyJSONPaths.author].stringValue
-        let fullResolutionURL = json[SwiftyJSONPaths.fullResolution].stringValue
+        let fullResolutionURL = Wallpaper.cleanURLString(json[SwiftyJSONPaths.fullResolution].stringValue)
         let resolutionsCount = json["data", "preview", "images", 0, "resolutions"].count
-        let lowerResolutionURL = json["data", "preview", "images", 0, "resolutions", resolutionsCount - 1, "url"].stringValue
+        let lowerResolutionURL = Wallpaper.cleanURLString(json["data", "preview", "images", 0, "resolutions", resolutionsCount - 1, "url"].stringValue)
 
         if fullResolutionURL.isEmpty || lowerResolutionURL.isEmpty {
             return nil
@@ -75,5 +75,9 @@ extension Wallpaper {
         } else {
             return nil
         }
+    }
+    
+    static func cleanURLString(_ urlString: String) -> String {
+        return urlString.replacingOccurrences(of: "amp;", with: "")
     }
 }
