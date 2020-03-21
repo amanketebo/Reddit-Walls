@@ -11,20 +11,38 @@ import UIKit
 protocol WallpaperFetching {
     // MARK: Properties
     
-    var wallpaperService: WallpaperService { get set }
+    var wallpaperService: WallpaperServicing { get set }
     
     // MARK: Fetching
     
     func fetchWallpapers(forPage page: Int,
                          completionQueue queue: DispatchQueue,
-                         completion: @escaping (Swift.Result<[Wallpaper], APIServiceError>) -> Void)
+                         completion: @escaping (Swift.Result<WallpapersResponse, APIServiceError>) -> Void)
     
-    func fetchImage(forWallpaper: Wallpaper,
+    func fetchImage(forWallpaper wallpaper: Wallpaper,
+                    usingResolution resolution: ImageResolution,
                     completionQueue queue: DispatchQueue,
-                    completion: @escaping (Swift.Result<[Wallpaper], APIServiceError>) -> Void)
+                    completion: @escaping (Swift.Result<UIImage, APIServiceError>) -> Void)
 }
 
-class WallpaperFetcher {
+class WallpapersResponse {
+    let wallpapers: [Wallpaper]
+    let nextPage: String?
+    
+    init(wallpapers: [Wallpaper], nextPage: String) {
+        self.wallpapers = wallpapers
+        self.nextPage = nextPage
+    }
+    
+    init(wallpapersAPIResponse: WallpapersAPIResponse) {
+        self.wallpapers = wallpapersAPIResponse.data.children.compactMap {
+            return Wallpaper($0.data.title, $0.data.author, favorite: false)
+        }
+        self.nextPage = wallpapersAPIResponse.data.after
+    }
+}
+
+class WallpaperFetcher: WallpaperFetching {    
     // MARK: Properties
     
     var wallpaperService: WallpaperServicing
@@ -39,7 +57,7 @@ class WallpaperFetcher {
     
     func fetchWallpapers(forPage page: Int,
                          completionQueue queue: DispatchQueue,
-                         completion: @escaping (Swift.Result<[Wallpaper], APIServiceError>) -> Void) {
+                         completion: @escaping (Swift.Result<WallpapersResponse, APIServiceError>) -> Void) {
         guard let request = wallpaperService.buildRequest(forPage: page) else {
             completion(.failure(.client))
             return

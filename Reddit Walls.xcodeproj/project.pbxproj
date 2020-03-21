@@ -222,8 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				CA3D6C4E24259906001A19EE /* WallpaperService.swift */,
-				CA3D6C5024259940001A19EE /* APIServiceError.swift */,
 				CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */,
+				CA3D6C5024259940001A19EE /* APIServiceError.swift */,
 				CA10252B1F876BDD00FFD9D6 /* WallpapersResponse.swift */,
 				CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */,
 				CA67F09B229B14200062313C /* URLSessionExtension.swift */,

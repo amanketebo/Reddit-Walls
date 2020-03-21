@@ -26,7 +26,7 @@ protocol WallpaperServicing {
                              completion: @escaping (Swift.Result<T, APIServiceError>) -> Void)
     func fetchWallpapers(usingRequest request: URLRequest,
                          completionQueue queue: DispatchQueue,
-                         completion: @escaping (Swift.Result<[Wallpaper], APIServiceError>) -> Void)
+                         completion: @escaping (Swift.Result<WallpapersResponse, APIServiceError>) -> Void)
     func fetchWallpaper(usingRequest request: URLRequest,
                         completionQueue queue: DispatchQueue,
                         completion: @escaping (Swift.Result<UIImage, APIServiceError>) -> Void)
@@ -102,9 +102,9 @@ extension WallpaperServicing {
     
     func fetchWallpapers(usingRequest request: URLRequest,
                          completionQueue queue: DispatchQueue,
-                         completion: @escaping (Swift.Result<[Wallpaper], APIServiceError>) -> Void) {
+                         completion: @escaping (Swift.Result<WallpapersResponse, APIServiceError>) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            var result: Swift.Result<[Wallpaper], APIServiceError>
+            var result: Swift.Result<WallpapersResponse, APIServiceError>
             
             defer {
                 queue.async {
@@ -120,16 +120,14 @@ extension WallpaperServicing {
             }
             
             guard let data = data,
-                let wallpapersResponse = try? JSONDecoder().decode(WallpapersResponse.self, from: data) else {
+                let wallpapersAPIResponse = try? JSONDecoder().decode(WallpapersAPIResponse.self, from: data) else {
                 result = .failure(.parsing)
                 return
             }
             
-            let wallpapers = wallpapersResponse.data.children.compactMap {
-                return Wallpaper($0.data.title, $0.data.author, favorite: false)
-            }
+            let wallpapersResponse = WallpapersResponse(wallpapersAPIResponse: wallpapersAPIResponse)
             
-            result = .success(wallpapers)
+            result = .success(wallpapersResponse)
         }
         task.resume()
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WallpapersResponse: Decodable {
+struct WallpapersAPIResponse: Decodable {
     var data: WallpapersData
 }
 

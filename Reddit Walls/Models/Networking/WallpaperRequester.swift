@@ -43,7 +43,14 @@ class WallpaperRequester {
         
         wallpaperService.fetchWallpapers(usingRequest: request,
                                          completionQueue: .main) { result in
-             completion(result)
+            switch result {
+            case .success(let wallpapersResponse):
+                self.nextPage = wallpapersResponse.nextPage
+                completion(.success(wallpapersResponse.wallpapers))
+                
+            case .failure(let apiServiceError):
+                completion(.failure(apiServiceError))
+            }
         }
     }
 
