@@ -25,23 +25,6 @@ protocol WallpaperFetching {
                     completion: @escaping (Swift.Result<UIImage, APIServiceError>) -> Void)
 }
 
-class WallpapersResponse {
-    let wallpapers: [Wallpaper]
-    let nextPage: String?
-    
-    init(wallpapers: [Wallpaper], nextPage: String) {
-        self.wallpapers = wallpapers
-        self.nextPage = nextPage
-    }
-    
-    init(wallpapersAPIResponse: WallpapersAPIResponse) {
-        self.wallpapers = wallpapersAPIResponse.data?.children?.compactMap {
-            return Wallpaper(wallpaperData: $0.data)
-        }  ?? []
-        self.nextPage = wallpapersAPIResponse.data?.after
-    }
-}
-
 class WallpaperFetcher: WallpaperFetching {    
     // MARK: Properties
     
