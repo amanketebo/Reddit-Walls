@@ -28,6 +28,24 @@ extension WallpaperServicing {
         return "https"
     }
     
+    var host: String {
+        return "reddit.com"
+    }
+    
+    func buildRequest(forPage page: Int) -> URLRequest? {
+        var components = URLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = path
+        components.queryItems = [URLQueryItem(name: "after", value: String(page))]
+        
+        guard let url = components.url else {
+            return nil
+        }
+        
+        return URLRequest(url: url)
+    }
+    
     func fetch<T: Decodable>(forType type: T.Type,
                              usingRequest request: URLRequest,
                              completionQueue queue: DispatchQueue,

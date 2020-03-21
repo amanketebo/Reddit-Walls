@@ -8,26 +8,14 @@
 
 import Foundation
 
-class RedditWallpaperService: WallpaperServicing {
-    var host: String {
-        return "reddit.com"
-    }
-    
+class DesktopWallpaperService: WallpaperServicing {    
     var path: String {
         return "/r/wallpapers.json"
     }
-    
-    func buildRequest(forPage page: Int) -> URLRequest? {
-        var components = URLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.path = path
-        components.queryItems = [URLQueryItem(name: "after", value: String(page))]
-        
-        guard let url = components.url else {
-            return nil
-        }
-        
-        return URLRequest(url: url)
+}
+
+class MobileWallpaperService: WallpaperServicing {
+    var path: String {
+        return "/r/iphonewallpapers.json"
     }
 }
