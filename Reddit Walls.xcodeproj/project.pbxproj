@@ -28,9 +28,9 @@
 		CA1266672083032300AD4FF9 /* RedditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1266662083032300AD4FF9 /* RedditsView.swift */; };
 		CA126670208344A900AD4FF9 /* NoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12666F208344A900AD4FF9 /* NoFavoritesCell.swift */; };
 		CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */; };
-		CA3D6C4D24258E79001A19EE /* RedditWallpaperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C4C24258E79001A19EE /* RedditWallpaperService.swift */; };
-		CA3D6C4F24259906001A19EE /* WallpaperServicing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C4E24259906001A19EE /* WallpaperServicing.swift */; };
+		CA3D6C4F24259906001A19EE /* WallpaperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C4E24259906001A19EE /* WallpaperService.swift */; };
 		CA3D6C5124259940001A19EE /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C5024259940001A19EE /* APIServiceError.swift */; };
+		CA3D6C532425CC25001A19EE /* WallpaperFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */; };
 		CA3EADC7229A667300440239 /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EADC6229A667300440239 /* Resolutions.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
@@ -90,9 +90,9 @@
 		CA1266662083032300AD4FF9 /* RedditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditsView.swift; sourceTree = "<group>"; };
 		CA12666F208344A900AD4FF9 /* NoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoritesCell.swift; sourceTree = "<group>"; };
 		CA2E31401FF6048A00573790 /* CustomSaveToCameraRollActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSaveToCameraRollActivity.swift; sourceTree = "<group>"; };
-		CA3D6C4C24258E79001A19EE /* RedditWallpaperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditWallpaperService.swift; sourceTree = "<group>"; };
-		CA3D6C4E24259906001A19EE /* WallpaperServicing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperServicing.swift; sourceTree = "<group>"; };
+		CA3D6C4E24259906001A19EE /* WallpaperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperService.swift; sourceTree = "<group>"; };
 		CA3D6C5024259940001A19EE /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
+		CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperFetcher.swift; sourceTree = "<group>"; };
 		CA3EADC6229A667300440239 /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA4F3E04203AAD8800B82A56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -221,9 +221,9 @@
 		CA3EADC9229A6E1D00440239 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				CA3D6C4E24259906001A19EE /* WallpaperServicing.swift */,
-				CA3D6C4C24258E79001A19EE /* RedditWallpaperService.swift */,
+				CA3D6C4E24259906001A19EE /* WallpaperService.swift */,
 				CA3D6C5024259940001A19EE /* APIServiceError.swift */,
+				CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */,
 				CA10252B1F876BDD00FFD9D6 /* WallpapersResponse.swift */,
 				CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */,
 				CA67F09B229B14200062313C /* URLSessionExtension.swift */,
@@ -465,11 +465,11 @@
 				CA1025301F876BDD00FFD9D6 /* WallpapersResponse.swift in Sources */,
 				CA1025381F876BF900FFD9D6 /* BaseVC.swift in Sources */,
 				CA3D6C5124259940001A19EE /* APIServiceError.swift in Sources */,
+				CA3D6C532425CC25001A19EE /* WallpaperFetcher.swift in Sources */,
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
 				CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */,
 				CA90B8F52299D4FB00B1BA10 /* RedditError.swift in Sources */,
-				CA3D6C4D24258E79001A19EE /* RedditWallpaperService.swift in Sources */,
 				CA997D8921190DFC0062562A /* Alert.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
 				CA3EADC7229A667300440239 /* Resolutions.swift in Sources */,
@@ -483,7 +483,7 @@
 				CA10253A1F876BF900FFD9D6 /* InformationVC.swift in Sources */,
 				CA1025311F876BDD00FFD9D6 /* Wallpaper.swift in Sources */,
 				CAFCCB84212CB70F0053A1BB /* RedditWalls.xcdatamodeld in Sources */,
-				CA3D6C4F24259906001A19EE /* WallpaperServicing.swift in Sources */,
+				CA3D6C4F24259906001A19EE /* WallpaperService.swift in Sources */,
 				CA10254A1F876D5000FFD9D6 /* WallpaperCell.swift in Sources */,
 				CA8B4B58202798180006127D /* ThemeCell.swift in Sources */,
 				CAFCCB87212CBCD10053A1BB /* FavoriteWallpaper.swift in Sources */,

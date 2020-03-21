@@ -9,6 +9,35 @@
 import Foundation
 import CoreData
 
+enum WallpaperType: CaseIterable {
+    case desktop
+    case mobile
+    
+    var scheme: String {
+        return "https"
+    }
+    
+    var host: String {
+        return "reddit.com"
+    }
+    
+    var path: String {
+        switch self {
+        case .desktop:
+            return "/r/wallpapers.json"
+            
+        case .mobile:
+            return "/r/iphonewallpapers.json"
+        }
+    }
+}
+
+enum ImageResolution {
+    case full
+    case medium
+    case low
+}
+
 struct Wallpaper: Codable, Equatable {
 
     var title = ""
@@ -28,5 +57,18 @@ struct Wallpaper: Codable, Equatable {
 
     static func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool {
         return lhs.title == rhs.title && lhs.author == rhs.author ? true : false
+    }
+    
+    func url(forImageResolution resolution: ImageResolution) -> URL? {
+        switch resolution {
+        case .full:
+            return self.resolutions.fullResURL
+            
+        case .medium:
+            return nil
+            
+        case .low:
+            return self.resolutions.fullResURL
+        }
     }
 }

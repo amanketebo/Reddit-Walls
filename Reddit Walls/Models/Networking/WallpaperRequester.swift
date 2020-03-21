@@ -19,6 +19,8 @@ class WallpaperRequester {
     var nextPage: String?
     var wallpaperCache = NSCache<NSURL, UIImage>()
     let favoritesManager = FavoritesManager.shared
+    
+    var wallpaperService: WallpaperServicing = WallpaperService(wallpaperType: .mobile)
 
     static let wallpapers = WallpaperRequester(RedditURL.wallpapers)
     static let iphoneWallpapers = WallpaperRequester(RedditURL.iphoneWallpapers)
@@ -28,53 +30,21 @@ class WallpaperRequester {
         self.wallpaperCache.countLimit = 8
     }
 
-    typealias WallpapersCallback = (Result<[Wallpaper], Error>) -> Void
+    typealias WallpapersCallback = (Result<[Wallpaper], APIServiceError>) -> Void
     typealias WallpaperImageCallback = (Result<UIImage, Error>) -> Void
 
     // MARK: - Wallpaper fetching methods
 
     func fetchWallpapers(page: Int, completion: @escaping WallpapersCallback) {
-        var request: URLRequest!
-
-        if page == 0 {
-            request = URLRequest(url: url)
-        } else {
-            if let nextPageURL = nextPageURL(page: page) {
-                request = URLRequest(url: nextPageURL)
-            } else {
-                DispatchQueue.main.async {
-                    completion(.success([]))
-                }
-                return
-            }
+        guard let request = wallpaperService.buildRequest(forPage: page) else {
+            completion(.failure(APIServiceError.client))
+            return
         }
-
-        let task = URLSession.shared.dataTask(with: request) { [weak self] (data, _, error) in
-            guard let self = self else { return }
-            if let taskError = error {
-                DispatchQueue.main.async {
-                    completion(.failure(taskError))
-                }
-            } else {
-                if let data = data,
-                    let wallpaperResponse = try? JSONDecoder().decode(WallpapersResponse.self, from: data) {
-                    self.nextPage = wallpaperResponse.data.after
-                    var wallpapers: [Wallpaper] = []
-                    
-                    for wallpaperData in wallpaperResponse.data.children {
-                        let wallpaper = Wallpaper(wallpaperData.data.title, wallpaperData.data.author, Resolutions(), favorite: false)
-                        wallpapers.append(wallpaper)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        completion(.success(wallpapers))
-                    }
-                } else {
-                    print("No data and no error")
-                }
-            }
+        
+        wallpaperService.fetchWallpapers(usingRequest: request,
+                                         completionQueue: .main) { result in
+             completion(result)
         }
-        task.resume()
     }
 
     // MARK: - Wallpaper Cache methods
