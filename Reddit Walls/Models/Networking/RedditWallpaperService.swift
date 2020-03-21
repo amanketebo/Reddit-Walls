@@ -8,13 +8,17 @@
 
 import Foundation
 
-class DesktopWallpaperService: WallpaperServicing {    
+class DesktopWallpaperService: WallpaperServicing {
+    // MARK: - Properties
+    
     var path: String {
         return "/r/wallpapers.json"
     }
 }
 
 class MobileWallpaperService: WallpaperServicing {
+    // MARK: - Propereties
+    
     var path: String {
         return "/r/iphonewallpapers.json"
     }

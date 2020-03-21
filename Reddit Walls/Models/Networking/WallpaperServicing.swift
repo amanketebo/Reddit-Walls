@@ -9,11 +9,18 @@
 import Foundation
 
 protocol WallpaperServicing {
+    // MARK: - Properties
+    
     var scheme: String { get }
     var host: String { get }
     var path: String { get }
     
+    // MARK: - Request Building
+    
     func buildRequest(forPage page: Int) -> URLRequest?
+    
+    // MARK: - Fetching
+    
     func fetch<T: Decodable>(forType type: T.Type,
                              usingRequest request: URLRequest,
                              completionQueue queue: DispatchQueue,
@@ -24,6 +31,8 @@ protocol WallpaperServicing {
 }
 
 extension WallpaperServicing {
+    // MARK: - Properties
+    
     var scheme: String {
         return "https"
     }
@@ -31,6 +40,8 @@ extension WallpaperServicing {
     var host: String {
         return "reddit.com"
     }
+    
+    // MARK: - Request Building
     
     func buildRequest(forPage page: Int) -> URLRequest? {
         var components = URLComponents()
@@ -45,6 +56,8 @@ extension WallpaperServicing {
         
         return URLRequest(url: url)
     }
+    
+    // MARK: - Fetching
     
     func fetch<T: Decodable>(forType type: T.Type,
                              usingRequest request: URLRequest,
