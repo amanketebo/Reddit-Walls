@@ -86,7 +86,7 @@ class SelectedWallpaperVC: UIViewController {
             activityIndicator.centerInParentView()
             activityIndicator.startAnimating()
 
-            if let fullResURL = selectedWallpaper.resolutions.fullResURL {
+            if let fullResURL = selectedWallpaper.resolutions.full {
                 wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (result) in
                     switch result {
                     case .success(let wallpaper):

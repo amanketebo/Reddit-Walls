@@ -35,10 +35,10 @@ class WallpapersResponse {
     }
     
     init(wallpapersAPIResponse: WallpapersAPIResponse) {
-        self.wallpapers = wallpapersAPIResponse.data.children.compactMap {
-            return Wallpaper($0.data.title, $0.data.author, favorite: false)
-        }
-        self.nextPage = wallpapersAPIResponse.data.after
+        self.wallpapers = wallpapersAPIResponse.data?.children?.compactMap {
+            return Wallpaper(wallpaperData: $0.data)
+        }  ?? []
+        self.nextPage = wallpapersAPIResponse.data?.after
     }
 }
 

@@ -20,10 +20,6 @@ protocol WallpaperServicing {
     
     // MARK: - Fetching
     
-    func fetch<T: Decodable>(forType type: T.Type,
-                             usingRequest request: URLRequest,
-                             completionQueue queue: DispatchQueue,
-                             completion: @escaping (Swift.Result<T, APIServiceError>) -> Void)
     func fetchWallpapers(usingRequest request: URLRequest,
                          completionQueue queue: DispatchQueue,
                          completion: @escaping (Swift.Result<WallpapersResponse, APIServiceError>) -> Void)
@@ -32,8 +28,12 @@ protocol WallpaperServicing {
                         completion: @escaping (Swift.Result<UIImage, APIServiceError>) -> Void)
 }
 
-extension WallpaperServicing {
-    // MARK: - Request Building
+class WallpaperService: WallpaperServicing {
+    var wallpaperType: WallpaperType
+    
+    init(wallpaperType: WallpaperType) {
+        self.wallpaperType = wallpaperType
+    }
     
     func buildRequest(forPage page: Int) -> URLRequest? {
         var components = URLComponents()
@@ -61,43 +61,6 @@ extension WallpaperServicing {
         request.cachePolicy = .returnCacheDataElseLoad
         
         return request
-    }
-    
-    // MARK: - Fetching
-    
-    func fetch<T: Decodable>(forType type: T.Type,
-                             usingRequest request: URLRequest,
-                             completionQueue queue: DispatchQueue,
-                             completion: @escaping (Swift.Result<T, APIServiceError>) -> Void) {
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            var result: Swift.Result<T, APIServiceError>
-            
-            defer {
-                queue.async {
-                    completion(result)
-                }
-            }
-            
-            if let _ = error,
-                let httpURLResponse = response as? HTTPURLResponse {
-                let apiServiceError = APIServiceError(statusCode: httpURLResponse.statusCode)
-                result = .failure(apiServiceError)
-                return
-            }
-            
-            guard let data = data else {
-                result = .failure(.parsing)
-                return
-            }
-            
-            guard let wallpapers = try? JSONDecoder().decode(type.self, from: data) else {
-                result = .failure(.parsing)
-                return
-            }
-            
-            result = .success(wallpapers)
-        }
-        task.resume()
     }
     
     func fetchWallpapers(usingRequest request: URLRequest,
@@ -160,13 +123,5 @@ extension WallpaperServicing {
             result = .success(image)
         }
         task.resume()
-    }
-}
-
-class WallpaperService: WallpaperServicing {
-    var wallpaperType: WallpaperType
-    
-    init(wallpaperType: WallpaperType) {
-        self.wallpaperType = wallpaperType
     }
 }

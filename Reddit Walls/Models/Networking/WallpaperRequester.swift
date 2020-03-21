@@ -54,40 +54,21 @@ class WallpaperRequester {
         }
     }
 
-    // MARK: - Wallpaper Cache methods
-
-    func cachedWallpaperImage(for url: URL) -> UIImage? {
-        return wallpaperCache.object(forKey: url as NSURL)
-    }
-
-    func addToCache(_ url: URL, wallpaper: UIImage) {
-        wallpaperCache.setObject(wallpaper, forKey: url as NSURL)
-    }
-
     func fetchWallpaperImage(from wallpaperURL: URL, completion: @escaping WallpaperImageCallback) {
-        if let cachedWallpaper = self.cachedWallpaperImage(for: wallpaperURL) {
-            completion(.success(cachedWallpaper))
-        } else {
-            URLSession.shared.dataTask(with: url, completeOn: .main) { (data, _, error) in
-                if let taskError = error {
-                    completion(.failure(taskError))
-                } else {
-                    if let wallpaper = UIImage(data: data!) {
-                        self.addToCache(wallpaperURL, wallpaper: wallpaper)
-                        completion(.success(wallpaper))
-                    } else {
-                        completion(.failure(RedditError.invalidDataForImage))
-                    }
-                }
-            }.resume()
+        guard let request = wallpaperService.buildRequest(forImageResourceURL: wallpaperURL) else {
+            completion(.failure(APIServiceError.client))
+            return
         }
-    }
-
-    // MARK: - Helper methods
-
-    private func nextPageURL(page: Int) -> URL? {
-        guard let nextPage = nextPage else { return nil }
-
-        return URL(string: url.absoluteString + "?after=" + "\(nextPage)")
+        
+        wallpaperService.fetchWallpaper(usingRequest: request,
+                                        completionQueue: .main) { result in
+            switch result {
+            case .success(let image):
+                 completion(.success(image))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

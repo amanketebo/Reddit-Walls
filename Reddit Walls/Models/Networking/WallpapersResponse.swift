@@ -9,21 +9,43 @@
 import Foundation
 
 struct WallpapersAPIResponse: Decodable {
-    var data: WallpapersData
+    let data: WallpapersData?
 }
 
 struct WallpapersData: Decodable {
-    var children: [WallpapersDataChild]
-    var before: String?
-    var after: String?
+    let children: [WallpapersDataChild]?
+    let before: String?
+    let after: String?
 }
 
 struct WallpapersDataChild: Decodable {
-    var data: WallpaperData
+    let data: WallpaperData?
 }
 
 struct WallpaperData: Decodable {
-    var title: String
-    var author: String
-    var url: String
+    let title: String?
+    let author: String?
+    let url: String?
+    let preview: Preview?
+}
+
+struct Preview: Decodable {
+    let images: [Image]?
+}
+
+struct Image: Decodable {
+    let source: Source?
+    let resolutions: [APIResolution]?
+}
+
+struct Source: Decodable {
+    let url: String?
+    let width: Int?
+    let height: Int?
+}
+
+struct APIResolution: Decodable {
+    let url: String?
+    let width: Int?
+    let height: Int?
 }

@@ -38,6 +38,34 @@ enum ImageResolution {
     case low
 }
 
+struct Resolutions: Codable {
+    var full: URL?
+    var medium: URL?
+    var low: URL?
+    
+    init(images: [Image]) {
+        guard let image = images.first else {
+            return
+        }
+        
+        self.full = URL(string: cleanURL(string: image.source?.url ?? ""))
+        
+        guard let resolutions = image.resolutions,
+            resolutions.count >= 2 else {
+            return
+        }
+        
+        self.medium = URL(string: cleanURL(string: resolutions.first?.url ?? ""))
+        self.low = URL(string: cleanURL(string: resolutions.last?.url ?? ""))
+    }
+    
+    init() { }
+    
+    private func cleanURL(string: String) -> String {
+        return string.replacingOccurrences(of: "amp;", with: "")
+    }
+}
+
 struct Wallpaper: Codable, Equatable {
 
     var title = ""
@@ -47,12 +75,11 @@ struct Wallpaper: Codable, Equatable {
     
     private var lowResStringURL = ""
     private var fullResStringURL = ""
-
-    init(_ title: String, _ author: String, _ resolutions: Resolutions = Resolutions(), favorite: Bool) {
-        self.title = title
-        self.author = author
-        self.resolutions = resolutions
-        self.favorite = favorite
+    
+    init(wallpaperData: WallpaperData?) {
+        self.title = wallpaperData?.title ?? ""
+        self.author = wallpaperData?.author ?? ""
+        self.resolutions = Resolutions(images: wallpaperData?.preview?.images ?? [])
     }
 
     static func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool {
@@ -62,13 +89,13 @@ struct Wallpaper: Codable, Equatable {
     func url(forImageResolution resolution: ImageResolution) -> URL? {
         switch resolution {
         case .full:
-            return self.resolutions.fullResURL
+            return self.resolutions.full
             
         case .medium:
             return nil
             
         case .low:
-            return self.resolutions.fullResURL
+            return self.resolutions.low
         }
     }
 }

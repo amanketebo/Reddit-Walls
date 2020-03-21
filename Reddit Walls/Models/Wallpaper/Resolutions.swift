@@ -8,20 +8,3 @@
 
 import Foundation
 
-struct Resolutions: Codable {
-    
-    var fullResURL: URL? {
-        return URL(string: fullResURLString)
-    }
-    var lowResURL: URL? {
-        return URL(string: lowResURLString)
-    }
-    
-    private var fullResURLString: String
-    private var lowResURLString: String
-    
-    init(fullResURLString: String = "", lowResURLString: String = "") {
-        self.fullResURLString = fullResURLString
-        self.lowResURLString = lowResURLString
-    }
-}

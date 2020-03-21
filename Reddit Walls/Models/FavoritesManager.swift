@@ -79,7 +79,7 @@ class FavoritesManager {
     // MARK: Core Data Methods
     func saveFavoriteWallpaper(_ wallpaper: Wallpaper, image: UIImage) {
         let favoriteWallpaper = FavoriteWallpaper(context: context)
-        favoriteWallpaper.uid = wallpaper.resolutions.fullResURL?.absoluteString
+        favoriteWallpaper.uid = wallpaper.resolutions.full?.absoluteString
         if let imageData = image.pngData() {
             favoriteWallpaper.imageData = imageData as NSData
         }
@@ -90,7 +90,7 @@ class FavoritesManager {
     func fetchFavoriteWallpaper(_ wallpaper: Wallpaper) -> UIImage? {
         let request: NSFetchRequest<FavoriteWallpaper> = FavoriteWallpaper.fetchRequest()
 
-        request.predicate = NSPredicate(format: "uid = %@", wallpaper.resolutions.fullResURL?.absoluteString ?? "")
+        request.predicate = NSPredicate(format: "uid = %@", wallpaper.resolutions.full?.absoluteString ?? "")
 
         if let foundFavoriteWallpapers = try? context.fetch(request) {
             if let imageData = foundFavoriteWallpapers.first?.imageData {
