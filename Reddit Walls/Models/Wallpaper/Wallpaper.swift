@@ -19,7 +19,7 @@ struct Wallpaper: Codable, Equatable {
     private var lowResStringURL = ""
     private var fullResStringURL = ""
 
-    init(_ title: String, _ author: String, _ resolutions: Resolutions, favorite: Bool) {
+    init(_ title: String, _ author: String, _ resolutions: Resolutions = Resolutions(), favorite: Bool) {
         self.title = title
         self.author = author
         self.resolutions = resolutions
