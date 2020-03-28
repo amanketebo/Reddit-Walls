@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 public class FavoriteWallpaper: NSManagedObject {
     @NSManaged public var uid: String?
     @NSManaged public var imageData: NSData?

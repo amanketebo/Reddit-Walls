@@ -66,20 +66,26 @@ struct Resolutions: Codable {
     }
 }
 
-struct Wallpaper: Codable, Equatable {
+struct Wallpaper: WallpaperInfoContaining {
 
+    var id: String
     var title = ""
     var author = ""
-    var resolutions: Resolutions
+    var resolutions = Resolutions()
     var favorite = false
     
     private var lowResStringURL = ""
     private var fullResStringURL = ""
     
-    init(wallpaperData: WallpaperData?) {
-        self.title = wallpaperData?.title ?? ""
-        self.author = wallpaperData?.author ?? ""
-        self.resolutions = Resolutions(images: wallpaperData?.preview?.images ?? [])
+    init?(wallpaperData: WallpaperData?) {
+        guard let wallpaperData = wallpaperData else {
+            return nil
+        }
+        
+        self.id = wallpaperData.id
+        self.title = wallpaperData.title ?? ""
+        self.author = wallpaperData.author ?? ""
+        self.resolutions = Resolutions(images: wallpaperData.preview?.images ?? [])
     }
 
     static func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool {

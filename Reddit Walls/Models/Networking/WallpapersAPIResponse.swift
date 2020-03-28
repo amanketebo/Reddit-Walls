@@ -23,6 +23,7 @@ struct WallpapersDataChild: Decodable {
 }
 
 struct WallpaperData: Decodable {
+    let id: String
     let title: String?
     let author: String?
     let url: String?
