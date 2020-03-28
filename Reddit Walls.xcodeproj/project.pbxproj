@@ -32,6 +32,8 @@
 		CA3D6C5124259940001A19EE /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C5024259940001A19EE /* APIServiceError.swift */; };
 		CA3D6C532425CC25001A19EE /* WallpaperFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */; };
 		CA3D6C552426C1EB001A19EE /* WallpapersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C542426C1EB001A19EE /* WallpapersResponse.swift */; };
+		CA3D6C572426DF32001A19EE /* FavoritesManagerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */; };
+		CA3D6C592426E2FD001A19EE /* FavoritesSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */; };
 		CA3EADC7229A667300440239 /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EADC6229A667300440239 /* Resolutions.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
 		CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4F3E04203AAD8800B82A56 /* Theme.swift */; };
@@ -95,6 +97,8 @@
 		CA3D6C5024259940001A19EE /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
 		CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperFetcher.swift; sourceTree = "<group>"; };
 		CA3D6C542426C1EB001A19EE /* WallpapersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpapersResponse.swift; sourceTree = "<group>"; };
+		CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManagerV2.swift; sourceTree = "<group>"; };
+		CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSaver.swift; sourceTree = "<group>"; };
 		CA3EADC6229A667300440239 /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		CA4F3E04203AAD8800B82A56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				CAF609E3212E194F00A7C2BF /* WallpapersDataSource.swift */,
 				CA941E51212E839900A6C505 /* WallpapersDelegate.swift */,
 				CA4F3E04203AAD8800B82A56 /* Theme.swift */,
+				CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */,
+				CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */,
 				CA10252A1F876BDD00FFD9D6 /* FavoritesManager.swift */,
 				CA1266662083032300AD4FF9 /* RedditsView.swift */,
 				CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */,
@@ -473,6 +479,7 @@
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
 				CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */,
+				CA3D6C572426DF32001A19EE /* FavoritesManagerV2.swift in Sources */,
 				CA90B8F52299D4FB00B1BA10 /* RedditError.swift in Sources */,
 				CA997D8921190DFC0062562A /* Alert.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,
@@ -494,6 +501,7 @@
 				CA2E31411FF6048A00573790 /* CustomSaveToCameraRollActivity.swift in Sources */,
 				CA941E52212E839900A6C505 /* WallpapersDelegate.swift in Sources */,
 				CA10252F1F876BDD00FFD9D6 /* FavoritesManager.swift in Sources */,
+				CA3D6C592426E2FD001A19EE /* FavoritesSaver.swift in Sources */,
 				CA4F3E05203AAD8800B82A56 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
