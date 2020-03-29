@@ -9,64 +9,7 @@
 import Foundation
 import CoreData
 
-enum WallpaperType: CaseIterable {
-    case desktop
-    case mobile
-    
-    var scheme: String {
-        return "https"
-    }
-    
-    var host: String {
-        return "reddit.com"
-    }
-    
-    var path: String {
-        switch self {
-        case .desktop:
-            return "/r/wallpapers.json"
-            
-        case .mobile:
-            return "/r/iphonewallpapers.json"
-        }
-    }
-}
-
-enum ImageResolution {
-    case full
-    case medium
-    case low
-}
-
-struct Resolutions: Codable {
-    var full: URL?
-    var medium: URL?
-    var low: URL?
-    
-    init(images: [Image]) {
-        guard let image = images.first else {
-            return
-        }
-        
-        self.full = URL(string: cleanURL(string: image.source?.url ?? ""))
-        
-        guard let resolutions = image.resolutions,
-            resolutions.count >= 2 else {
-            return
-        }
-        
-        self.medium = URL(string: cleanURL(string: resolutions.first?.url ?? ""))
-        self.low = URL(string: cleanURL(string: resolutions.last?.url ?? ""))
-    }
-    
-    init() { }
-    
-    private func cleanURL(string: String) -> String {
-        return string.replacingOccurrences(of: "amp;", with: "")
-    }
-}
-
-struct Wallpaper: WallpaperInfoContaining {
+struct Wallpaper: Equatable {
 
     var id: String
     var title = ""
@@ -86,6 +29,19 @@ struct Wallpaper: WallpaperInfoContaining {
         self.title = wallpaperData.title ?? ""
         self.author = wallpaperData.author ?? ""
         self.resolutions = Resolutions(images: wallpaperData.preview?.images ?? [])
+    }
+    
+    init(favoriteWallpaper: FavoriteWallpaper) {
+        self.id = favoriteWallpaper.id ?? ""
+        self.title = favoriteWallpaper.title ?? ""
+        self.author = favoriteWallpaper.author ?? ""
+        
+        var resolutions = Resolutions()
+//        resolutions.full = URL(string: favoriteWallpaper.fullResolutionURL ?? "" )
+//        resolutions.low = URL(string: favoriteWallpaper.lowResolutionURL ?? "")
+        
+        self.resolutions = resolutions
+        self.favorite = true
     }
 
     static func == (lhs: Wallpaper, rhs: Wallpaper) -> Bool {
