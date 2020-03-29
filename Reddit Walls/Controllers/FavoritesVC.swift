@@ -37,12 +37,12 @@ class FavoritesVC: BaseVC {
         let wallpaperCellTag = wallpaperCell.tag
         var selectedWallpaper = favoritesManager.favorites[wallpaperCellTag]
 
-        if favoritesManager.favoritesContains(selectedWallpaper) {
+        if favoritesManager.favorites.contains(selectedWallpaper) {
             selectedWallpaper.favorite = false
-            favoritesManager.removeFavorite(selectedWallpaper)
+            favoritesManager.remove(wallpaper: selectedWallpaper)
         } else {
             selectedWallpaper.favorite = true
-            favoritesManager.favorites.append(selectedWallpaper)
+            favoritesManager.save(wallpaper: selectedWallpaper, image: nil)
         }
 
         collectionView.reloadData()
@@ -65,13 +65,13 @@ class FavoritesVC: BaseVC {
         Theme.shared.styleWallpaperCell(cell)
 
         // Set up favorite icon
-        if favoritesManager.favoritesContains(wallpaper) {
+        if favoritesManager.favorites.contains(wallpaper) {
             cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: true)
         } else {
             cell.favoriteIcon.image = Theme.shared.favoriteIconImage(selected: false)
         }
 
-        let image = favoritesManager.fetchFavoriteWallpaper(wallpaper)
+        let image = favoritesManager.fetchImage(forWallpaper: wallpaper)
 
         cell.wallpaper.image = image
         cell.wallpaperHasLoaded = true

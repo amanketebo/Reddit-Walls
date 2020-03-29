@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CA10252D1F876BDD00FFD9D6 /* WallpaperRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */; };
 		CA10252E1F876BDD00FFD9D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025291F876BDD00FFD9D6 /* Extensions.swift */; };
-		CA10252F1F876BDD00FFD9D6 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10252A1F876BDD00FFD9D6 /* FavoritesManager.swift */; };
 		CA1025301F876BDD00FFD9D6 /* WallpapersAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10252B1F876BDD00FFD9D6 /* WallpapersAPIResponse.swift */; };
 		CA1025311F876BDD00FFD9D6 /* Wallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA10252C1F876BDD00FFD9D6 /* Wallpaper.swift */; };
 		CA1025381F876BF900FFD9D6 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1025331F876BF900FFD9D6 /* BaseVC.swift */; };
@@ -32,7 +31,7 @@
 		CA3D6C5124259940001A19EE /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C5024259940001A19EE /* APIServiceError.swift */; };
 		CA3D6C532425CC25001A19EE /* WallpaperFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */; };
 		CA3D6C552426C1EB001A19EE /* WallpapersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C542426C1EB001A19EE /* WallpapersResponse.swift */; };
-		CA3D6C572426DF32001A19EE /* FavoritesManagerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */; };
+		CA3D6C572426DF32001A19EE /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C562426DF32001A19EE /* FavoritesManager.swift */; };
 		CA3D6C592426E2FD001A19EE /* FavoritesSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */; };
 		CA3EADC7229A667300440239 /* Resolutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EADC6229A667300440239 /* Resolutions.swift */; };
 		CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */; };
@@ -73,7 +72,6 @@
 /* Begin PBXFileReference section */
 		CA1025281F876BDD00FFD9D6 /* WallpaperRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpaperRequester.swift; sourceTree = "<group>"; };
 		CA1025291F876BDD00FFD9D6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		CA10252A1F876BDD00FFD9D6 /* FavoritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		CA10252B1F876BDD00FFD9D6 /* WallpapersAPIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallpapersAPIResponse.swift; sourceTree = "<group>"; };
 		CA10252C1F876BDD00FFD9D6 /* Wallpaper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallpaper.swift; sourceTree = "<group>"; };
 		CA1025331F876BF900FFD9D6 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
@@ -97,7 +95,7 @@
 		CA3D6C5024259940001A19EE /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
 		CA3D6C522425CC25001A19EE /* WallpaperFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperFetcher.swift; sourceTree = "<group>"; };
 		CA3D6C542426C1EB001A19EE /* WallpapersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpapersResponse.swift; sourceTree = "<group>"; };
-		CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManagerV2.swift; sourceTree = "<group>"; };
+		CA3D6C562426DF32001A19EE /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSaver.swift; sourceTree = "<group>"; };
 		CA3EADC6229A667300440239 /* Resolutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolutions.swift; sourceTree = "<group>"; };
 		CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
@@ -153,12 +151,12 @@
 			children = (
 				CA3EADC8229A6DBB00440239 /* Wallpaper */,
 				CA3EADC9229A6E1D00440239 /* Networking */,
+				CAFCCB89212CBD400053A1BB /* Core Data */,
 				CAF609E3212E194F00A7C2BF /* WallpapersDataSource.swift */,
 				CA941E51212E839900A6C505 /* WallpapersDelegate.swift */,
 				CA4F3E04203AAD8800B82A56 /* Theme.swift */,
 				CA3D6C582426E2FD001A19EE /* FavoritesSaver.swift */,
-				CA3D6C562426DF32001A19EE /* FavoritesManagerV2.swift */,
-				CA10252A1F876BDD00FFD9D6 /* FavoritesManager.swift */,
+				CA3D6C562426DF32001A19EE /* FavoritesManager.swift */,
 				CA1266662083032300AD4FF9 /* RedditsView.swift */,
 				CA42A75F1FF4D5A0005EE3D5 /* Dimension.swift */,
 				CA1025291F876BDD00FFD9D6 /* Extensions.swift */,
@@ -479,7 +477,7 @@
 				CA10253B1F876BF900FFD9D6 /* SelectedWallpaperVC.swift in Sources */,
 				CA10253C1F876BF900FFD9D6 /* WallpapersVC.swift in Sources */,
 				CA1266652082E34F00AD4FF9 /* LoadingCell.swift in Sources */,
-				CA3D6C572426DF32001A19EE /* FavoritesManagerV2.swift in Sources */,
+				CA3D6C572426DF32001A19EE /* FavoritesManager.swift in Sources */,
 				CA90B8F52299D4FB00B1BA10 /* RedditError.swift in Sources */,
 				CA997D8921190DFC0062562A /* Alert.swift in Sources */,
 				CA42A7601FF4D5A0005EE3D5 /* Dimension.swift in Sources */,

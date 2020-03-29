@@ -9,14 +9,6 @@
 import UIKit
 import CoreData
 
-protocol WallpaperInfoContaining: Codable, Equatable {
-    var id: String { get set }
-    var title: String { get set }
-    var author: String { get set }
-    var resolutions: Resolutions { get set }
-    var favorite: Bool { get set }
-}
-
 protocol FavoritesSaving {
     // MARK: - Properties
     
@@ -26,6 +18,7 @@ protocol FavoritesSaving {
     
     // MARK: - Saving
     
+    func save(wallpaper: Wallpaper)
     // TODO: Should this take in a completion to react to errors
     func store(_ image: UIImage, forWallpaper wallpaper: Wallpaper)
     
@@ -33,6 +26,11 @@ protocol FavoritesSaving {
     
     // TODO: Should this take in a completion to react to errors
     func delete(wallpaper: Wallpaper)
+    
+    // MARK: - Fetching
+    
+    func fetchFavorites() -> [FavoriteWallpaper]
+    func fetchImage(forWallpaper wallpaper: Wallpaper) -> UIImage?
 }
 
 class FavoritesSaver: FavoritesSaving {
@@ -58,14 +56,35 @@ class FavoritesSaver: FavoritesSaving {
     
     // MARK: Saving
     
+    func save(wallpaper: Wallpaper) {
+        guard findMatching(wallpaper: wallpaper).isEmpty else {
+            return
+        }
+        
+        let favoriteWallpaper = FavoriteWallpaper(context: context)
+        favoriteWallpaper.id = wallpaper.id
+        favoriteWallpaper.title = wallpaper.title
+        favoriteWallpaper.author = wallpaper.author
+        saveContext()
+    }
+    
     func store(_ image: UIImage, forWallpaper wallpaper: Wallpaper) {
         guard let imageData = image.pngData() else {
             return
         }
         
-//        let favoriteWallpaper = FavoriteWallpaper(context: context)
-//        favoriteWallpaper.uid = wallpaper.id
-//        favoriteWallpaper.imageData = imageData as NSData
+        let previouslyStoredFavoriteWallpapers = findMatching(wallpaper: wallpaper)
+        
+        if previouslyStoredFavoriteWallpapers.isEmpty {
+            let favoriteWallpaper = FavoriteWallpaper(context: context)
+            favoriteWallpaper.id = wallpaper.id
+            favoriteWallpaper.title = wallpaper.title
+            favoriteWallpaper.author = wallpaper.author
+            favoriteWallpaper.imageData = imageData as NSData
+        } else {
+            // TODO: (Aman Ketebo) Have a check here for if you have more than one favorite wallpaper
+            previouslyStoredFavoriteWallpapers.first?.imageData = imageData as NSData
+        }
         
         saveContext()
     }
@@ -77,6 +96,29 @@ class FavoritesSaver: FavoritesSaving {
         
         matchingWallpapers.forEach {  context.delete($0) }
         saveContext()
+    }
+    
+    // MARK: - Fetching
+    
+    func fetchFavorites() -> [FavoriteWallpaper] {
+        let allFavoriteWallpapersRequest: NSFetchRequest<FavoriteWallpaper> = FavoriteWallpaper.fetchRequest()
+        
+        guard let allFavoriteWallpapers = try? context.fetch(allFavoriteWallpapersRequest) else {
+            return []
+        }
+        
+        return allFavoriteWallpapers
+    }
+    
+    func fetchImage(forWallpaper wallpaper: Wallpaper) -> UIImage? {
+        let matchingFavoriteWallpapers = findMatching(wallpaper: wallpaper)
+    
+        guard !matchingFavoriteWallpapers.isEmpty,
+            let imageData = matchingFavoriteWallpapers.first?.imageData else {
+            return nil
+        }
+        
+        return UIImage(data: imageData as Data)
     }
     
     // MARK: Updating
@@ -100,7 +142,7 @@ class FavoritesSaver: FavoritesSaving {
     private func findMatching(wallpaper: Wallpaper) -> [FavoriteWallpaper] {
         let request: NSFetchRequest<FavoriteWallpaper> = FavoriteWallpaper.fetchRequest()
 
-        request.predicate = NSPredicate(format: "uid = %@", wallpaper.id)
+        request.predicate = NSPredicate(format: "id = %@", wallpaper.id)
         
         guard let matchingFavoriteWallpapers = try? context.fetch(request) else {
             return []

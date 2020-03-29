@@ -11,10 +11,14 @@ import Foundation
 import CoreData
 
 public class FavoriteWallpaper: NSManagedObject {
-    @NSManaged public var uid: String?
+    static let entityDescriptionName = "FavoriteWallpaper"
+    
+    @NSManaged public var id: String?
+    @NSManaged public var title: String?
+    @NSManaged public var author: String?
     @NSManaged public var imageData: NSData?
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FavoriteWallpaper> {
-        return NSFetchRequest<FavoriteWallpaper>(entityName: "FavoriteWallpaper")
-    }
+        return NSFetchRequest<FavoriteWallpaper>(entityName: FavoriteWallpaper.entityDescriptionName)
+     }
 }

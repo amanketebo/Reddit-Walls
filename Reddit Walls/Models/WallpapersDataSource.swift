@@ -15,7 +15,7 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
     var currentPage = 0
     var initialFetch = true
     var wallpaperRequester = WallpaperRequester.wallpapers
-    let favoritesManager = FavoritesManager.shared
+    let favoritesManager: FavoritesManaging = FavoritesManager.shared
     let theme = Theme.shared
     let userDefaults = UserDefaults.standard
 
@@ -38,13 +38,12 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
         let wallpaperCellIndexPath = IndexPath(row: wallpaperCell.tag, section: 0)
         var selectedWallpaper = wallpapers[wallpaperCellIndexPath.row]
 
-        if favoritesManager.favoritesContains(selectedWallpaper) {
+        if favoritesManager.favorites.contains(selectedWallpaper) {
             selectedWallpaper.favorite = false
-            favoritesManager.removeFavorite(selectedWallpaper)
+            favoritesManager.remove(wallpaper: selectedWallpaper)
         } else {
             selectedWallpaper.favorite = true
-            favoritesManager.saveFavoriteWallpaper(selectedWallpaper, image: wallpaperImageView.image!)
-            favoritesManager.favorites.append(selectedWallpaper)
+            favoritesManager.save(wallpaper: selectedWallpaper, image: wallpaperImageView.image)
         }
 
 
@@ -92,7 +91,7 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
         if indexPath.row < wallpapers.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallpaperCell.identifier, for: indexPath) as! WallpaperCell
             let wallpaper = wallpapers[indexPath.row]
-            let isFavorite = favoritesManager.favoritesContains(wallpaper)
+            let isFavorite = favoritesManager.favorites.contains(wallpaper)
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(updateFavorite(_:)))
 
             theme.styleWallpaperCell(cell)

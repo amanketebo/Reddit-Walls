@@ -18,7 +18,6 @@ class WallpaperRequester {
     private(set) var url: URL
     var nextPage: String?
     var wallpaperCache = NSCache<NSURL, UIImage>()
-    let favoritesManager = FavoritesManager.shared
     
     var wallpaperService: WallpaperServicing = WallpaperService(wallpaperType: .mobile)
 
