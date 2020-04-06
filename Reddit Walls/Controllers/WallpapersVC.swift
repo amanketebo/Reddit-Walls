@@ -30,6 +30,13 @@ class WallpapersVC: UIViewController,
     var isInitialFetch = true
     let activityIndicator = UIActivityIndicatorView(style: .gray)
     var wallpapers: [Wallpaper] = []
+    
+    // MARK: Computed
+    
+    var shouldReplaceAllWallpapers: Bool {
+        let isFetchingFirstPage = !isInitialFetch && currentPage == 0
+        return isInitialFetch || isFetchingFirstPage
+    }
 
     // MARK: - Lifecycle
     
@@ -150,11 +157,7 @@ class WallpapersVC: UIViewController,
     // MARK: - DataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isInitialFetch || (!isInitialFetch && currentPage == 0) {
-            return wallpapers.count
-        } else {
-            return wallpapers.count + 1
-        }
+        return shouldReplaceAllWallpapers ? wallpapers.count : wallpapers.count + 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
