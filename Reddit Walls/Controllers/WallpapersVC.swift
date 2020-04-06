@@ -84,7 +84,7 @@ class WallpapersVC: UIViewController,
     
     // MARK: Fetching
 
-    func fetchWallpapers() {
+    private func fetchWallpapers() {
         wallpaperFetcher?.fetchWallpapers(forPage: currentPage,
                                           completionQueue: .main,
                                           completion: { [weak self] result in
@@ -94,18 +94,9 @@ class WallpapersVC: UIViewController,
                                             
             switch result {
             case .success(let wallpapersResponse):
-                if self.currentPage == 0 {
-                    self.wallpapers = wallpapersResponse.wallpapers
-                    self.collectionView.reloadData()
-                } else {
-                    let newIndexPaths: [IndexPath] = self.insertingIndexPaths(incomingWallpapers: wallpapersResponse.wallpapers)
-
-                    self.wallpapers += wallpapersResponse.wallpapers
-                    self.collectionView.performBatchUpdates({
-                        self.collectionView.insertItems(at: newIndexPaths)
-                    }, completion: nil)
-                }
-            case .failure(_):
+                self.handleFetchWallpapers(wallpapers: wallpapersResponse.wallpapers)
+                
+            case .failure:
                 Alert.showNetworkErrorAlert(vc: self) {
                     self.collectionView.scrollRectToVisible(.zero, animated: true)
                 }
@@ -116,12 +107,26 @@ class WallpapersVC: UIViewController,
         })
     }
     
+    private func handleFetchWallpapers(wallpapers: [Wallpaper]) {
+        if self.currentPage == 0 {
+            self.wallpapers = wallpapers
+            self.collectionView.reloadData()
+        } else {
+            let newIndexPaths: [IndexPath] = self.insertingIndexPaths(incomingWallpapers: wallpapers)
+
+            self.wallpapers += wallpapers
+            self.collectionView.performBatchUpdates({
+                self.collectionView.insertItems(at: newIndexPaths)
+            }, completion: nil)
+        }
+    }
+    
     @objc private func refreshWallpapers() {
         currentPage = 0
         fetchWallpapers()
     }
     
-    func stopRefreshing() {
+    private func stopRefreshing() {
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
         collectionView.refreshControl?.endRefreshing()
@@ -240,7 +245,7 @@ class WallpapersVC: UIViewController,
 
     // MARK: - Helpers
 
-    func insertingIndexPaths(incomingWallpapers: [Wallpaper]) -> [IndexPath] {
+    private func insertingIndexPaths(incomingWallpapers: [Wallpaper]) -> [IndexPath] {
         let currentWallpaperCount = wallpapers.count
         let newWallpaperCount = currentWallpaperCount + incomingWallpapers.count
         var newIndexPaths: [IndexPath] = []
