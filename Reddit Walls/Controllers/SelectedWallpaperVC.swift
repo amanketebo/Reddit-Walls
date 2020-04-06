@@ -23,7 +23,7 @@ class SelectedWallpaperVC: UIViewController {
     var wallpaperImage: UIImage!
     var imageView: UIImageView!
     var wallpaperHasLoaded = false
-    var wallpaperRequester: WallpaperRequester!
+    var wallpaperFetcher: WallpaperFetching!
     var hideCloseButton: Bool = false {
         didSet {
             closeButtonContainerView.isHidden = hideCloseButton
@@ -85,23 +85,22 @@ class SelectedWallpaperVC: UIViewController {
             view.addSubview(activityIndicator)
             activityIndicator.centerInParentView()
             activityIndicator.startAnimating()
-
-            if let fullResURL = selectedWallpaper.resolutions.full {
-                wallpaperRequester.fetchWallpaperImage(from: fullResURL, completion: { [weak self] (result) in
-                    switch result {
-                    case .success(let wallpaper):
-                        self?.wallpaperImage = wallpaper
-                        self?.wallpaperHasLoaded = true
-                        activityIndicator.stopAnimating()
-                        self?.setupViews()
-                    case .failure(_):
-                        let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
-                        let okayButton = Button.okayButton
-                        let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), buttons: [okayButton], autoFadeOut: false)
-                        
-                        self?.present(informationVC, animated: true, completion: nil)
-                    }
-                })
+            wallpaperFetcher.fetchImage(forWallpaper: selectedWallpaper,
+                                        usingResolution: .full,
+                                        completionQueue: .main) { [weak self] result in
+                switch result {
+                case .success(let wallpaper):
+                    self?.wallpaperImage = wallpaper
+                    self?.wallpaperHasLoaded = true
+                    activityIndicator.stopAnimating()
+                    self?.setupViews()
+                case .failure(_):
+                    let message = "Whoops, looks like something is wrong with the network. Check your connection and try again."
+                    let okayButton = Button.okayButton
+                    let informationVC = InformationVC(message: message, image: #imageLiteral(resourceName: "warning"), buttons: [okayButton], autoFadeOut: false)
+                    
+                    self?.present(informationVC, animated: true, completion: nil)
+                }
             }
         }
     }

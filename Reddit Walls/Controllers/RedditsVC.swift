@@ -9,15 +9,21 @@
 import UIKit
 
 class RedditsVC: UIViewController {
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var redditsView: RedditsView!
     @IBOutlet weak var wallpapersScrollView: UIScrollView!
 
-    let wallpapersVC = UIStoryboard.wallpapersVC(dataSource: .wallpapers)
-    let iphoneWallpapersVC = UIStoryboard.wallpapersVC(dataSource: .iphoneWallpapers)
+    // MARK: - Properties
+    
+    var desktopWallpapersViewController: WallpapersVC?
+    var iPhoneWallpapersViewController: WallpapersVC?
+    
     let notificationCenter = NotificationCenter.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpWallpapersViewControllers()
         notificationCenter.addObserver(self, selector: #selector(updateRedditsViewTheme), name: .themeUpdated, object: nil)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         redditsView.delegate = self
@@ -29,22 +35,36 @@ class RedditsVC: UIViewController {
     override func viewWillLayoutSubviews() {
         setupViews()
     }
+    
+    private func setUpWallpapersViewControllers() {
+        self.desktopWallpapersViewController = UIStoryboard.wallpapersVC()
+        self.desktopWallpapersViewController?.wallpaperType = .desktop
+        
+        self.iPhoneWallpapersViewController = UIStoryboard.wallpapersVC()
+        self.iPhoneWallpapersViewController?.wallpaperType = .mobile
+    }
 
     private func setupViews() {
+        guard let desktopWallpapersViewController = desktopWallpapersViewController,
+            let iPhoneWallpapersViewController = iPhoneWallpapersViewController else {
+                assertionFailure("We should have both view controllers set up before this method is called")
+                return
+        }
+        
         let width = wallpapersScrollView.bounds.width
         let height = wallpapersScrollView.bounds.height
 
         wallpapersScrollView.contentSize = CGSize(width: width * 2, height: height)
 
-        addChild(wallpapersVC)
-        wallpapersVC.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        wallpapersScrollView.addSubview(wallpapersVC.view)
-        wallpapersVC.didMove(toParent: self)
+        addChild(desktopWallpapersViewController)
+        desktopWallpapersViewController.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        wallpapersScrollView.addSubview(desktopWallpapersViewController.view)
+        desktopWallpapersViewController.didMove(toParent: self)
 
-        addChild(iphoneWallpapersVC)
-        iphoneWallpapersVC.view.frame = CGRect(x: width, y: 0, width: width, height: height)
-        wallpapersScrollView.addSubview(iphoneWallpapersVC.view)
-        iphoneWallpapersVC.didMove(toParent: self)
+        addChild(iPhoneWallpapersViewController)
+        iPhoneWallpapersViewController.view.frame = CGRect(x: width, y: 0, width: width, height: height)
+        wallpapersScrollView.addSubview(iPhoneWallpapersViewController.view)
+        iPhoneWallpapersViewController.didMove(toParent: self)
     }
 
     @objc private func updateRedditsViewTheme() {

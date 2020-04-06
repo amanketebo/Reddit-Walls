@@ -14,18 +14,15 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
     var wallpapers: [Wallpaper] = []
     var currentPage = 0
     var initialFetch = true
-    var wallpaperRequester = WallpaperRequester.wallpapers
+    var wallpaperFetcher = WallpaperFetcher(wallpaperType: .desktop)
     let favoritesManager: FavoritesManaging = FavoritesManager.shared
     let theme = Theme.shared
     let userDefaults = UserDefaults.standard
 
-    static let wallpapers = WallpapersDataSource(wallpaperRequester: .wallpapers)
-    static let iphoneWallpapers = WallpapersDataSource(wallpaperRequester: .iphoneWallpapers)
-
-    init(wallpapers: [Wallpaper] = [], initialFetch: Bool = true, wallpaperRequester: WallpaperRequester = .wallpapers) {
+    init(wallpapers: [Wallpaper] = [], initialFetch: Bool = true, wallpaperType: WallpaperType = .desktop) {
         self.wallpapers = wallpapers
         self.initialFetch = initialFetch
-        self.wallpaperRequester = wallpaperRequester
+        self.wallpaperFetcher = WallpaperFetcher(wallpaperType: wallpaperType)
     }
 
     // TODO: - Remove wallpaper after unfavoriting
@@ -55,22 +52,31 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
     // TODO: - Show an image in the cell for a failed fetch
 
     func fetchWallpaper(_ wallpaper: Wallpaper, for cell: WallpaperCell) {
-        if let wallpaperURL = wallpaper.resolutions.full {
-            cell.wallpaperHasLoaded = false
-            wallpaperRequester.fetchWallpaperImage(from: wallpaperURL) { (result) in
-                switch result {
-                case .success(let image):
-                    cell.wallpaper.image = image
-                    cell.wallpaperHasLoaded = true
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
+        cell.wallpaperHasLoaded = false
+        wallpaperFetcher.fetchImage(forWallpaper: wallpaper,
+                                    usingResolution: .low,
+                                    completionQueue: .main) { result in
+            switch result {
+            case .success(let image):
+                cell.wallpaper.image = image
+                cell.wallpaperHasLoaded = true
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
 
     func fetchWallpapers(completion: @escaping WallpaperRequester.WallpapersCallback) {
-        wallpaperRequester.fetchWallpapers(page: currentPage, completion: completion)
+        wallpaperFetcher.fetchWallpapers(forPage: currentPage, completionQueue: .main) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response.wallpapers))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     // MARK: - UICollectionViewDataSource methods
@@ -80,7 +86,7 @@ class WallpapersDataSource: NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if initialFetch || (!initialFetch && wallpaperRequester.nextPage == nil) {
+        if initialFetch || (!initialFetch && currentPage == 0) {
             return wallpapers.count
         } else {
             return wallpapers.count + 1

@@ -27,4 +27,8 @@ enum WallpaperType: CaseIterable {
             return "/r/iphonewallpapers.json"
         }
     }
+    
+    var fetcher: WallpaperFetcher {
+       return WallpaperFetcher(wallpaperType: self)
+    }
 }

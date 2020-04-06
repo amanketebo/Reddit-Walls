@@ -69,10 +69,8 @@ extension UIStoryboard {
     // VC
     static let selectedWallpaperVC = UIStoryboard(name: "SelectedWallpaper", bundle: nil).instantiateInitialViewController() as! SelectedWallpaperVC
 
-    class func wallpapersVC(dataSource: WallpapersDataSource) -> WallpapersVC {
+    class func wallpapersVC() -> WallpapersVC {
         let wallpapersVC = UIStoryboard(name: "WallpapersVC", bundle: nil).instantiateInitialViewController() as! WallpapersVC
-
-        wallpapersVC.wallpapersDataSource = dataSource
         
         return wallpapersVC
     }
