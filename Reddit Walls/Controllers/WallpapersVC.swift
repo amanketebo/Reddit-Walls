@@ -25,19 +25,17 @@ class WallpapersVC: UIViewController,
     
     var wallpaperType: WallpaperType?
     var wallpaperFetcher: WallpaperFetching?
-    var wallpapers: [Wallpaper] = []
     
     var currentPage = 0
     var isInitialFetch = true
     let activityIndicator = UIActivityIndicatorView(style: .gray)
-    
-    let theme = Theme.shared
-    let notificationCenter = NotificationCenter.default
+    var wallpapers: [Wallpaper] = []
 
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpWallpaperFetcher()
         setUpCollectionView()
         setUpActivityIndicator()
@@ -73,13 +71,13 @@ class WallpapersVC: UIViewController,
     }
     
     private func setUpBackgroundColors() {
-        theme.styleBackground(view)
-        theme.styleBackground(collectionView.subviews[0])
+        Theme.shared.styleBackground(view)
+        Theme.shared.styleBackground(collectionView.subviews[0])
     }
     
     private func addObservers() {
-        notificationCenter.addObserver(self, selector: #selector(updateTheme), name: .themeUpdated, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(updateFavoriteIcons), name: .favoritesUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: .themeUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFavoriteIcons), name: .favoritesUpdated, object: nil)
     }
     
     // MARK: Fetching
@@ -166,7 +164,7 @@ class WallpapersVC: UIViewController,
 //            let isFavorite = favoritesManager.favorites.contains(wallpaper)
 //            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(updateFavorite(_:)))
 
-            theme.styleWallpaperCell(cell)
+            Theme.shared.styleWallpaperCell(cell)
             cell.setup(wallpaper, at: indexPath)
 //            cell.favoriteIcon.image = theme.favoriteIconImage(selected: isFavorite)
 //            cell.favoriteIcon.addGestureRecognizer(tapGestureRecognizer)
@@ -176,7 +174,7 @@ class WallpapersVC: UIViewController,
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
 
-            theme.styleLoadingCell(cell)
+            Theme.shared.styleLoadingCell(cell)
 
             return cell
         }
